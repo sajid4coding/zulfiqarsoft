@@ -23,21 +23,23 @@
             </div>
         </div>
         </div>
-        <div class="cs-hero_social_wrap cs-primary_font cs-primary_color">
-        <div class="cs-hero_social_title">Follow Us</div>
-        <ul class="cs-hero_social_links">
-            @if ($follow_us->twitter)
-                <li>
-                    <a href="https://twitter.com/{{ $follow_us->twitter }}">Twitter</a>
-                </li>
-            @endif
-            @if ($follow_us->instagram)
-                <li>
-                    <a href="https://www.instagram.com/{{ $follow_us->instagram }}">Instagram</a>
-                </li>
-            @endif
-        </ul>
-        </div>
+        @if ($follow_us->status == 'visible')
+            <div class="cs-hero_social_wrap cs-primary_font cs-primary_color">
+            <div class="cs-hero_social_title">Follow Us</div>
+            <ul class="cs-hero_social_links">
+                @if ($follow_us->twitter)
+                    <li>
+                        <a href="https://twitter.com/{{ $follow_us->twitter }}">Twitter</a>
+                    </li>
+                @endif
+                @if ($follow_us->instagram)
+                    <li>
+                        <a href="https://www.instagram.com/{{ $follow_us->instagram }}">Instagram</a>
+                    </li>
+                @endif
+            </ul>
+            </div>
+        @endif
         <a href="#service" class="cs-down_btn"></a>
     </div>
     <!-- End Hero -->

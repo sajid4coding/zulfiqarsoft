@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('email_status')->default('visible');
+            $table->string('phone')->nullable();
+            $table->string('phone_status')->default('visible');
+            $table->mediumText('address')->nullable();
+            $table->string('address_status')->default('visible');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
