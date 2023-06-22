@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\SocialMedia;
+use App\Models\{User, SocialMedia};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +28,8 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    // public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request)
     {
         $request->user()->fill($request->validated());
 
@@ -36,7 +37,13 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        User::find(1)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'updated_at' => now(),
+        ]);
 
         return Redirect::route('account.setting')->with('profile_status', 'Profile Information Updated');
         // return Redirect::route('profile.edit')->with('status', 'profile-updated');
@@ -85,5 +92,65 @@ class ProfileController extends Controller
         ]);
 
         return back()->with('SocialMedia_success', 'Social Media Link Updated');
+    }
+
+    public function change_email_status(Request $request){
+        if ($request->has('email_status')) {
+            User::find(1)->update([
+                'email_status' => 'visible',
+                'updated_at' => now(),
+            ]);
+        } else {
+            User::find(1)->update([
+                'email_status' => 'invisible',
+                'updated_at' => now(),
+            ]);
+        }
+        return back();
+    }
+
+    public function change_phone_status(Request $request){
+        if ($request->has('phone_status')) {
+            User::find(1)->update([
+                'phone_status' => 'visible',
+                'updated_at' => now(),
+            ]);
+        } else {
+            User::find(1)->update([
+                'phone_status' => 'invisible',
+                'updated_at' => now(),
+            ]);
+        }
+        return back();
+    }
+
+    public function change_address_status(Request $request){
+        if ($request->has('address_status')) {
+            User::find(1)->update([
+                'address_status' => 'visible',
+                'updated_at' => now(),
+            ]);
+        } else {
+            User::find(1)->update([
+                'address_status' => 'invisible',
+                'updated_at' => now(),
+            ]);
+        }
+        return back();
+    }
+
+    public function change_social_status(Request $request){
+        if ($request->has('social_status')) {
+            SocialMedia::find(1)->update([
+                'status' => 'visible',
+                'updated_at' => now(),
+            ]);
+        } else {
+            SocialMedia::find(1)->update([
+                'status' => 'invisible',
+                'updated_at' => now(),
+            ]);
+        }
+        return back();
     }
 }

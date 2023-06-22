@@ -13,4 +13,10 @@ Route::middleware('auth')->group(function(){
     Route::get('dashboard/account-setting', [ProfileController::class, 'account_setting'])->name('account.setting');
     Route::post('dashboard/account-social-setting-post', [ProfileController::class, 'account_social_setting_post'])->name('account.social.setting.post');
     //DASHBOARD PROFILE END
+
+    Route::post('dashboard/change-email-status-post', [ProfileController::class, 'change_email_status'])->name('change.email.status');
+    Route::post('dashboard/change-phone-status-post', [ProfileController::class, 'change_phone_status'])->name('change.phone.status');
+    Route::post('dashboard/change-address-status-post', [ProfileController::class, 'change_address_status'])->name('change.address.status');
+    Route::post('dashboard/change-social-status-post', [ProfileController::class, 'change_social_status'])->name('change.social.status');
+
 });

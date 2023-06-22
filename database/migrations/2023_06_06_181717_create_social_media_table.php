@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('linkedin')->nullable();
             $table->string('instagram')->nullable();
             $table->string('github')->nullable();
+            $table->string('status')->default('visible');
             $table->timestamps();
         });
     }

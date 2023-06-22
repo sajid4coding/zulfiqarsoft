@@ -97,94 +97,43 @@
                         <div class="tab-pane fade show active" id="animated-underline-home" role="tabpanel" aria-labelledby="animated-underline-home-tab">
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                                    <form class="section general-info">
+                                    <form class="section general-info" action="{{ route('profile.update') }}" method="POST">
+                                        @csrf
+                                        @method('patch')
                                         <div class="info">
                                             <h6 class="">General Information</h6>
                                             <div class="row">
                                                 <div class="col-lg-11 mx-auto">
                                                     <div class="row">
-                                                        <div class="col-xl-2 col-lg-12 col-md-4">
-                                                            <div class="profile-image  mt-4 pe-md-4">
-
-                                                                <!-- // The classic file input element we'll enhance
-                                                                // to a file pond, we moved the configuration
-                                                                // properties to JavaScript -->
-
-                                                                <div class="img-uploader-content">
-                                                                    <input type="file" class="filepond"
-                                                                        name="filepond" accept="image/png, image/jpeg, image/gif"/>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
+                                                        <div class="col-xl-12 col-lg-12 col-md-8 mt-md-0 mt-4">
                                                             <div class="form">
                                                                 <div class="row">
+
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="fullName">Full Name</label>
-                                                                            <input type="text" class="form-control mb-3" id="fullName" placeholder="Full Name" value="Jimmy Turner">
+                                                                            <label for="name">Full Name</label>
+                                                                            <input name="name" type="text" class="form-control mb-3" id="name" placeholder="Full Name" value="{{ old('name', $user->name) }}">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="profession">Profession</label>
-                                                                            <input type="text" class="form-control mb-3" id="profession" placeholder="Designer" value="Web Developer">
+                                                                            <label for="email">Email</label>
+                                                                            <input required name="email" type="email" class="form-control mb-3" id="email" placeholder="Write your email here" value="{{ old('email', $user->email) }}">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="country">Country</label>
-                                                                            <select class="form-select mb-3" id="country">
-                                                                                <option>All Countries</option>
-                                                                                <option selected>United States</option>
-                                                                                <option>India</option>
-                                                                                <option>Japan</option>
-                                                                                <option>China</option>
-                                                                                <option>Brazil</option>
-                                                                                <option>Norway</option>
-                                                                                <option>Canada</option>
-                                                                            </select>
+                                                                            <label for="phone">Phone</label>
+                                                                            <input name="phone" type="text" class="form-control mb-3" id="phone" placeholder="Write your phone number here" value="{{ old('phone', $user->phone) }}">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="address">Address</label>
-                                                                            <input type="text" class="form-control mb-3" id="address" placeholder="Address" value="New York" >
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="location">Location</label>
-                                                                            <input type="text" class="form-control mb-3" id="location" placeholder="Location">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="phone">Phone</label>
-                                                                            <input type="text" class="form-control mb-3" id="phone" placeholder="Write your phone number here" value="+1 (530) 555-12121">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="email">Email</label>
-                                                                            <input type="text" class="form-control mb-3" id="email" placeholder="Write your email here" value="Jimmy@gmail.com">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="website1">Website</label>
-                                                                            <input type="text" class="form-control mb-3" id="website1" placeholder="Enter URL">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-md-12 mt-1">
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="checkbox" value="" id="customCheck1">
-                                                                            <label class="form-check-label" for="customCheck1">Make this my default address</label>
+                                                                            <input name="address" type="text" class="form-control mb-3" id="address" placeholder="Address" value="{{ old('address', $user->address) }}" >
                                                                         </div>
                                                                     </div>
 
@@ -196,41 +145,6 @@
 
                                                                 </div>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div id="profile_info" class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-
-                                    <form class="section social" action="{{ route('profile.update') }}" method="POST">
-                                        @csrf
-                                        @method('patch')
-
-                                        <div class="info">
-                                            <h5 class="">Profile Information</h5>
-                                            <div class="row">
-                                                <div class="col-md-11 mx-auto">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="name">Full Name</label>
-                                                                <input name="name" type="text" class="form-control mb-3" id="name" placeholder="Full Name" value="{{ old('name', $user->name) }}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label for="email">Email</label>
-                                                                <input required name="email" type="email" class="form-control mb-3" id="email" placeholder="Email" value="{{ old('email', $user->email) }}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mt-1">
-                                                            <div class="form-group text-end">
-                                                                <button type="submit" class="btn btn-secondary">Save</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -347,6 +261,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="tab-pane fade" id="animated-underline-profile" role="tabpanel" aria-labelledby="animated-underline-profile-tab">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-12 col-md-12 layout-spacing">
@@ -606,25 +521,18 @@
                                 <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
                                     <div class="section general-info">
                                         <div class="info">
-                                            <h6 class="">Public Profile</h6>
-                                            <p>Your <span class="text-success">Profile</span> will be visible to anyone on the network.</p>
-                                            <div class="form-group mt-4">
-                                                <div class="switch form-switch-custom switch-inline form-switch-secondary mt-1">
-                                                    <input class="switch-input" type="checkbox" role="switch" id="publicProfile" checked>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
-                                    <div class="section general-info">
-                                        <div class="info">
                                             <h6 class="">Show my email</h6>
                                             <p>Your <span class="text-success">Email</span> will be visible to anyone on the network.</p>
                                             <div class="form-group mt-4">
                                                 <div class="switch form-switch-custom switch-inline form-switch-secondary mt-1">
-                                                    <input class="switch-input" type="checkbox" role="switch" id="showMyEmail">
+                                                    <form id="email_status" action="{{ route('change.email.status') }}" method="POST">
+                                                        @csrf
+                                                        @if ($user->email_status == 'visible')
+                                                            <input onclick="submitEmailForm()" name="email_status" class="switch-input" type="checkbox" role="switch" checked>
+                                                        @else
+                                                            <input onclick="submitEmailForm()" name="email_status" class="switch-input" type="checkbox" role="switch">
+                                                        @endif
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -634,11 +542,39 @@
                                 <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
                                     <div class="section general-info">
                                         <div class="info">
-                                            <h6 class="">Enable keyboard shortcuts</h6>
-                                            <p>When enabled, press <code class="text-success">ctrl</code> for help</p>
+                                            <h6 class="">Show my phone</h6>
+                                            <p>Your <span class="text-success">Phone</span> will be visible to anyone on the network.</p>
                                             <div class="form-group mt-4">
                                                 <div class="switch form-switch-custom switch-inline form-switch-secondary mt-1">
-                                                    <input class="switch-input" type="checkbox" role="switch" id="EnableKeyboardShortcut">
+                                                    <form id="phone_status" action="{{ route('change.phone.status') }}" method="POST">
+                                                    @csrf
+                                                        @if ($user->phone_status == 'visible')
+                                                            <input onclick="submitPhoneForm()" name="phone_status" class="switch-input" type="checkbox" role="switch" checked>
+                                                        @else
+                                                            <input onclick="submitPhoneForm()" name="phone_status" class="switch-input" type="checkbox" role="switch">
+                                                        @endif
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
+                                    <div class="section general-info">
+                                        <div class="info">
+                                            <h6 class="">Show my address</h6>
+                                            <p>Your <span class="text-success">Address</span> will be visible to anyone on the network.</p>
+                                            <div class="form-group mt-4">
+                                                <div class="switch form-switch-custom switch-inline form-switch-secondary mt-1">
+                                                    <form id="address_status" action="{{ route('change.address.status') }}" method="POST">
+                                                    @csrf
+                                                        @if ($user->address_status == 'visible')
+                                                            <input onclick="submitAddressForm()" name="address_status" class="switch-input" type="checkbox" role="switch" checked>
+                                                        @else
+                                                            <input onclick="submitAddressForm()" name="address_status" class="switch-input" type="checkbox" role="switch">
+                                                        @endif
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -677,10 +613,17 @@
                                     <div class="section general-info">
                                         <div class="info">
                                             <h6 class="">Social Profile</h6>
-                                            <p>Enable your <span class="text-success">social</span> profiles on this network</p>
+                                            <p>Enable your <span class="text-success">social</span> profiles on this network </p>
                                             <div class="form-group mt-4">
                                                 <div class="switch form-switch-custom switch-inline form-switch-secondary mt-1">
-                                                    <input class="switch-input" type="checkbox" role="switch" id="socialprofile" checked>
+                                                    <form id="social_status" action="{{ route('change.social.status') }}" method="POST">
+                                                        @csrf
+                                                        @if ($social_medias->status == 'visible')
+                                                            <input onclick="submitSocialForm()" name="social_status" class="switch-input" type="checkbox" role="switch" checked>
+                                                        @else
+                                                            <input onclick="submitSocialForm()" name="social_status" class="switch-input" type="checkbox" role="switch">
+                                                        @endif
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -760,5 +703,25 @@
 <script src="{{ asset('dashboard_assets') }}/src/plugins/src/notification/snackbar/snackbar.min.js"></script>
 <script src="{{ asset('dashboard_assets') }}/src/plugins/src/sweetalerts2/sweetalerts2.min.js"></script>
 <script src="{{ asset('dashboard_assets') }}/src/assets/js/users/account-settings.js"></script>
+
+
+<script>
+    function submitEmailForm() {
+        document.getElementById('email_status').submit();
+    }
+
+    function submitPhoneForm() {
+        document.getElementById('phone_status').submit();
+    }
+
+    function submitAddressForm() {
+        document.getElementById('address_status').submit();
+    }
+
+    function submitSocialForm() {
+        document.getElementById('social_status').submit();
+    }
+</script>
+
 <!--  END CUSTOM SCRIPTS FILE  -->
 @endsection
