@@ -257,6 +257,7 @@
                 $explode = explode('/', $url);
                 $current_page = end($explode);
                 $lastTwoWords = $explode[count($explode)-2] . '/' . $explode[count($explode)-1];
+                $lastthreeWords = $explode[count($explode)-3]. '/' . $explode[count($explode)-2] . '/'. $explode[count($explode)-1];
             @endphp
 
             <nav id="sidebar">
@@ -279,6 +280,7 @@
                     </div>
                 </div>
                 <div class="shadow-bottom"></div>
+
                 <ul class="list-unstyled menu-categories" id="accordionExample">
                     <li class="menu {{ $lastTwoWords == 'dashboard/analytics' || $lastTwoWords == 'dashboard/sales' ? 'active' : '' }}">
                         <a href="#dashboard" data-bs-toggle="collapse" aria-expanded="{{ $lastTwoWords == 'dashboard/analytics' || $lastTwoWords == 'dashboard/sales' ? 'true' : 'false' }}" class="dropdown-toggle">
@@ -358,8 +360,8 @@
                         </a>
                     </li>
 
-                    <li class="menu">
-                        <a href="./app-contacts.html" aria-expanded="false" class="dropdown-toggle">
+                    <li class="menu {{ $current_page == 'contact' ? 'active' : '' }}">
+                        <a href="{{ route('contact.index') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                                 <span>Contacts</span>
@@ -422,31 +424,22 @@
                         </ul>
                     </li>
 
-                    <li class="menu">
-                        <a href="#blog" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <li class="menu {{ $lastthreeWords == 'dashboard/testimonial/create' || $lastTwoWords == 'dashboard/testimonial' ? 'active' : '' }}">
+                        <a href="#testimonial" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/testimonial/create' || $lastTwoWords == 'dashboard/testimonial' ? 'true' : '' }}" class="dropdown-toggle">
                             <div class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pen-tool"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
-                                <span>Blog</span>
+                                <span>Testimonial</span>
                             </div>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                             </div>
                         </a>
-                        <ul class="collapse submenu list-unstyled" id="blog" data-bs-parent="#accordionExample">
-                            <li>
-                                <a href="./app-blog-grid.html"> Grid </a>
+                        <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/testimonial/create' || $lastTwoWords == 'dashboard/testimonial' ? 'show' : '' }}" id="testimonial" data-bs-parent="#accordionExample">
+                            <li class="{{ $lastthreeWords == 'dashboard/testimonial/create' ? 'active' : '' }}">
+                                <a href="{{ route('testimonial.create') }}"> Create </a>
                             </li>
-                            <li>
-                                <a href="./app-blog-list.html"> List </a>
-                            </li>
-                            <li>
-                                <a href="./app-blog-post.html"> Post </a>
-                            </li>
-                            <li>
-                                <a href="./app-blog-create.html"> Create </a>
-                            </li>
-                            <li>
-                                <a href="./app-blog-edit.html"> Edit </a>
+                            <li class="{{ $lastTwoWords == 'dashboard/testimonial' ? 'active' : '' }}">
+                                <a href="{{ route('testimonial.index') }}"> List </a>
                             </li>
                         </ul>
                     </li>
@@ -948,10 +941,12 @@
     <!-- END MAIN CONTAINER -->
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src="{{ asset('dashboard_assets') }}/src/plugins/src/global/vendors.min.js"></script>
     <script src="{{ asset('dashboard_assets') }}/src/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('dashboard_assets') }}/src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ asset('dashboard_assets') }}/src/plugins/src/mousetrap/mousetrap.min.js"></script>
     <script src="{{ asset('dashboard_assets') }}/layouts/vertical-dark-menu/app.js"></script>
+    <script src="{{ asset('dashboard_assets') }}/src/assets/js/custom.js"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
