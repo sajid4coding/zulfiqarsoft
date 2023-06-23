@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
+Route::post('contact-post', [FrontendController::class, 'contact_post'])->name('contact.post');
 
 require __DIR__.'/auth.php';
 

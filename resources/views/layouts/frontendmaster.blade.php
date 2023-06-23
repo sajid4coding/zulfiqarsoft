@@ -84,7 +84,7 @@
                     <a href="#">Pages</a>
                     <ul>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="{{ route('contact') }}">Contact</a>
                     </li>
                     <li>
                         <a href="team.html">Team</a>
