@@ -20,7 +20,10 @@ Route::middleware('auth')->group(function(){
     //PROFILE END
 
     //ABOUT BEGIN
-    Route::get('dashboard/about', [AboutController::class, 'about'])->name('about');
+    Route::get('dashboard/about/about-agency', [AboutController::class, 'about_agency'])->name('dashboard.about.agency');
+    Route::post('dashboard/about-agency-store', [AboutController::class, 'about_agency_store'])->name('dashboard.about.store');
+    Route::get('dashboard/about/why-choose', [AboutController::class, 'why_choose'])->name('dashboard.why.choose');
+    Route::post('dashboard/why-choose-store', [AboutController::class, 'why_choose_store'])->name('dashboard.why.choose.store');
     //ABOUT END
 
     //TEAM BEGIN
