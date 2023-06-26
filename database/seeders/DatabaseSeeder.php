@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             TeamSeeding::class,
             TestimonialSeeding::class,
             SocialMediaSeeding::class,
+            AboutPageSeeder::class,
+            WhyChooseUsSeeder::class,
         ]);
     }
 }

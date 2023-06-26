@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
+            $table->string('heading_line');
+            $table->longText('about');
+            $table->string('heading_meta_line')->nullable();
+            $table->longText('about_meta_description')->nullable();
+            $table->string('about_image_1')->nullable();
+            $table->string('about_image_2')->nullable();
+            $table->string('about_image_3')->nullable();
             $table->timestamps();
         });
     }
