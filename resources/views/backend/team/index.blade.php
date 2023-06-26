@@ -21,7 +21,7 @@
             <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard.analytics') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('testimonial.index') }}">Testimonial</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('team.index') }}">Team</a></li>
                     <li class="breadcrumb-item active" aria-current="page">List</li>
                 </ol>
             </nav>
@@ -34,13 +34,13 @@
                 <div class="widget-content widget-content-area br-8">
                     <table id="style-3" class="table style-3 dt-table-hover">
                         <div class="d-flex justify-content-center">
-                            <a href="{{ route('testimonial.create') }}" class="btn btn-success text-center my-3">Create Testimonial</a>
+                            <a href="{{ route('team.create') }}" class="btn btn-success text-center my-3">Create Team</a>
                         </div>
                         <thead>
-                            @if (session('create_testimonial'))
+                            @if (session('create_team'))
                                 <div class="alert alert-primary alert-dismissible fade show mb-4" role="alert">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-                                    <strong>Notice!</strong> {{ session('create_testimonial') }}.
+                                    <strong>Notice!</strong> {{ session('create_team') }}.
                                 </div>
                             @endif
                             @if (session('delete_status'))
@@ -52,8 +52,8 @@
                             <tr>
                                 <th class="checkbox-column text-center"> Record Id </th>
                                 <th class="text-center">Image</th>
-                                <th>Client Name</th>
-                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Position</th>
                                 <th>Status</th>
                                 <th class="text-center dt-no-sorting">Action</th>
                             </tr>
@@ -62,45 +62,44 @@
                             @php
                                 $SL = 1;
                             @endphp
-                            @foreach ($testimonials as $testimonial)
+                            @foreach ($members as $member)
                                 <tr>
                                     <td class="checkbox-column text-center"> {{ $SL++ }} </td>
                                     <td class="text-center">
-                                        @if ($testimonial->client_image)
-                                            <span><img src="{{ asset('storage/client_images/') }}/{{ $testimonial->client_image }}" class="profile-img" alt="avatar"></span>
+                                        @if ($member->member_image)
+                                            <span><img src="{{ asset('storage/member_images/') }}/{{ $member->member_image }}" class="profile-img" alt="avatar"></span>
                                         @else
-                                            <span><img src="{{ Avatar::create($member->client_name)->toBase64() }}" class="profile-img" alt="avatar" /></span>
+                                            <span><img src="{{ Avatar::create($member->name)->toBase64() }}" class="profile-img" alt="avatar" /></span>
                                         @endif
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-left align-items-center">
                                             <div class="d-flex flex-column">
-                                                <a href="{{ route('testimonial.edit', $testimonial->id) }}" class="text-truncate fw-bold">{{ $testimonial->client_name }}</a>
+                                                <a href="{{ route('team.edit', $member->id) }}" class="text-truncate fw-bold">{{ $member->name }}</a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $testimonial->created_at->format('M d Y') }}</td>
+                                    <td>{{ $member->created_at->format('M d Y') }}</td>
                                     <td>
-                                        @if ($testimonial->created_at->diffInDays(\Carbon\Carbon::now()) < 1 && $testimonial->testimonial_status == 'active')
+                                        @if ($member->created_at->diffInDays(\Carbon\Carbon::now()) < 1 && $member->member_status == 'visible')
                                             <span class="badge badge-primary">Recently Updated</span>
                                         @endif
-                                        @if ($testimonial->created_at->diffInDays(\Carbon\Carbon::now()) > 1 && $testimonial->testimonial_status == 'active')
+                                        @if ($member->created_at->diffInDays(\Carbon\Carbon::now()) > 1 && $member->member_status == 'visible')
                                             <span class="badge badge-success">Published</span>
                                         @endif
-                                        @if ($testimonial->testimonial_status == 'deactive')
+                                        @if ($member->member_status == 'deactive')
                                             <span class="badge badge-danger">Deactive</span>
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('testimonial.edit', $testimonial->id) }}" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
+                                        <a href="{{ route('team.edit', $member->id) }}" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 p-1 br-8 mb-1"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                             </svg>
                                         </a>
-                                        <form action="{{ route('testimonial.destroy', $testimonial->id) }}" method="POST">
+                                        <form action="{{ route('team.destroy', $member->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger">
-                                                {{-- <i class="fa-solid fa-trash"></i> --}}
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-8 mb-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                                             </button>
                                         </form>
@@ -145,6 +144,4 @@
     </script>
     <!-- END PAGE LEVEL SCRIPTS -->
 @endsection
-
-
 

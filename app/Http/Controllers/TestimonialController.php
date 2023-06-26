@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Testimonial;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TestimonialController extends Controller
 {
@@ -111,6 +112,13 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
+        $imageName = $testimonial->client_image;
+        $imagePath = public_path('storage/client_images/' . $imageName);
+
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+
         Testimonial::find($testimonial->id)->delete();
 
         return back()->with('delete_status', 'Testimonial Deleted');

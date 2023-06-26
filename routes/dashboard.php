@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, TestimonialController, ContactController};
+use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController};
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function(){
-    //DASHBOARD PROFILE BEGIN
+    //PROFILE BEGIN
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -17,10 +17,22 @@ Route::middleware('auth')->group(function(){
     Route::post('dashboard/change-phone-status-post', [ProfileController::class, 'change_phone_status'])->name('change.phone.status');
     Route::post('dashboard/change-address-status-post', [ProfileController::class, 'change_address_status'])->name('change.address.status');
     Route::post('dashboard/change-social-status-post', [ProfileController::class, 'change_social_status'])->name('change.social.status');
-    //DASHBOARD PROFILE END
+    //PROFILE END
 
+    //ABOUT BEGIN
+    Route::get('dashboard/about', [AboutController::class, 'about'])->name('about');
+    //ABOUT END
+
+    //TEAM BEGIN
+    Route::resource('dashboard/team', TeamController::class);
+    //TEAM END
+
+    //TESTIMONIAL BEGIN
     Route::resource('dashboard/testimonial', TestimonialController::class);
+    //TESTIMONIAL END
 
+    //CONTACT BEGIN
     Route::get('dashboard/contact', [ContactController::class, 'index'])->name('contact.index');
+    //CONTACT END
 
 });

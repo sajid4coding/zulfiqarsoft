@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{SocialMedia, Testimonial, Contact};
+use App\Models\{SocialMedia, Testimonial, Contact, Team};
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -11,6 +11,18 @@ class FrontendController extends Controller
         return view('frontend.index', [
             'follow_us' => SocialMedia::find(1),
             'tesimonial_exist' => Testimonial::exists()
+        ]);
+    }
+
+    public function team(){
+        return view('frontend.team.index', [
+            'teams' => Team::all()
+        ]);
+    }
+
+    public function team_detail($id){
+        return view('frontend.team.details', [
+            'member' => Team::find($id)
         ]);
     }
 

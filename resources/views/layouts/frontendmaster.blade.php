@@ -32,90 +32,96 @@
     <header class="cs-site_header cs-style1 text-uppercase cs-sticky_header">
     <div class="cs-main_header">
         <div class="container">
-        <div class="cs-main_header_in">
-            <div class="cs-main_header_left">
-            <a class="cs-site_branding" href="index.html">
-                <img src="{{ asset('frontend_assets') }}/img/logo.svg" alt="Logo" />
-            </a>
-            </div>
-            <div class="cs-main_header_center">
-            <div class="cs-nav cs-primary_font cs-medium">
-                <ul class="cs-nav_list">
-                <li class="cs-mega_menu">
-                    <a href="{{ route('index') }}" style="color: #FF4A17">Home</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li class="menu-item-has-children">
-                    <a href="service.html">Services</a>
-                    <ul>
+            <div class="cs-main_header_in">
+
+                @php
+                    $url = url()->current();
+                    $explode = explode('/', $url);
+                    $current_page = end($explode);
+                    $lastTwoWords = $explode[count($explode)-2] . '/' . $explode[count($explode)-1];
+                    $lastthreeWords = $explode[count($explode)-3]. '/' . $explode[count($explode)-2] . '/'. $explode[count($explode)-1];
+                @endphp
+
+                <div class="cs-main_header_left">
+                <a class="cs-site_branding" href="index.html">
+                    <img src="{{ asset('frontend_assets') }}/img/logo.svg" alt="Logo" />
+                </a>
+                </div>
+                <div class="cs-main_header_center">
+                <div class="cs-nav cs-primary_font cs-medium">
+                    <ul class="cs-nav_list">
+                    <li class="cs-mega_menu">
+                        <a href="{{ route('index') }}" style="{{ $current_page == '127.0.0.1:8000' ? 'color: #FF4A17' : ''}}"> Home </a>
+                    </li>
                     <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li class="menu-item-has-children">
                         <a href="service.html">Services</a>
+                        <ul>
+                        <li>
+                            <a href="service.html">Services</a>
+                        </li>
+                        <li>
+                            <a href="service-details.html">Service Details</a>
+                        </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="service-details.html">Service Details</a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children">
-                    <a href="portfolio.html">Portfolio</a>
-                    <ul>
-                    <li>
+                    <li class="menu-item-has-children">
                         <a href="portfolio.html">Portfolio</a>
+                        <ul>
+                        <li>
+                            <a href="portfolio.html">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="portfolio-details.html">Portfolio Details</a>
+                        </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="portfolio-details.html">Portfolio Details</a>
-                    </li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children">
-                    <a href="blog.html">Blog</a>
-                    <ul>
-                    <li>
+                    <li class="menu-item-has-children">
                         <a href="blog.html">Blog</a>
+                        <ul>
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="blog-details.html">Blog Details</a>
+                        </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="blog-details.html">Blog Details</a>
+                    <li class="menu-item-has-children">
+                        <a href="#" style="{{ $current_page == 'contact' ? 'color: #FF4A17' : ''}}"> More </a>
+                        <ul>
+                        <li>
+                            <a href="{{ route('contact') }}" style="{{ $current_page == 'contact' ? 'color: #FF4A17' : ''}}"> Contact </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('team') }}" style="{{ $current_page == 'team' ? 'color: #FF4A17' : ''}}"> Team </a>
+                        </li>
+                        <li>
+                            <a href="case-study.html">Case Study Details</a>
+                        </li>
+                        <li>
+                            <a href="faq.html">FAQ</a>
+                        </li>
+                        </ul>
                     </li>
                     </ul>
-                </li>
-                <li class="menu-item-has-children">
-                    <a href="#">Pages</a>
-                    <ul>
-                    <li>
-                        <a href="{{ route('contact') }}">Contact</a>
-                    </li>
-                    <li>
-                        <a href="team.html">Team</a>
-                    </li>
-                    <li>
-                        <a href="team-details.html">Team Details</a>
-                    </li>
-                    <li>
-                        <a href="case-study.html">Case Study Details</a>
-                    </li>
-                    <li>
-                        <a href="faq.html">FAQ</a>
-                    </li>
-                    </ul>
-                </li>
-                </ul>
+                </div>
+                </div>
+                <div class="cs-main_header_right">
+                <div class="cs-toolbox">
+                    <span class="cs-icon_btn">
+                    <span class="cs-icon_btn_in">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    </span>
+                </div>
+                </div>
             </div>
-            </div>
-            <div class="cs-main_header_right">
-            <div class="cs-toolbox">
-                <span class="cs-icon_btn">
-                <span class="cs-icon_btn_in">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                </span>
-            </div>
-            </div>
-        </div>
         </div>
     </div>
     </header>
