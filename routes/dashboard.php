@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController};
+use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, FunFactController};
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function(){
@@ -18,6 +18,11 @@ Route::middleware('auth')->group(function(){
     Route::post('dashboard/change-address-status-post', [ProfileController::class, 'change_address_status'])->name('change.address.status');
     Route::post('dashboard/change-social-status-post', [ProfileController::class, 'change_social_status'])->name('change.social.status');
     //PROFILE END
+
+    //FUNFACT BEGIN
+    Route::get('dashboard/our-funfact', [FunFactController::class, 'funfact'])->name('funfact');
+    Route::post('dashboard/our-funfact-post', [FunFactController::class, 'funfact_post'])->name('funfact.post');
+    //FUNFACT END
 
     //ABOUT BEGIN
     Route::get('dashboard/about/about-agency', [AboutController::class, 'about_agency'])->name('dashboard.about.agency');

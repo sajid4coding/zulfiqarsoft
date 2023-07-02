@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             SocialMediaSeeding::class,
             AboutPageSeeder::class,
             WhyChooseUsSeeder::class,
+            FunFactSeeder::class,
         ]);
     }
 }

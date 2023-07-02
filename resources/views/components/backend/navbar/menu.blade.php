@@ -98,6 +98,9 @@
                     <li class="{{ $lastthreeWords == 'dashboard/about/why-choose' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.why.choose') }}"> Why Choose Us </a>
                     </li>
+                    <li class="{{ $lastthreeWords == 'dashboard/about/why-choose' ? 'active' : '' }}">
+                        <a href="{{ route('funfact') }}"> FunFact </a>
+                    </li>
                 </ul>
             </li>
 
