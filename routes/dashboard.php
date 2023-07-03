@@ -1,9 +1,16 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, FunFactController};
+use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, FunFactController, GeneralSettingsController};
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function(){
+    //GENERAL START
+    route::get('dashboard/general-setting', [GeneralSettingsController::class, 'general_setting'])->name('general.setting');
+    route::post('dashboard/general-setting/general-setting-post', [GeneralSettingsController::class, 'general_setting_post'])->name('general.setting.post');
+    route::get('dashboard/general-setting/image-general-setting', [GeneralSettingsController::class, 'image_general_setting'])->name('image.general.setting');
+    route::post('dashboard/general-setting/image-general-setting-post', [GeneralSettingsController::class, 'image_general_setting_post'])->name('image.general.setting.post');
+    //GENERAL END
+
     //PROFILE BEGIN
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -13,12 +13,13 @@
         <div class="navbar-nav theme-brand flex-row  text-center">
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
-                    <a href="./index.html">
-                        <img src="{{ asset('dashboard_assets') }}/src/assets/img/logo.svg" class="navbar-logo" alt="logo">
+                    <a href="{{ route('dashboard.analytics') }}">
+                        {{-- <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" class="navbar-logo" alt="logo"> --}}
+                        <img src="{{ asset('storage/general_images/favicon') }}/{{ favicon() }}" alt="logo">
                     </a>
                 </div>
                 <div class="nav-item theme-text">
-                    <a href="./index.html" class="nav-link"> CORK </a>
+                    <a href="{{ route('dashboard.analytics') }}" class="nav-link"> Zulfiqar </a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">
@@ -52,6 +53,26 @@
 
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>APPLICATIONS</span></div>
+            </li>
+
+            <li class="menu @if ($current_page == 'general-setting' || $current_page == 'image-general-setting') active @endif">
+                <a href="#general" data-bs-toggle="collapse" @if ($current_page == 'general-setting' || $current_page == 'image-general-setting') aria-expanded="true" @endif class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        <span>General Settings</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled @if ($current_page == 'general-setting' || $current_page == 'image-general-setting') show @endif" id="general" data-bs-parent="#accordionExample">
+                    <li class="@if ($current_page == 'general-setting') active @endif">
+                        <a href="{{ route('general.setting') }}"> General Settings </a>
+                    </li>
+                    <li class="@if ($current_page == 'image-general-setting') active @endif">
+                        <a href="{{ route('image.general.setting') }}"> General Images </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="menu">
