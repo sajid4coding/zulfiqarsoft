@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Laralink" />
     <!-- Favicon Icon -->
-    <link rel="icon" href="{{ asset('frontend_assets') }}/img/favicon.png" />
+    <link rel="icon" href="{{ asset('storage/general_images/favicon') }}/{{ favicon() }}" />
     <!-- Site Title -->
-    <title>Arino - Creative Agency Template</title>
+    <title> {{ website_title() }} </title>
 
     {{-- Custom Css --}}
     @yield('frontend_footer_css')
@@ -43,8 +43,8 @@
                 @endphp
 
                 <div class="cs-main_header_left">
-                <a class="cs-site_branding" href="index.html">
-                    <img src="{{ asset('frontend_assets') }}/img/logo.svg" alt="Logo" />
+                <a class="cs-site_branding" href="{{ route('index') }}">
+                    <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:200px;" />
                 </a>
                 </div>
                 <div class="cs-main_header_center">
@@ -345,7 +345,7 @@
         <div class="container">
         <div class="cs-bottom_footer">
             <div class="cs-bottom_footer_left">
-            <div class="cs-copyright">Copyright © 2023 Laralink.</div>
+            <div class="cs-copyright"> {{ copyright_text() }} </div>
             </div>
             <div class="cs-bottom_footer_right">
             <ul class="cs-footer_links cs-mp0">
