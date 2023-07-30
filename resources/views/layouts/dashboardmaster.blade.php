@@ -280,6 +280,7 @@
     <script src="{{ asset('dashboard_assets') }}/src/plugins/src/mousetrap/mousetrap.min.js"></script>
     <script src="{{ asset('dashboard_assets') }}/layouts/vertical-dark-menu/app.js"></script>
     <script src="{{ asset('dashboard_assets') }}/src/assets/js/custom.js"></script>
+    <script src="{{ asset('dashboard_assets') }}/src/plugins/src/highlight/highlight.pack.js"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->

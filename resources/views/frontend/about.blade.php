@@ -59,7 +59,7 @@
     <div class="col-xl-5 col-lg-6">
         <div class="cs-image_layer cs-style1">
         <div class="cs-image_layer_in">
-            <img src="{{ asset('frontend_assets') }}/img/about_img_4.jpeg" alt="Image" class="w-100 cs-radius_15">
+            <img src="{{ asset('storage/about_page_images') }}/{{ $whychooseus->about_main_image }}" alt="Image" class="w-100 cs-radius_15">
         </div>
         </div>
         <div class="cs-height_0 cs-height_lg_40"></div>

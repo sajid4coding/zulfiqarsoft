@@ -44,7 +44,7 @@
 
                 <div class="cs-main_header_left">
                 <a class="cs-site_branding" href="{{ route('index') }}">
-                    <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:200px;" />
+                    <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:100px;" />
                 </a>
                 </div>
                 <div class="cs-main_header_center">
@@ -232,7 +232,7 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="cs-footer_item">
                 <div class="cs-text_widget">
-                    <img src="{{ asset('frontend_assets') }}/img/footer_logo.svg" alt="" />
+                    <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:100px;" />
                     <p> Welcome to arino sed ut perspiciae omunde omnis iste natus error sitort voluptatem accusantium. </p>
                 </div>
                 @if (App\Models\SocialMedia::find(1)->status == 'visible')

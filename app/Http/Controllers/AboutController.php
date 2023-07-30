@@ -6,6 +6,8 @@ use App\Models\About;
 use App\Models\Whychooseus;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class AboutController extends Controller
 {
@@ -47,8 +49,18 @@ class AboutController extends Controller
         ]);
 
         if ($request->hasFile('about_image_1')) {
+
+            //DELETE PREVIOUS IMAGE FROM FOLDER START CODE
+            $imageName = About::find(1)->about_image_1;
+            $imagePath = public_path('storage/about_page_images/' . $imageName);
+
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+            //DELETE PREVIOUS IMAGE FROM FOLDER END CODE
+
             $destination = 'public/about_page_images';
-            $photo = 'about_image_1'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('about_image_1')->getClientOriginalExtension();
+            $photo = 'about_image_1'.".".$request->file('about_image_1')->getClientOriginalExtension();
 
             $path = $request->file('about_image_1')->storeAs($destination, $photo);
 
@@ -58,8 +70,18 @@ class AboutController extends Controller
         }
 
         if ($request->hasFile('about_image_2')) {
+
+            //DELETE PREVIOUS IMAGE FROM FOLDER START CODE
+            $imageName = About::find(1)->about_image_2;
+            $imagePath = public_path('storage/about_page_images/' . $imageName);
+
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+            //DELETE PREVIOUS IMAGE FROM FOLDER END CODE
+
             $destination = 'public/about_page_images';
-            $photo = 'about_image_2'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('about_image_2')->getClientOriginalExtension();
+            $photo = 'about_image_2'.".".$request->file('about_image_2')->getClientOriginalExtension();
 
             $path = $request->file('about_image_2')->storeAs($destination, $photo);
 
@@ -69,8 +91,18 @@ class AboutController extends Controller
         }
 
         if ($request->hasFile('about_image_3')) {
+
+            //DELETE PREVIOUS IMAGE FROM FOLDER START CODE
+            $imageName = About::find(1)->about_image_3;
+            $imagePath = public_path('storage/about_page_images/' . $imageName);
+
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+            //DELETE PREVIOUS IMAGE FROM FOLDER END CODE
+
             $destination = 'public/about_page_images';
-            $photo = 'about_image_3'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('about_image_3')->getClientOriginalExtension();
+            $photo = 'about_image_3'.".".$request->file('about_image_3')->getClientOriginalExtension();
 
             $path = $request->file('about_image_3')->storeAs($destination, $photo);
 
@@ -92,8 +124,20 @@ class AboutController extends Controller
         ]);
 
         if ($request->hasFile('about_main_image')) {
+
+            //DELETE PREVIOUS IMAGE FROM FOLDER START CODE
+
+            $imageName = Whychooseus::find(1)->about_main_image;
+            $imagePath = public_path('storage/about_page_images/' . $imageName);
+
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+
+            //DELETE PREVIOUS IMAGE FROM FOLDER END CODE
+
             $destination = 'public/about_page_images';
-            $photo = 'about_main_image'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('about_main_image')->getClientOriginalExtension();
+            $photo = 'about_main_image'.".".$request->file('about_main_image')->getClientOriginalExtension();
 
             $path = $request->file('about_main_image')->storeAs($destination, $photo);
 

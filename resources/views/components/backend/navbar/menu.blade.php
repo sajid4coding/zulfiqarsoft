@@ -102,8 +102,8 @@
                 </a>
             </li>
 
-            <li class="menu {{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' ? 'active' : '' }}">
-                <a href="#about" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' ? 'true' : '' }}" class="dropdown-toggle">
+            <li class="menu {{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' || $lastTwoWords == 'dashboard/our-funfact' ? 'active' : '' }}">
+                <a href="#about" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' || $lastTwoWords == 'dashboard/our-funfact' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                         <span>About</span>
@@ -112,14 +112,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' ? 'show' : '' }}" id="about" data-bs-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' || $lastTwoWords == 'dashboard/our-funfact' ? 'show' : '' }}" id="about" data-bs-parent="#accordionExample">
                     <li class="{{ $lastthreeWords == 'dashboard/about/about-agency' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.about.agency') }}"> About Agency </a>
                     </li>
                     <li class="{{ $lastthreeWords == 'dashboard/about/why-choose' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.why.choose') }}"> Why Choose Us </a>
                     </li>
-                    <li class="{{ $lastthreeWords == 'dashboard/about/why-choose' ? 'active' : '' }}">
+                    <li class="{{ $lastTwoWords == 'dashboard/our-funfact' ? 'active' : '' }}">
                         <a href="{{ route('funfact') }}"> FunFact </a>
                     </li>
                 </ul>
@@ -203,6 +203,46 @@
                     </li>
                     <li>
                         <a href="./app-ecommerce-product-edit.html"> Edit </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu {{ $lastthreeWords == 'dashboard/serviceCategory/create' || $lastTwoWords == 'dashboard/serviceCategory' ? 'active' : '' }}">
+                <a href="#serviceCategory" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/serviceCategory/create' || $lastTwoWords == 'dashboard/serviceCategory' ? 'true' : '' }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <span>Service Category</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/serviceCategory/create' || $lastTwoWords == 'dashboard/serviceCategory' ? 'show' : '' }}" id="serviceCategory" data-bs-parent="#accordionExample">
+                    <li class="{{ $lastthreeWords == 'dashboard/serviceCategory/create' ? 'active' : '' }}">
+                        <a href="{{ route('serviceCategory.create') }}"> Create </a>
+                    </li>
+                    <li class="{{ $lastTwoWords == 'dashboard/serviceCategory' ? 'active' : '' }}">
+                        <a href="{{ route('serviceCategory.index') }}"> List </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu {{ $lastthreeWords == 'dashboard/portfolio/create' || $lastTwoWords == 'dashboard/portfolio' ? 'active' : '' }}">
+                <a href="#portfolio" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/portfolio/create' || $lastTwoWords == 'dashboard/portfolio' ? 'true' : '' }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <span>Portfolio</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/portfolio/create' || $lastTwoWords == 'dashboard/portfolio' ? 'show' : '' }}" id="portfolio" data-bs-parent="#accordionExample">
+                    <li class="{{ $lastthreeWords == 'dashboard/portfolio/create' ? 'active' : '' }}">
+                        <a href="{{ route('portfolio.create') }}"> Create </a>
+                    </li>
+                    <li class="{{ $lastTwoWords == 'dashboard/portfolio' ? 'active' : '' }}">
+                        <a href="{{ route('portfolio.index') }}"> List </a>
                     </li>
                 </ul>
             </li>

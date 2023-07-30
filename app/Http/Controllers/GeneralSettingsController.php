@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GeneralSettings;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class GeneralSettingsController extends Controller
 {
@@ -34,8 +35,18 @@ class GeneralSettingsController extends Controller
 
     public function image_general_setting_post(Request $request){
         if($request->hasFile('favicon')){
+
+            //DELETE PREVIOUS IMAGE FROM FOLDER START CODE
+            $imageName = GeneralSettings::find(1)->favicon;
+            $imagePath = public_path('storage/general_images/favicon/' . $imageName);
+
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+            //DELETE PREVIOUS IMAGE FROM FOLDER END CODE
+
             $destination = 'public/general_images/favicon';
-            $photo = 'favicon'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('favicon')->getClientOriginalExtension();
+            $photo = 'favicon'.".".$request->file('favicon')->getClientOriginalExtension();
             $path = $request->file('favicon')->storeAs($destination,$photo);
             GeneralSettings::find(1)->update([
                 'favicon' => $photo
@@ -44,8 +55,18 @@ class GeneralSettingsController extends Controller
         }
 
         if($request->hasFile('logo')){
+
+            //DELETE PREVIOUS IMAGE FROM FOLDER START CODE
+            $imageName = GeneralSettings::find(1)->logo;
+            $imagePath = public_path('storage/general_images/logo/' . $imageName);
+
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+            //DELETE PREVIOUS IMAGE FROM FOLDER END CODE
+
             $destination = 'public/general_images/logo';
-            $photo = 'logo'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('logo')->getClientOriginalExtension();
+            $photo = 'logo'.".".$request->file('logo')->getClientOriginalExtension();
             $path = $request->file('logo')->storeAs($destination,$photo);
             GeneralSettings::find(1)->update([
                 'logo' => $photo
