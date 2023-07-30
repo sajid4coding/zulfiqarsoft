@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, FunFactController, GeneralSettingsController};
+use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, FunFactController, GeneralSettingsController, PortfolioController, ServiceCategoryController};
+use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function(){
@@ -35,8 +36,16 @@ Route::middleware('auth')->group(function(){
     Route::get('dashboard/about/about-agency', [AboutController::class, 'about_agency'])->name('dashboard.about.agency');
     Route::post('dashboard/about-agency-store', [AboutController::class, 'about_agency_store'])->name('dashboard.about.store');
     Route::get('dashboard/about/why-choose', [AboutController::class, 'why_choose'])->name('dashboard.why.choose');
-    Route::post('dashboard/why-choose-store', [AboutController::class, 'why_choose_store'])->name('dashboard.why.choose.store');
+    Route::post('dashboard/about/why-choose-store', [AboutController::class, 'why_choose_store'])->name('dashboard.why.choose.store');
     //ABOUT END
+
+    //PORTFOLIO BEGIN
+    Route::resource('dashboard/serviceCategory', ServiceCategoryController::class);
+    //PORTFOLIO END
+
+    //PORTFOLIO BEGIN
+    Route::resource('dashboard/portfolio', PortfolioController::class);
+    //PORTFOLIO END
 
     //TEAM BEGIN
     Route::resource('dashboard/team', TeamController::class);

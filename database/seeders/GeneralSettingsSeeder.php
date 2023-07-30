@@ -20,8 +20,8 @@ class GeneralSettingsSeeder extends Seeder
             'agency_video' => 'https://youtu.be/VcaAVWtP48A',
             'website_title' => 'ZulfiqarSoft - Build Your Dream To Reality',
             'copyright_text' => 'Copyright © '. $year . ', ZulfiqarSoft, All rights reserved.',
-            'favicon' => 'favicon.svg',
-            'logo' => 'logo.svg',
+            'favicon' => 'favicon.png',
+            'logo' => 'logo.png',
             'created_at' => now()
         ]);
     }
