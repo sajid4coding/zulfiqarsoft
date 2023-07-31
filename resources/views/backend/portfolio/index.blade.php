@@ -51,14 +51,14 @@
                 <div class="widget-content widget-content-area br-8">
                     <table id="blog-list" class="table dt-table-hover" style="width:100%">
                         <div class="d-flex justify-content-center">
-                            <a href="{{ route('serviceCategory.create') }}" class="btn btn-success text-center my-3">Create Category</a>
+                            <a href="{{ route('portfolio.create') }}" class="btn btn-success text-center my-3">Create Portfolio</a>
                         </div>
                         <thead>
                             <tr>
                                 <th class="checkbox-column text-center"></th>
                                 <th>Thumbnail</th>
-                                <th>Service Category</th>
-                                <th>Date</th>
+                                <th>Portfolio Title</th>
+                                <th>Portfolio Category</th>
                                 <th>Status</th>
                                 <th class="no-content text-center">Action</th>
                             </tr>
@@ -84,7 +84,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $portfolio->created_at->format('M d, Y') }}</td>
+                                    <td>{{ $portfolio->relationshipwithServiceCategory->service_category_title }}</td>
                                     <td>
                                         @if ($portfolio->created_at->diffInDays(\Carbon\Carbon::now()) < 1)
                                             <span class="badge badge-primary">Recently Updated</span>
