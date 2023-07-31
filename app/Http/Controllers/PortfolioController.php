@@ -6,6 +6,7 @@ use App\Models\Portfolio;
 use App\Models\ServiceCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PortfolioController extends Controller
 {
@@ -44,6 +45,7 @@ class PortfolioController extends Controller
             'project_end_to' => $request->project_end_to,
             'portfolio_status' => $request->portfolio_status,
             'portfolio_category_id' => $request->category,
+            'created_at' => now()
         ]);
 
         if ($request->hasFile('portfolio_thumbnail')) {
@@ -57,7 +59,7 @@ class PortfolioController extends Controller
             ]);
         }
 
-        return back()->with('uploadSuccess', 'Portfolio Uploaded');
+        return back()->with('uploadSucess', 'Portfolio Uploaded');
     }
 
     /**
@@ -73,7 +75,10 @@ class PortfolioController extends Controller
      */
     public function edit(Portfolio $portfolio)
     {
-        return view('backend.portfolio.edit');
+        return view('backend.portfolio.edit',[
+            'portfolio' => $portfolio,
+            'categories' => ServiceCategory::where('service_category_status', 'on')->get(),
+        ]);
     }
 
     /**
@@ -81,7 +86,31 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, Portfolio $portfolio)
     {
-        //
+        Portfolio::find($portfolio->id)->update([
+            'portfolio_title' => $request->portfolio_title,
+            'portfolio_description' => $request->portfolio_description,
+            'portfolio_meta_title' => $request->portfolio_meta_title,
+            'portfolio_meta_description' => $request->portfolio_meta_description,
+            'portfolio_url' => $request->portfolio_url,
+            'project_start_from' => $request->project_start_from,
+            'project_end_to' => $request->project_end_to,
+            'portfolio_category_id' => $request->category,
+            'portfolio_status' => $request->portfolio_status,
+            'updated_at' => now()
+        ]);
+
+        if ($request->hasFile('portfolio_thumbnail')) {
+            $destination = 'public/portfolio_thumbnail';
+            $photo = 'portfolio_thumbnail-'.$request->portfolio_title.'-'.Carbon::now()->format('Y').rand(1,999).".".$request->file('portfolio_thumbnail')->getClientOriginalExtension();
+
+            $path = $request->file('portfolio_thumbnail')->storeAs($destination, $photo);
+
+            Portfolio::find($portfolio->id)->update([
+                'portfolio_thumbnail' => $photo,
+            ]);
+        }
+
+        return back()->with('updateSucess', 'Portfolio Updated');
     }
 
     /**
@@ -89,6 +118,15 @@ class PortfolioController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
-        //
+        $imageName = $portfolio->portfolio_thumbnail;
+        $imagePath = public_path('storage/portfolio_thumbnail/' . $imageName);
+
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+
+        Portfolio::find($portfolio->id)->delete();
+
+        return back()->with('delete_status', 'Category Deleted');
     }
 }

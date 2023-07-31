@@ -167,7 +167,7 @@
                                 </div>
 
                                 <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
-                                    <button type="submit" class="btn btn-success w-100">Create Post</button>
+                                    <button type="submit" class="btn btn-success w-100">Create Portfolio</button>
                                 </div>
 
                             </div>
