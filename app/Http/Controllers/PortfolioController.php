@@ -35,6 +35,7 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $portfolio_id = Portfolio::insertGetId([
             'portfolio_title' => $request->portfolio_title,
             'portfolio_description' => $request->portfolio_description,
