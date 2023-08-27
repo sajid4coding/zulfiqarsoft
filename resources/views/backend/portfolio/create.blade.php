@@ -112,7 +112,7 @@
                                 <div class="col-6 my-2">
                                     <label for="basicFlatpickr" class="text-white">From</label>
                                     <div class="form-group mb-0">
-                                        <input name="project_start_from" id="basicFlatpickr" value="2022-09-04" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
+                                        <input name="project_start_from" id="basicFlatpickr" value="2022-09-04" class="form-control flatpickr flatpickr-input active" type="date" placeholder="Select Date..">
                                     </div>
                                     @error('portfolio_date')
                                         <span class="text-danger">{{ $message }}</span>
@@ -122,7 +122,7 @@
                                 <div class="col-6 my-2">
                                     <label for="dateTimeFlatpickr" class="text-white">To</label>
                                     <div class="form-group mb-0">
-                                        <input name="project_end_to" id="dateTimeFlatpickr" value="0000-00-00" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
+                                        <input name="project_end_to" id="dateTimeFlatpickr" value="0000-00-00" class="form-control flatpickr flatpickr-input active" type="date" placeholder="Select Date..">
                                     </div>
                                     @error('portfolio_date')
                                         <span class="text-danger">{{ $message }}</span>
