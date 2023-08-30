@@ -6,7 +6,7 @@
       <div class="cs-page_heading_in">
         <h1 class="cs-page_title cs-font_50 cs-white_color">Portfolio</h1>
         <ol class="breadcrumb text-uppercase">
-          <li class="breadcrumb-item"><a href="{{ route('dashboard.analytics') }}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
           <li class="breadcrumb-item active">Portfolio</li>
         </ol>
       </div>

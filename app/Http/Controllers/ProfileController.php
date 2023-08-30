@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\{User, SocialMedia};
+use App\Models\{User, SocialMedia, Team};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +78,7 @@ class ProfileController extends Controller
     public function account_setting(Request $request){
         return view('backend.users.user-account-settings',[
             'social_medias' => SocialMedia::find(1),
+            'team' => Team::where('member_status','visible')->first(),
             'user' => $request->user(),
         ]);
     }
@@ -148,6 +149,21 @@ class ProfileController extends Controller
         } else {
             SocialMedia::find(1)->update([
                 'status' => 'invisible',
+                'updated_at' => now(),
+            ]);
+        }
+        return back();
+    }
+
+    public function change_members_social_status(Request $request){
+        if ($request->has('members_social_status')) {
+            Team::where('social_account_status', 'invisible')->update([
+                'social_account_status' => 'visible',
+                'updated_at' => now(),
+            ]);
+        } else {
+            Team::where('social_account_status', 'visible')->update([
+                'social_account_status' => 'invisible',
                 'updated_at' => now(),
             ]);
         }

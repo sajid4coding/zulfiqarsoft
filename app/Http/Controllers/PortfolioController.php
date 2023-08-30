@@ -35,7 +35,6 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
         $portfolio_id = Portfolio::insertGetId([
             'portfolio_title' => $request->portfolio_title,
             'portfolio_description' => $request->portfolio_description,
@@ -128,6 +127,6 @@ class PortfolioController extends Controller
 
         Portfolio::find($portfolio->id)->delete();
 
-        return back()->with('delete_status', 'Category Deleted');
+        return back()->with('delete_status', 'Portfolio Deleted');
     }
 }

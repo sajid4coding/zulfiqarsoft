@@ -69,7 +69,8 @@
         <h3 class="cs-section_subtitle">Why Choose Us</h3>
         <h2 class="cs-section_title">{{ $whychooseus->team_heading_line }}</h2>
         <div class="cs-height_30 cs-height_lg_20"></div>
-        <p class="cs-m0">{!! $whychooseus->about_team !!}</p>
+        <p class="cs-m0"><?=$whychooseus->about_team?></p>
+        {{-- <p class="cs-m0">{!! $whychooseus->about_team !!}</p> --}}
         <div class="cs-height_15 cs-height_lg_15"></div>
         <div class="cs-separator cs-accent_bg"></div>
         <div class="cs-height_25 cs-height_lg_0"></div>

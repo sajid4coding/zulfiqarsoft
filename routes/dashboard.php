@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, FunFactController, GeneralSettingsController, PortfolioController, ServiceCategoryController};
+use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, BlogController, FunFactController, GeneralSettingsController, PortfolioController, ServiceCategoryController};
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function(){
     Route::post('dashboard/change-phone-status-post', [ProfileController::class, 'change_phone_status'])->name('change.phone.status');
     Route::post('dashboard/change-address-status-post', [ProfileController::class, 'change_address_status'])->name('change.address.status');
     Route::post('dashboard/change-social-status-post', [ProfileController::class, 'change_social_status'])->name('change.social.status');
+    Route::post('dashboard/change-members-social-status-post', [ProfileController::class, 'change_members_social_status'])->name('change.members.social.status');
     //PROFILE END
 
     //FUNFACT BEGIN
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function(){
     //PORTFOLIO BEGIN
     Route::resource('dashboard/portfolio', PortfolioController::class);
     //PORTFOLIO END
+
+    //BLOG BEGIN
+    Route::resource('dashboard/blog', BlogController::class);
+    //BLOG END
 
     //TEAM BEGIN
     Route::resource('dashboard/team', TeamController::class);
