@@ -23,9 +23,12 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('service', [FrontendController::class, 'service'])->name('service');
 Route::get('portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
-Route::get('portfolio_details/{id}', [FrontendController::class, 'portfolio_details'])->name('portfolio.details');
+Route::get('portfolio-details/{id}', [FrontendController::class, 'portfolio_details'])->name('portfolio.details');
+Route::get('blog', [FrontendController::class, 'blog'])->name('blog');
+Route::get('blog-details/{id}', [FrontendController::class, 'blog_details'])->name('blog.details');
+Route::get('blog-category/{id}', [FrontendController::class, 'blog_category'])->name('blog.category');
 Route::get('team', [FrontendController::class, 'team'])->name('team');
-Route::get('member_details/{id}', [FrontendController::class, 'team_detail'])->name('team.detail');
+Route::get('member-details/{id}', [FrontendController::class, 'team_detail'])->name('team.detail');
 Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 Route::post('contact-post', [FrontendController::class, 'contact_post'])->name('contact.post');
 

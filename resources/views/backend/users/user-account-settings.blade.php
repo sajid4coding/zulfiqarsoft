@@ -598,20 +598,6 @@
                                 <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
                                     <div class="section general-info">
                                         <div class="info">
-                                            <h6 class="">Advertisements</h6>
-                                            <p>Display <span class="text-success">Ads</span> on your dashboard</p>
-                                            <div class="form-group mt-4">
-                                                <div class="switch form-switch-custom switch-inline form-switch-secondary mt-1">
-                                                    <input class="switch-input" type="checkbox" role="switch" id="advertisements">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
-                                    <div class="section general-info">
-                                        <div class="info">
                                             <h6 class="">Social Profile</h6>
                                             <p>Enable your <span class="text-success">social</span> profiles on this network </p>
                                             <div class="form-group mt-4">
@@ -622,6 +608,27 @@
                                                             <input onclick="submitSocialForm()" name="social_status" class="switch-input" type="checkbox" role="switch" checked>
                                                         @else
                                                             <input onclick="submitSocialForm()" name="social_status" class="switch-input" type="checkbox" role="switch">
+                                                        @endif
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
+                                    <div class="section general-info">
+                                        <div class="info">
+                                            <h6 class="">Team Members Social Profile</h6>
+                                            <p>Enable <span class="text-success">team members social</span> profiles </p>
+                                            <div class="form-group mt-4">
+                                                <div class="switch form-switch-custom switch-inline form-switch-secondary mt-1">
+                                                    <form id="members_social_status" action="{{ route('change.members.social.status') }}" method="POST">
+                                                        @csrf
+                                                        @if ($team->social_account_status == 'visible')
+                                                            <input onclick="submitSocialForm()" name="members_social_status" class="switch-input" type="checkbox" role="switch" checked>
+                                                        @else
+                                                            <input onclick="submitSocialForm()" name="members_social_status" class="switch-input" type="checkbox" role="switch">
                                                         @endif
                                                     </form>
                                                 </div>
@@ -720,6 +727,10 @@
 
     function submitSocialForm() {
         document.getElementById('social_status').submit();
+    }
+
+    function submitSocialForm() {
+        document.getElementById('members_social_status').submit();
     }
 </script>
 

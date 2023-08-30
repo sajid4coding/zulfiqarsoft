@@ -247,6 +247,26 @@
                 </ul>
             </li>
 
+            <li class="menu {{ $lastthreeWords == 'dashboard/blog/create' || $lastTwoWords == 'dashboard/blog' ? 'active' : '' }}">
+                <a href="#blog" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/blog/create' || $lastTwoWords == 'dashboard/blog' ? 'true' : '' }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pen-tool"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                        <span>Blog</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/blog/create' || $lastTwoWords == 'dashboard/blog' ? 'show' : '' }}" id="blog" data-bs-parent="#accordionExample">
+                    <li class="{{ $lastthreeWords == 'dashboard/blog/create' ? 'active' : '' }}">
+                        <a href="{{ route('blog.create') }}"> Create </a>
+                    </li>
+                    <li class="{{ $lastTwoWords == 'dashboard/blog' ? 'active' : '' }}">
+                        <a href="{{ route('blog.index') }}"> List </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="menu {{ $lastthreeWords == 'dashboard/team/create' || $lastTwoWords == 'dashboard/team' ? 'active' : '' }}">
                 <a href="#team" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/team/create' || $lastTwoWords == 'dashboard/team' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">

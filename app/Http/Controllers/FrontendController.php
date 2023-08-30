@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{About, SocialMedia, Testimonial, Contact, Portfolio, ServiceCategory, Team, Whychooseus};
+use App\Models\{About, Blog, SocialMedia, Testimonial, Contact, Portfolio, ServiceCategory, Team, Whychooseus};
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -34,6 +34,7 @@ class FrontendController extends Controller
         ]);
     }
 
+
     public function portfolio_details($id){
         $prev_portfolio_id = $id - 1;
         $next_portfolio_id = $id + 1;
@@ -51,9 +52,27 @@ class FrontendController extends Controller
         ]);
     }
 
+    public function blog(){
+        return view('frontend.blog.index', [
+            'blogs' => Blog::where('blogStatus', 'on')->latest()->paginate(2)
+        ]);
+    }
+
+    public function blog_details($id){
+        return view('frontend.blog.details', [
+            'blog' => Blog::find($id)
+        ]);
+    }
+
+    public function blog_category($id){
+        return view('frontend.blog.categoryBlog', [
+            'blogs' => Blog::where('serviceCategory', $id)->get()
+        ]);
+    }
+
     public function team(){
         return view('frontend.team.index', [
-            'teams' => Team::all()
+            'teams' => Team::where('member_status', 'visible')->get()
         ]);
     }
 

@@ -56,30 +56,14 @@
                         <li>
                             <a href="{{ route('about') }}" style="{{ $current_page == 'about' ? 'color: #FF4A17' : ''}}">About</a>
                         </li>
-                        <li class="menu-item-has-children">
+                        <li>
                             <a href="{{ route('service') }}" style="{{ $current_page == 'service' ? 'color: #FF4A17' : ''}}">Services</a>
-                            <ul>
-                            <li>
-                                <a href="{{ route('service') }}" style="{{ $current_page == 'service' ? 'color: #FF4A17' : ''}}">Services</a>
-                            </li>
-                            <li>
-                                <a href="service-details.html">Service Details</a>
-                            </li>
-                            </ul>
                         </li>
                         <li>
                             <a href="{{ route('portfolio') }}" style="{{ $current_page == 'portfolio' ? 'color: #FF4A17' : ''}}">Portfolio</a>
                         </li>
-                        <li class="menu-item-has-children">
-                            <a href="blog.html">Blog</a>
-                            <ul>
-                            <li>
-                                <a href="blog.html">Blog</a>
-                            </li>
-                            <li>
-                                <a href="blog-details.html">Blog Details</a>
-                            </li>
-                            </ul>
+                        <li>
+                            <a href="{{ route('blog') }}" style="{{ $current_page == 'blog' ? 'color: #FF4A17' : ''}}">Blog</a>
                         </li>
                         <li class="menu-item-has-children">
                             <a href="#" style="{{ $current_page == 'contact' ? 'color: #FF4A17' : ''}}"> More </a>
