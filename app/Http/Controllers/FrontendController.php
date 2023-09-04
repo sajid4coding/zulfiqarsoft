@@ -22,9 +22,7 @@ class FrontendController extends Controller
     }
 
     public function service(){
-        return view('frontend.service.index', [
-            'services' => ServiceCategory::all()
-        ]);
+        return view('frontend.service.index');
     }
 
     public function portfolio(){

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, BlogController, FunFactController, GeneralSettingsController, PortfolioController, ServiceCategoryController};
+use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, BlogController, FunFactController, GeneralSettingsController, PortfolioController, ServiceCategoryController, ServiceController};
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +43,10 @@ Route::middleware('auth')->group(function(){
     //PORTFOLIO BEGIN
     Route::resource('dashboard/serviceCategory', ServiceCategoryController::class);
     //PORTFOLIO END
+
+    //SERVICE BEGIN
+    Route::resource('dashboard/service', ServiceController::class);
+    //SERVICE END
 
     //PORTFOLIO BEGIN
     Route::resource('dashboard/portfolio', PortfolioController::class);
