@@ -30,95 +30,117 @@
         </div>
         <div class="col-xl-8">
           <div class="row">
+            <div class="col-lg-3 col-sm-6 cs-hidden_mobile"></div>
+                @for ($i = 1; $i < 2; $i++)
+                    @php
+                        $service = App\models\ServiceCategory::where('service_category_status','on')->find($i)
+                    @endphp
+                    @if ($service)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="cs-hobble">
+                            <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
 
-              {{-- @foreach ($services as $service)
-              @endforeach --}}
+                                <div class="cs-card_overlay"></div>
+                                <div class="cs-card_info">
+                                <span class=" cs-hover_layer3 cs-accent_bg"></span>
+                                <h2 class="cs-card_title">{{ $service->service_category_title }}</h2>
+                                </div>
+                            </a>
+                            </div>
+                            <div class="cs-height_0 cs-height_lg_30"></div>
+                        </div>
+                    @endif
+                @endfor
+            <div class="col-lg-3 col-sm-6 cs-hidden_mobile"></div>
+                @for ($i = 2; $i < 4; $i++)
+                    @php
+                        $service = App\models\ServiceCategory::where('service_category_status','on')->find($i)
+                    @endphp
+                    @if ($service)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="cs-hobble">
+                            <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
 
-              <div class="col-lg-3 col-sm-6 cs-hidden_mobile"></div>
-                <div class="col-lg-3 col-sm-6">
-                  <div class="cs-hobble">
-                    <a href="service-details.html" class="cs-card cs-style1 cs-hover_layer1">
-                      {{-- <img src="{{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }}" alt="Service" width="500px" height="500px"> --}}
-                      <img src="{{ asset('frontend_assets') }}/img/service_1.jpeg" alt="Service" width="500px" height="500px">
-                      <div class="cs-card_overlay"></div>
-                      <div class="cs-card_info">
-                        <span class=" cs-hover_layer3 cs-accent_bg"></span>
-                        <h2 class="cs-card_title">React.js Development</h2>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="cs-height_0 cs-height_lg_30"></div>
-                </div>
-                <div class="col-lg-3 col-sm-6 cs-hidden_mobile"></div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="cs-hobble">
-                <a href="service-details.html" class="cs-card cs-style1 cs-hover_layer1">
-                  <img src="{{ asset('frontend_assets') }}/img/service_2.jpeg" alt="Service">
-                  <div class="cs-card_overlay"></div>
-                  <div class="cs-card_info">
-                    <span class=" cs-hover_layer3 cs-accent_bg"></span>
-                    <h2 class="cs-card_title">React.js Development</h2>
-                  </div>
-                </a>
-              </div>
-              <div class="cs-height_0 cs-height_lg_30"></div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="cs-hobble">
-                <a href="service-details.html" class="cs-card cs-style1 cs-hover_layer1">
-                  <img src="{{ asset('frontend_assets') }}/img/service_3.jpeg" alt="Service">
-                  <div class="cs-card_overlay"></div>
-                  <div class="cs-card_info">
-                    <span class=" cs-hover_layer3 cs-accent_bg"></span>
-                    <h2 class="cs-card_title">Digital Marketing</h2>
-                  </div>
-                </a>
-              </div>
-              <div class="cs-height_0 cs-height_lg_30"></div>
-            </div>
+                                <div class="cs-card_overlay"></div>
+                                <div class="cs-card_info">
+                                <span class=" cs-hover_layer3 cs-accent_bg"></span>
+                                <h2 class="cs-card_title">{{ $service->service_category_title }}</h2>
+                                </div>
+                            </a>
+                            </div>
+                            <div class="cs-height_0 cs-height_lg_30"></div>
+                        </div>
+                    @endif
+                @endfor
             <div class="col-lg-3 col-sm-6 cs-hidden_mobile"></div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="cs-hobble">
-                <a href="service-details.html" class="cs-card cs-style1 cs-hover_layer1">
-                  <img src="{{ asset('frontend_assets') }}/img/service_4.jpeg" alt="Service">
-                  <div class="cs-card_overlay"></div>
-                  <div class="cs-card_info">
-                    <span class=" cs-hover_layer3 cs-accent_bg"></span>
-                    <h2 class="cs-card_title">Technology</h2>
-                  </div>
-                </a>
-              </div>
-              <div class="cs-height_0 cs-height_lg_30"></div>
-            </div>
+                @for ($i = 4; $i < 5; $i++)
+                    @php
+                        $service = App\models\ServiceCategory::where('service_category_status','on')->find($i)
+                    @endphp
+                    @if ($service)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="cs-hobble">
+                            <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
+
+                                <div class="cs-card_overlay"></div>
+                                <div class="cs-card_info">
+                                <span class=" cs-hover_layer3 cs-accent_bg"></span>
+                                <h2 class="cs-card_title">{{ $service->service_category_title }}</h2>
+                                </div>
+                            </a>
+                            </div>
+                            <div class="cs-height_0 cs-height_lg_30"></div>
+                        </div>
+                    @endif
+                @endfor
             <div class="col-lg-3 col-sm-6 cs-hidden_mobile"></div>
             <div class="col-lg-3 col-sm-6 cs-hidden_mobile"></div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="cs-hobble">
-                <a href="service-details.html" class="cs-card cs-style1 cs-hover_layer1">
-                  <img src="{{ asset('frontend_assets') }}/img/service_5.jpeg" alt="Service">
-                  <div class="cs-card_overlay"></div>
-                  <div class="cs-card_info">
-                    <span class=" cs-hover_layer3 cs-accent_bg"></span>
-                    <h2 class="cs-card_title">Consultancy</h2>
-                  </div>
-                </a>
-              </div>
-              <div class="cs-height_0 cs-height_lg_30"></div>
-            </div>
+                @for ($i = 5; $i < 6; $i++)
+                    @php
+                        $service = App\models\ServiceCategory::where('service_category_status','on')->find($i)
+                    @endphp
+                    @if ($service)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="cs-hobble">
+                            <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
+
+                                <div class="cs-card_overlay"></div>
+                                <div class="cs-card_info">
+                                <span class=" cs-hover_layer3 cs-accent_bg"></span>
+                                <h2 class="cs-card_title">{{ $service->service_category_title }}</h2>
+                                </div>
+                            </a>
+                            </div>
+                            <div class="cs-height_0 cs-height_lg_30"></div>
+                        </div>
+                    @endif
+                @endfor
             <div class="col-lg-3 col-sm-6 cs-hidden_mobile"></div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="cs-hobble">
-                <a href="service-details.html" class="cs-card cs-style1 cs-hover_layer1">
-                  <img src="{{ asset('frontend_assets') }}/img/service_6.jpeg" alt="Service">
-                  <div class="cs-card_overlay"></div>
-                  <div class="cs-card_info">
-                    <span class=" cs-hover_layer3 cs-accent_bg"></span>
-                    <h2 class="cs-card_title">Creative Design</h2>
-                  </div>
-                </a>
-              </div>
-              <div class="cs-height_0 cs-height_lg_30"></div>
-            </div>
+                @for ($i = 6; $i < 7; $i++)
+                    @php
+                        $service = App\models\ServiceCategory::where('service_category_status','on')->find($i)
+                    @endphp
+                    @if ($service)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="cs-hobble">
+                            <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
+
+                                <div class="cs-card_overlay"></div>
+                                <div class="cs-card_info">
+                                <span class=" cs-hover_layer3 cs-accent_bg"></span>
+                                <h2 class="cs-card_title">{{ $service->service_category_title }}</h2>
+                                </div>
+                            </a>
+                            </div>
+                            <div class="cs-height_0 cs-height_lg_30"></div>
+                        </div>
+                    @endif
+                @endfor
           </div>
         </div>
       </div>

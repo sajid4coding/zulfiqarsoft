@@ -254,19 +254,15 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="cs-footer_item">
                 <h2 class="cs-widget_title">Services</h2>
+                @php
+                    $services = App\Models\ServiceCategory::where('service_category_status','on')->limit(5)->get();
+                @endphp
                 <ul class="cs-menu_widget cs-mp0">
-                    <li>
-                    <a href="service-details.html">UI/UX design</a>
-                    </li>
-                    <li>
-                    <a href="service-details.html">WP development</a>
-                    </li>
-                    <li>
-                    <a href="service-details.html">Digital marketing</a>
-                    </li>
-                    <li>
-                    <a href="service-details.html">React development</a>
-                    </li>
+                    @foreach ($services as $service)
+                        <li>
+                            <a href="service-details.html">{{ $service->service_category_title }}</a>
+                        </li>
+                    @endforeach
                 </ul>
                 </div>
             </div>

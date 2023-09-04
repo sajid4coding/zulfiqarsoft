@@ -210,7 +210,7 @@
             <li class="menu {{ $lastthreeWords == 'dashboard/serviceCategory/create' || $lastTwoWords == 'dashboard/serviceCategory' ? 'active' : '' }}">
                 <a href="#serviceCategory" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/serviceCategory/create' || $lastTwoWords == 'dashboard/serviceCategory' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                         <span>Service Category</span>
                     </div>
                     <div>
@@ -223,6 +223,26 @@
                     </li>
                     <li class="{{ $lastTwoWords == 'dashboard/serviceCategory' ? 'active' : '' }}">
                         <a href="{{ route('serviceCategory.index') }}"> List </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu {{ $lastthreeWords == 'dashboard/service/create' || $lastTwoWords == 'dashboard/service' ? 'active' : '' }}">
+                <a href="#service" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/service/create' || $lastTwoWords == 'dashboard/service' ? 'true' : '' }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        <span>Service</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/service/create' || $lastTwoWords == 'dashboard/service' ? 'show' : '' }}" id="service" data-bs-parent="#accordionExample">
+                    <li class="{{ $lastthreeWords == 'dashboard/service/create' ? 'active' : '' }}">
+                        <a href="{{ route('service.create') }}"> Create </a>
+                    </li>
+                    <li class="{{ $lastTwoWords == 'dashboard/service' ? 'active' : '' }}">
+                        <a href="{{ route('service.index') }}"> List </a>
                     </li>
                 </ul>
             </li>

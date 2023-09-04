@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\GeneralSettings;
+use App\Models\ServiceCategory;
 
 function website_title(){
     return GeneralSettings::find(1)->website_title;
