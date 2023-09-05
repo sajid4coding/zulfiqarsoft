@@ -28,7 +28,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -61,5 +61,10 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         //
+    }
+
+    public function project_step(Request $request)
+    {
+        return $request;
     }
 }

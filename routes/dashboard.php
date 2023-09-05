@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function(){
 
     //SERVICE BEGIN
     Route::resource('dashboard/service', ServiceController::class);
+    // Route::post('dashboard/service/project-step', [ServiceController::class, 'project_step'])->name('project.step.post');
     //SERVICE END
 
     //PORTFOLIO BEGIN
