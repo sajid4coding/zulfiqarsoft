@@ -62,19 +62,19 @@
                                 @method('PUT')
                                 <div class="row mb-4">
                                     <div class="col-6 my-2">
-                                        <input name="name" type="text" class="form-control" placeholder="Client Name" value="{{ $team->name }}">
+                                        <input name="name" type="text" class="form-control" placeholder="Member Name*" value="{{ $team->name }}">
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-6 my-2">
-                                        <input name="position" type="text" class="form-control" placeholder="Client Position" value="{{ $team->position }}">
+                                        <input name="position" type="text" class="form-control" placeholder="Member Position*" value="{{ $team->position }}">
                                         @error('position')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-12 my-2">
-                                        <textarea class="form-control" name="bio" cols="30" rows="10" placeholder="Client Message">{{ $team->bio }}</textarea>
+                                        <textarea class="form-control" name="bio" cols="30" rows="10" placeholder="Member Message">{{ $team->bio }}</textarea>
                                         @error('bio')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -174,6 +174,7 @@
 @endsection
 
 @section('dashboard_footer_script')
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
 <script>
     function upload() {
         var imgcanvas = document.getElementById("canv1");

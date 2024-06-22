@@ -40,7 +40,7 @@ class ServiceCategoryController extends Controller
 
         if ($request->hasFile('service_category_thumbnail')) {
             $destination = 'public/service_category_thumbnail';
-            $photo = 'service_category_thumbnail-'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('service_category_thumbnail')->getClientOriginalExtension();
+            $photo = 'service_category_thumbnail-'.$category_id.".".$request->file('service_category_thumbnail')->getClientOriginalExtension();
 
             $path = $request->file('service_category_thumbnail')->storeAs($destination, $photo);
 
@@ -91,7 +91,7 @@ class ServiceCategoryController extends Controller
 
         if ($request->hasFile('service_category_thumbnail')) {
             $destination = 'public/service_category_thumbnail';
-            $photo = 'service_category_thumbnail-'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('service_category_thumbnail')->getClientOriginalExtension();
+            $photo = 'service_category_thumbnail-'.$serviceCategory->id.".".$request->file('service_category_thumbnail')->getClientOriginalExtension();
 
             $path = $request->file('service_category_thumbnail')->storeAs($destination, $photo);
 
@@ -115,7 +115,7 @@ class ServiceCategoryController extends Controller
         if (File::exists($imagePath)) {
             File::delete($imagePath);
         }
-        
+
         ServiceCategory::find($serviceCategory->id)->delete();
 
         return back()->with('delete_status', 'Category Deleted');

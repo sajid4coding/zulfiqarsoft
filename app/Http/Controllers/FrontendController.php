@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{About, Blog, SocialMedia, Testimonial, Contact, Portfolio, ServiceCategory, Team, Whychooseus};
+use App\Models\{About, Blog, SocialMedia, Testimonial, Contact, GeneralSettings, IncludeService, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, Whychooseus};
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -10,7 +10,9 @@ class FrontendController extends Controller
     public function index(){
         return view('frontend.index', [
             'follow_us' => SocialMedia::find(1),
-            'tesimonial_exist' => Testimonial::exists()
+            'tesimonial_exist' => Testimonial::exists(),
+            'portfolio_exist' => Portfolio::exists(),
+            'blog_exist' => Blog::exists(),
         ]);
     }
 
@@ -23,6 +25,16 @@ class FrontendController extends Controller
 
     public function service(){
         return view('frontend.service.index');
+    }
+
+    public function service_details($id){
+        return view('frontend.service.serviceDetails', [
+            'includeservices' => IncludeService::where('serviceID', $id)->get(),
+            'serviceFAQs' => ServiceFAQ::where('serviceID', $id)->get(),
+            'service' => Service::where('serviceCategory', $id)->get(),
+            'serviceCategory' => ServiceCategory::find($id),
+            'serviceSteps' => ServiceSteps::where('serviceID', $id)->get(),
+        ]);
     }
 
     public function portfolio(){

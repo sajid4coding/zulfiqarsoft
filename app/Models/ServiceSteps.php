@@ -5,13 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceCategory extends Model
+class ServiceSteps extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
-
-    // public function relationshipwithService(){
-    //     return $this->hasOne(Service::class, 'serviceCategory', 'id');
-    // }
 }

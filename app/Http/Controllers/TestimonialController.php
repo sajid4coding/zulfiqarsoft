@@ -6,6 +6,7 @@ use App\Models\Testimonial;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class TestimonialController extends Controller
 {
@@ -47,7 +48,7 @@ class TestimonialController extends Controller
 
         if ($request->hasFile('client_image')) {
             $destination = 'public/client_images';
-            $photo = 'client_image'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('client_image')->getClientOriginalExtension();
+            $photo = Str::replace(' ','_', Str::title($request->client_name)).'client_image'.Carbon::now()->format('Y').rand(1,99).".".$request->file('client_image')->getClientOriginalExtension();
 
             $path = $request->file('client_image')->storeAs($destination, $photo);
 
@@ -95,7 +96,7 @@ class TestimonialController extends Controller
 
         if ($request->hasFile('client_image')) {
             $destination = 'public/client_images';
-            $photo = 'client_image'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('client_image')->getClientOriginalExtension();
+            $photo = Str::replace(' ','_', Str::title($request->client_name)).'client_image'.Carbon::now()->format('Y').rand(1,99).".".$request->file('client_image')->getClientOriginalExtension();
 
             $path = $request->file('client_image')->storeAs($destination, $photo);
 

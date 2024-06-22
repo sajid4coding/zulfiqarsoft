@@ -16,7 +16,7 @@ class UserSeeding extends Seeder
     {
         DB::table('users')->insert([
             'name' => "Sajid",
-            'email' => 'sajalislamsajid@gmail.com',
+            'email' => 'thezulfiqarsoft@gmail.com',
             'email_status' => 'visible',
             'phone' => '+880 1918968819',
             'phone_status' => 'visible',

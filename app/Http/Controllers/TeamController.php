@@ -6,6 +6,7 @@ use App\Models\Team;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TeamController extends Controller
 {
@@ -51,10 +52,8 @@ class TeamController extends Controller
 
         if ($request->hasFile('member_image')) {
             $destination = 'public/member_images';
-            $photo = $request->name.'member_image'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('member_image')->getClientOriginalExtension();
-
+            $photo = Str::replace(' ','_', Str::title($request->name)).'_'.'member_image'.".".$request->file('member_image')->getClientOriginalExtension();
             $path = $request->file('member_image')->storeAs($destination, $photo);
-
             Team::find($testimonial_id)->update([
                 'member_image' => $photo,
             ]);
@@ -105,7 +104,7 @@ class TeamController extends Controller
 
         if ($request->hasFile('member_images')) {
             $destination = 'public/member_images';
-            $photo = $request->name.'member_images'.Carbon::now()->format('Y').rand(1,9999).".".$request->file('member_images')->getClientOriginalExtension();
+            $photo = Str::replace(' ','_', Str::title($request->name)).'_'.'member_image'.".".$request->file('member_image')->getClientOriginalExtension();
 
             $path = $request->file('member_images')->storeAs($destination, $photo);
 

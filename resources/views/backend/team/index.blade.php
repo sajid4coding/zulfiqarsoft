@@ -29,26 +29,27 @@
         <!-- /BREADCRUMB -->
 
         <div class="row layout-top-spacing">
-
             <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+
+                @if (session('create_team'))
+                    <div class="alert alert-primary alert-dismissible fade show mb-4" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
+                        <strong>Notice!</strong> {{ session('create_team') }}.
+                    </div>
+                @endif
+                @if (session('delete_status'))
+                    <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
+                        <strong>Notice!</strong> {{ session('delete_status') }}.
+                    </div>
+                @endif
+
                 <div class="widget-content widget-content-area br-8">
                     <table id="style-3" class="table style-3 dt-table-hover">
                         <div class="d-flex justify-content-center">
                             <a href="{{ route('team.create') }}" class="btn btn-success text-center my-3">Create Team</a>
                         </div>
                         <thead>
-                            @if (session('create_team'))
-                                <div class="alert alert-primary alert-dismissible fade show mb-4" role="alert">
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-                                    <strong>Notice!</strong> {{ session('create_team') }}.
-                                </div>
-                            @endif
-                            @if (session('delete_status'))
-                                <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-                                    <strong>Notice!</strong> {{ session('delete_status') }}.
-                                </div>
-                            @endif
                             <tr>
                                 <th class="checkbox-column text-center"> Record Id </th>
                                 <th class="text-center">Image</th>

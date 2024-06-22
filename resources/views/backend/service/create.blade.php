@@ -10,10 +10,7 @@
 <link href="{{ asset('dashboard_assets') }}/src/plugins/css/light/filepond/custom-filepond.css" rel="stylesheet" type="text/css" />
 <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
-
-
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-
 
 <style>
     p {
@@ -110,7 +107,7 @@
 
                 <div class="widget-content widget-content-area blog-create-section mt-4">
 
-                    <h2 class="text-center" style="font-size: 25px; font-weight: 700; margin-bottom: 45px; letter-spacing: 0px; text-align: center; color: #bfc9d4;">Project<span style="color: #009688;"> Step</span></h2>
+                    <h2 class="text-center" style="font-size: 25px; font-weight: 700; margin-bottom: 45px; letter-spacing: 0px; text-align: center; color: #bfc9d4;">Project<span style="color: #009688;"> Step</span> <small>(Optional)</small></h2>
 
                     <div id="req_input" class="datainputs">
                         <div class="required_inp">
@@ -126,11 +123,11 @@
 
                 <div class="widget-content widget-content-area blog-create-section mt-4">
 
-                    <h2 class="text-center" style="font-size: 25px; font-weight: 700; margin-bottom: 45px; letter-spacing: 0px; text-align: center; color: #bfc9d4;">Project Include<span style="color: #009688;"> Service</span></h2>
+                    <h2 class="text-center" style="font-size: 25px; font-weight: 700; margin-bottom: 45px; letter-spacing: 0px; text-align: center; color: #bfc9d4;">Project Include<span style="color: #009688;"> Service </span> <small>(Optional)</small></h2>
 
                     <div id="req_input_service" class="datainputs">
                         <div class="required_inp_service">
-                            <input class="form-control my-1" name="serviceName[]" placeholder="Service Name" type="text">
+                            <input class="form-control my-1" name="includeserviceName[]" placeholder="Include Service Name" type="text">
                         </div>
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
@@ -141,7 +138,7 @@
 
                 <div class="widget-content widget-content-area blog-create-section mt-4">
 
-                    <h2 class="text-center" style="font-size: 25px; font-weight: 700; margin-bottom: 45px; letter-spacing: 0px; text-align: center; color: #bfc9d4;">Service Related<span style="color: #009688;"> FAQ</span></h2>
+                    <h2 class="text-center" style="font-size: 25px; font-weight: 700; margin-bottom: 45px; letter-spacing: 0px; text-align: center; color: #bfc9d4;">Service Related<span style="color: #009688;"> FAQ</span> <small>(Optional)</small></h2>
 
                     <div id="req_input_faq" class="datainputs">
                         <div class="required_inp_faq">
@@ -158,24 +155,43 @@
                 <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-4">
                     <div class="widget-content widget-content-area blog-create-section">
                         <div class="row">
+                            @if ($serviceCount < $serviceCategoriesCount)
                             <div class="col-xxl-12 mb-4">
+                                    <div id="req_input_faq" class="datainputs">
+                                        <div class="mb-4">
+                                            <label>Select Service Category*</label>
+                                            <select class="form-control my-1" name="serviceCategory">
+                                                @foreach ($serviceNames as $serviceName)
+                                                    @if (!App\models\Service::where('serviceCategory',$serviceName->id)->exists())
+                                                        <option value="{{ $serviceName->id }}">{{ $serviceName->service_category_title }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            <small></small>
+                                        </div>
+                                    </div>
                                 <div class="switch form-switch-custom switch-inline form-switch-primary">
                                     <input class="switch-input" type="checkbox" role="switch" id="showPublicly" checked="" name="serviceStatus">
                                     <label class="switch-label" for="showPublicly">Publish</label>
                                 </div>
                             </div>
+                            @else
+                                <small style="color: red;">You can upload only {{$serviceCount}} Services. Now You can't upload services</small>
+                            @endif
 
-                            <div class="col-xxl-12 col-md-12 mb-4">
+                            {{-- <div class="col-xxl-12 col-md-12 mb-4">
                                 <canvas id="serviceThumbnail"></canvas>
                                 <p>
                                 Filename:
                                 <input name="serviceThumbnail" type="file" multiple="false" accept="image/*" id="serviceThumbnail_finput" onchange="upload()">
                                 </p>
-                            </div>
+                            </div> --}}
 
-                            <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
-                                <button type="submit" class="btn btn-success w-100">Create Service</button>
-                            </div>
+                            @if ($serviceCount < $serviceCategoriesCount)
+                                <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
+                                    <button type="submit" class="btn btn-success w-100">Create Service</button>
+                                </div>
+                            @endif
 
                         </div>
                     </div>
@@ -228,7 +244,7 @@
     // PROJECT FAQ
     $(document).ready(function() {
         $("#addmoreservice").click(function() {
-            $("#req_input_service").append('<div class="required_inp_service"><input class="form-control my-1" name="serviceName[]" placeholder="Service Name" type="text">' + '<input type="button" class="inputRemove btn btn-warning my-2" value="Remove"/></div>');
+            $("#req_input_service").append('<div class="required_inp_service"><input class="form-control my-1" name="includeserviceName[]" placeholder="Include Service Name" type="text">' + '<input type="button" class="inputRemove btn btn-warning my-2" value="Remove"/></div>');
         });
         $('body').on('click','.inputRemove',function() {
             $(this).parent('div.required_inp_service').remove()

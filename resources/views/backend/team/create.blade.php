@@ -56,13 +56,13 @@
                                 @csrf
                                 <div class="row mb-4">
                                     <div class="col-6 my-2">
-                                        <input name="name" type="text" class="form-control" placeholder="Member Name" >
+                                        <input name="name" type="text" class="form-control" placeholder="Member Name*" >
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-6 my-2">
-                                        <input name="position" type="text" class="form-control" placeholder="Member Position" >
+                                        <input name="position" type="text" class="form-control" placeholder="Member Position*" >
                                         @error('position')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -152,6 +152,7 @@
 </div>
 @endsection
 @section('dashboard_footer_script')
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
 <script>
     function upload() {
     var imgcanvas = document.getElementById("canv1");
