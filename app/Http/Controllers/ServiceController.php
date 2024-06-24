@@ -106,7 +106,13 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('backend.service.edit', [
+            'serviceNames' => ServiceCategory::where('service_category_status', 'on')->get(),
+            'service' => Service::find($service->id),
+            'serviceSteps' => ServiceSteps::where('serviceID', $service->id)->get(),
+            'includeServices' => IncludeService::where('serviceID', $service->id)->get(),
+            'serviceFAQs' => ServiceFAQ::where('serviceID', $service->id)->get(),
+        ]);
     }
 
     /**
@@ -114,7 +120,84 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        if($request->serviceDescription){
+            Service::find($service->id)->update([
+                'serviceDescription' => $request->serviceDescription,
+                'updated_at' => now()
+            ]);
+        }
+        if(!$service->serviceStatus == NULL){
+            Service::find($service->id)->update([
+                'serviceStatus' => $request->serviceStatus,
+                'updated_at' => now()
+            ]);
+        }else{
+            Service::find($service->id)->update([
+                'serviceStatus' => 'on',
+                'updated_at' => now()
+            ]);
+        }
+        if($request->stepTitle && $request->stepDescription){
+            $stepTitles = $request->stepTitle;
+            $stepDescriptions = $request->stepDescription;
+            $existingSteps = ServiceSteps::where('serviceID', $service->id)->get();
+            foreach ($stepTitles as $index => $title) {
+                if (isset($existingSteps[$index])) {
+                    $existingSteps[$index]->update([
+                        'stepTitle' => $title,
+                        'stepDescription' => $stepDescriptions[$index],
+                        'updated_at' => now()
+                    ]);
+                } else {
+                    // Insert new step if it doesn't exist
+                    ServiceSteps::create([
+                        'serviceID' => $service->id,
+                        'stepTitle' => $title,
+                        'stepDescription' => $stepDescriptions[$index],
+                        'created_at' => now()
+                    ]);
+                }
+            }
+        }
+        if ($request->has('includeserviceName')) {
+            $includeservices = $request->input('includeserviceName');
+
+            // Clear existing include services for the service
+            IncludeService::where('serviceID', $service->id)->delete();
+
+            // Insert new include services
+            foreach ($includeservices as $includeservice) {
+                IncludeService::insert([
+                    'serviceID' => $service->id,
+                    'includeserviceName' => $includeservice,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+        }
+        if($request->faqQuestion && $request->faqAnswer){
+            $faqQuestions = $request->faqQuestion;
+            $faqAnswers = $request->faqAnswer;
+            $existingfaqs = ServiceFAQ::where('serviceID', $service->id)->get();
+            foreach ($faqQuestions as $index => $title) {
+                if (isset($existingfaqs[$index])) {
+                    $existingfaqs[$index]->update([
+                        'faqQuestion' => $title,
+                        'faqAnswer' => $faqAnswers[$index],
+                        'updated_at' => now()
+                    ]);
+                } else {
+                    // Insert new step if it doesn't exist
+                    ServiceFAQ::create([
+                        'serviceID' => $service->id,
+                        'faqQuestion' => $title,
+                        'faqAnswer' => $faqAnswers[$index],
+                        'created_at' => now()
+                    ]);
+                }
+            }
+        }
+        return back()->with('update_service', 'Service Updated');
     }
 
     /**
@@ -122,11 +205,27 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        Service::find($service->id)->delete();
+        ServiceSteps::where('serviceID', $service->id)->delete();
+        ServiceFAQ::where('serviceID', $service->id)->delete();
+        IncludeService::where('serviceID', $service->id)->delete();
+
+        return back()->with('delete_status', 'Service Deleted');
     }
 
-    public function project_step(Request $request)
+    public function service_step_delete($id)
     {
-        return $request;
+        ServiceSteps::find($id)->delete();
+        return back()->with('service_step_delete', 'Service Step Deleted');
+    }
+    public function include_service_delete($id)
+    {
+        IncludeService::find($id)->delete();
+        return back()->with('include_service_delete', 'Include Service Deleted');
+    }
+    public function service_faq_delete($id)
+    {
+        ServiceFAQ::find($id)->delete();
+        return back()->with('service_faq_delete', 'Service FAQ Deleted');
     }
 }

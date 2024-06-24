@@ -46,7 +46,9 @@ Route::middleware('auth')->group(function(){
 
     //SERVICE BEGIN
     Route::resource('dashboard/service', ServiceController::class);
-    // Route::post('dashboard/service/project-step', [ServiceController::class, 'project_step'])->name('project.step.post');
+    Route::get('dashboard/service/service-step-delete/{id}', [ServiceController::class, 'service_step_delete'])->name('service.step.delete');
+    Route::get('dashboard/service/include-service-delete/{id}', [ServiceController::class, 'include_service_delete'])->name('include.service.delete');
+    Route::get('dashboard/service/service-faq-delete/{id}', [ServiceController::class, 'service_faq_delete'])->name('service.faq.delete');
     //SERVICE END
 
     //PORTFOLIO BEGIN

@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
+    
+    protected $guarded = [];
 
-    // public function relationshipwithServiceCategory(){
-    //     return $this->hasOne(ServiceCategory::class, 'id', 'serviceCategory');
-    // }
+    public function relationshipwithServiceCategory(){
+        return $this->hasOne(ServiceCategory::class, 'id', 'serviceCategory');
+    }
 }
