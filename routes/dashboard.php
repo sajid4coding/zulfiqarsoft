@@ -57,6 +57,8 @@ Route::middleware('auth')->group(function(){
 
     //BLOG BEGIN
     Route::resource('dashboard/blog', BlogController::class);
+    Route::get('dashboard/blog-comments', [BlogController::class, 'blog_comments'])->name('blog.comments');
+    Route::get('dashboard/blog-comments-delete/{id}', [BlogController::class, 'blog_comments_delete'])->name('blog.comments.delete');
     //BLOG END
 
     //TEAM BEGIN

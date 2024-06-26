@@ -61,7 +61,7 @@
     <div class="cs-height_150 cs-height_lg_80"></div>
 
     <!-- Start Awards Text -->
-    <x-frontend.awards.awards/>
+    {{-- <x-frontend.awards.awards/> --}}
     <!-- End Awards Text -->
 
     <div class="cs-height_130 cs-height_lg_70"></div>

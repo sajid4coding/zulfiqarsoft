@@ -2,6 +2,7 @@
 
 namespace App\View\Components\frontend\blog;
 
+use App\Models\blog as ModelsBlog;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,8 @@ class blog extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.frontend.blog.blog');
+        return view('components.frontend.blog.blog', [
+            'blogs' => ModelsBlog::where('blogStatus', 'on')->get(),
+        ]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Blog, ServiceCategory};
+use App\Models\{Blog, BlogComment, ServiceCategory};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -127,5 +127,16 @@ class BlogController extends Controller
         Blog::find($blog->id)->delete();
 
         return back()->with('delete_status', 'Blog Deleted');
+    }
+
+    public function blog_comments(){
+        return view('backend.blog.blogComment', [
+            'blogComments' => BlogComment::all()
+        ]);
+    }
+
+    public function blog_comments_delete($id){
+        BlogComment::find($id)->delete();
+        return back()->with('delete_comment', 'Comment Deleted');
     }
 }

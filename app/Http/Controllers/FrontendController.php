@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{About, Blog, SocialMedia, Testimonial, Contact, GeneralSettings, IncludeService, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, Whychooseus};
+use App\Models\{About, Blog, BlogComment, SocialMedia, Testimonial, Contact, GeneralSettings, IncludeService, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, Whychooseus};
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -70,7 +70,9 @@ class FrontendController extends Controller
 
     public function blog_details($id){
         return view('frontend.blog.details', [
-            'blog' => Blog::find($id)
+            'blog' => Blog::find($id),
+            'comments' => BlogComment::where('blogID', $id)->get(),
+            'comment_exists' => BlogComment::exists()
         ]);
     }
 
@@ -114,5 +116,21 @@ class FrontendController extends Controller
         ]);
 
         return back()->with('sent_success', 'Successfully sent. We will back to as soon as possible.');
+    }
+
+    public function blog_comment(Request $request, $id){
+        $request->validate([
+            'commentUserName' => 'required',
+            'commentUserEmail' => 'required',
+            'userComment' => 'required'
+        ]);
+        BlogComment::insert([
+            'blogID' => $id,
+            'commentUserName' => $request->commentUserName,
+            'commentUserEmail' => $request->commentUserEmail,
+            'userComment' => $request->userComment,
+            'created_at' => now()
+        ]);
+        return back();
     }
 }
