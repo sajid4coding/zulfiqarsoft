@@ -52,13 +52,6 @@
 
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
 
-                        @if (session('uploadSucess'))
-                            <div class="alert alert-primary alert-dismissible fade show mb-4" role="alert">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-                                <strong>Notice!</strong> {{ session('uploadSucess') }}.
-                            </div>
-                        @endif
-
                         <div class="widget-content widget-content-area blog-create-section">
 
                             <div class="row mb-4">

@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('general_settings', function (Blueprint $table) {
+        Schema::create('news_letters', function (Blueprint $table) {
             $table->id();
-            $table->string('agency_video');
-            $table->string('website_title');
-            $table->string('newsletter_text');
-            $table->string('copyright_text');
-            $table->string('favicon')->nullable();
-            $table->string('logo')->nullable();
+            $table->string('newsletterEmail');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('general_settings');
+        Schema::dropIfExists('news_letters');
     }
 };

@@ -17,7 +17,7 @@
   <div class="cs-height_150 cs-height_lg_80"></div>
   <div class="container">
     <div class="cs-portfolio_details">
-      <img src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('storage') }}/portfolio_thumbnail/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="Image" class="cs-radius_15 w-100">
+      <img src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="Image" class="cs-radius_15 w-100">
       <div class="cs-height_90 cs-height_lg_40"></div>
       <div class="row">
         <div class="col-lg-6">

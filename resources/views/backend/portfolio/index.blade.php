@@ -35,10 +35,10 @@
 
             <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
-                @if (session('insert_status'))
+                @if (session('uploadSucess'))
                     <div class="alert alert-primary alert-dismissible fade show my-4" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-                        <strong>Notice!</strong> {{ session('insert_status') }}.
+                        <strong>Notice!</strong> {{ session('uploadSucess') }}.
                     </div>
                 @endif
                 @if (session('delete_status'))

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{About, Blog, BlogComment, SocialMedia, Testimonial, Contact, GeneralSettings, IncludeService, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, Whychooseus};
+use App\Models\{About, Blog, BlogComment, SocialMedia, Testimonial, Contact, GeneralSettings, IncludeService, NewsLetter, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, Whychooseus};
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -132,5 +132,16 @@ class FrontendController extends Controller
             'created_at' => now()
         ]);
         return back();
+    }
+
+    public function newsletter_post(Request $request){
+        $request->validate([
+            'newsletterEmail' => 'required|unique:news_letters'
+        ]);
+        NewsLetter::insert([
+            'newsletterEmail' => $request->newsletterEmail,
+            'created_at' => now()
+        ]);
+        return back()->with('subscribed', 'Subscribe Successfully');
     }
 }

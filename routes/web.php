@@ -28,11 +28,12 @@ Route::get('portfolio-details/{id}', [FrontendController::class, 'portfolio_deta
 Route::get('blog', [FrontendController::class, 'blog'])->name('blog');
 Route::get('blog-details/{id}', [FrontendController::class, 'blog_details'])->name('blog.details');
 Route::get('blog-category/{id}', [FrontendController::class, 'blog_category'])->name('blog.category');
-Route::post('blog-comment/{id}', [FrontendController::class, 'blog_comment'])->name('blog.comment');
+Route::post('blog-comment-post/{id}', [FrontendController::class, 'blog_comment'])->name('blog.comment');
 Route::get('team', [FrontendController::class, 'team'])->name('team');
 Route::get('member-details/{id}', [FrontendController::class, 'team_detail'])->name('team.detail');
 Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 Route::post('contact-post', [FrontendController::class, 'contact_post'])->name('contact.post');
+Route::get('newsletter-post', [FrontendController::class, 'newsletter_post'])->name('newsletter.post');
 
 require __DIR__.'/auth.php';
 

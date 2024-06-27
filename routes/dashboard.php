@@ -73,4 +73,9 @@ Route::middleware('auth')->group(function(){
     Route::get('dashboard/contact', [ContactController::class, 'index'])->name('contact.index');
     //CONTACT END
 
+    //NEWSLETTER BEGIN
+    Route::get('dashboard/newsletter', [GeneralSettingsController::class, 'newsletter'])->name('newsletter');
+    Route::get('dashboard/newsletter-post/{id}', [GeneralSettingsController::class, 'newsletter_post'])->name('newsletter.post');
+    //NEWSLETTER END
+
 });

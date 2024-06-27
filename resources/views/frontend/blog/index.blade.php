@@ -24,7 +24,7 @@
           @foreach ($blogs as $blog)
             <div class="cs-post cs-style2">
               <a href="{{ route('blog.details',$blog->id) }}" class="cs-post_thumb cs-radius_15">
-                <img src="@if ($blog->blogThumbnail == NULL) {{ asset('storage') }}/blog_thumbnail/nullImage.jpg @else {{ asset('storage') }}/blog_thumbnail/{{ $blog->blogThumbnail }} @endif" alt="Post" class="w-100 cs-radius_15">
+                <img src="@if ($blog->blogThumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/blog_thumbnail/{{ $blog->blogThumbnail }} @endif" alt="Post" class="w-100 cs-radius_15">
               </a>
               <div class="cs-post_info">
                 <div class="cs-post_meta cs-style1 cs-ternary_color cs-semi_bold cs-primary_font">

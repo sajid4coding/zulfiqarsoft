@@ -74,6 +74,28 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                    <h4>NewsLetter Text</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content widget-content-area">
+                            <div class="row mb-12">
+                                <div class="col">
+                                    <input name="newsletter_text" type="text" class="form-control" placeholder="NewsLetter Text" value="{{ $general_setting->newsletter_text ? $general_setting->newsletter_text : '' }}">
+                                    @error('newsletter_text')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-12 layout-spacing">
+                    <div class="statbox widget box box-shadow">
+                        <div class="widget-header">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                     <h4>Copyright Text</h4>
                                 </div>
                             </div>

@@ -23,7 +23,7 @@
     <div class="col-lg-8">
         <div class="cs-post cs-style2">
             <div class="cs-post_thumb cs-radius_15">
-                <img src="{{ asset('storage') }}/blog_thumbnail/{{ $blog->blogThumbnail }}" alt="Post" class="w-100 cs-radius_15">
+                <img src="@if ($blog->blogThumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/blog_thumbnail/{{ $blog->blogThumbnail }} @endif" alt="Post" class="w-100 cs-radius_15">
             </div>
             <div class="cs-post_info">
                 <div class="cs-post_meta cs-style1 cs-ternary_color cs-semi_bold cs-primary_font">

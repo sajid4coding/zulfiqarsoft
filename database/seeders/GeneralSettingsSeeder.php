@@ -19,6 +19,7 @@ class GeneralSettingsSeeder extends Seeder
         DB::table('general_settings')->insert([
             'agency_video' => 'https://youtu.be/9JMJr-ou7Og',
             'website_title' => 'ZulfiqarSoft - Build Your Dream To Reality',
+            'newsletter_text' => 'At vero eos et accusamus et iusto odio as part dignissimos ducimus qui blandit.',
             'copyright_text' => 'Copyright © '. $year . ', ZulfiqarSoft, All rights reserved.',
             'favicon' => 'favicon.png',
             'logo' => 'logo.png',

@@ -41,7 +41,7 @@
         <div class="cs-isotop_item {{ $portfolio->relationshipwithServiceCategory->service_category_title=='UI/UX' ? str_replace('/', '_', $portfolio->relationshipwithServiceCategory->service_category_title) : str_replace(' ', '_', $portfolio->relationshipwithServiceCategory->service_category_title)}}">
             <a href="{{ route('portfolio.details',$portfolio->id) }}" class="cs-portfolio cs-style1 cs-type1">
               <div class="cs-portfolio_hover"></div>
-              <img class="cs-portfolio_bg cs-bg" src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('storage') }}/portfolio_thumbnail/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="">
+              <img class="cs-portfolio_bg cs-bg" src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="">
               <div class="cs-portfolio_info">
                 <div class="cs-portfolio_info_bg cs-accent_bg"></div>
                 <h2 class="cs-portfolio_title">{{ $portfolio->portfolio_title }}</h2>

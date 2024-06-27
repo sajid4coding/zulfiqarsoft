@@ -59,7 +59,7 @@ class PortfolioController extends Controller
             ]);
         }
 
-        return back()->with('uploadSucess', 'Portfolio Uploaded');
+        return redirect('dashboard/portfolio')->with('uploadSucess', 'Portfolio Uploaded');
     }
 
     /**

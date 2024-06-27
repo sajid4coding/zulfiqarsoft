@@ -30,76 +30,7 @@
     </div> --}}
     <!-- Start Header Section -->
     <header class="cs-site_header cs-style1 text-uppercase cs-sticky_header">
-    <div class="cs-main_header">
-        <div class="container">
-            <div class="cs-main_header_in">
-
-                @php
-                    $url = url()->current();
-                    $explode = explode('/', $url);
-                    $current_page = end($explode);
-                    $lastTwoWords = $explode[count($explode)-2] . '/' . $explode[count($explode)-1];
-                    $lastthreeWords = $explode[count($explode)-3]. '/' . $explode[count($explode)-2] . '/'. $explode[count($explode)-1];
-                @endphp
-
-                <div class="cs-main_header_left">
-                <a class="cs-site_branding" href="{{ route('index') }}">
-                    <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:100px;" />
-                </a>
-                </div>
-                <div class="cs-main_header_center">
-                    <div class="cs-nav cs-primary_font cs-medium">
-                        <ul class="cs-nav_list">
-                        <li class="cs-mega_menu">
-                            <a href="{{ route('index') }}" style="{{ $current_page == '127.0.0.1:8000' ? 'color: #FF4A17' : ''}}"> Home </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('about') }}" style="{{ $current_page == 'about' ? 'color: #FF4A17' : ''}}">About</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('service') }}" style="{{ $current_page == 'service' ? 'color: #FF4A17' : ''}}">Services</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('portfolio') }}" style="{{ $current_page == 'portfolio' ? 'color: #FF4A17' : ''}}">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('blog') }}" style="{{ $current_page == 'blog' ? 'color: #FF4A17' : ''}}">Blog</a>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#" style="{{ $current_page == 'contact' ? 'color: #FF4A17' : ''}}"> More </a>
-                            <ul>
-                            <li>
-                                <a href="{{ route('contact') }}" style="{{ $current_page == 'contact' ? 'color: #FF4A17' : ''}}"> Contact </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('team') }}" style="{{ $current_page == 'team' ? 'color: #FF4A17' : ''}}"> Team </a>
-                            </li>
-                            <li>
-                                <a href="case-study.html">Case Study Details</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            </ul>
-                        </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="cs-main_header_right">
-                <div class="cs-toolbox">
-                    <span class="cs-icon_btn">
-                    <span class="cs-icon_btn_in">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                    </span>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <x-frontend.navbar.navbar />
     </header>
     <div class="cs-side_header">
     <button class="cs-close"></button>
@@ -107,7 +38,7 @@
     <div class="cs-side_header_in">
         <div class="cs-side_header_shape"></div>
         <a class="cs-site_branding" href="index.html">
-        <img src="{{ asset('frontend_assets') }}/img/footer_logo.svg" alt="Logo" />
+            <img src="{{ asset('storage') }}/general_images/{{ App\Models\GeneralSettings::find(1)->logo }}" alt="Logo" />
         </a>
         <div class="cs-side_header_box">
         <h2 class="cs-side_header_heading"> Do you have a project in your <br /> mind? Keep connect us. </h2>
@@ -143,15 +74,11 @@
         </div>
         <div class="cs-side_header_box">
         <h3 class="cs-side_header_title cs-primary_color">Subscribe</h3>
-        <div class="cs-newsletter cs-style1">
-            <form action="#" class="cs-newsletter_form">
-            <input type="email" class="cs-newsletter_input" placeholder="example@gmail.com" />
-            <button class="cs-newsletter_btn">
-                <span>Send</span>
-            </button>
-            </form>
-            <div class="cs-newsletter_text"> At vero eos et accusamus et iusto odio as part dignissimos ducimus qui blandit. </div>
-        </div>
+
+        <!-- Start NewsLetter -->
+        <x-frontend.newsletter.newsletter />
+        <!-- End NewsLetter -->
+
         </div>
         @if (App\Models\SocialMedia::find(1)->status == 'visible')
             <div class="cs-side_header_box">
@@ -300,15 +227,11 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="cs-footer_item">
                 <h2 class="cs-widget_title">Subscribe</h2>
-                <div class="cs-newsletter cs-style1">
-                    <form action="#" class="cs-newsletter_form">
-                    <input type="email" class="cs-newsletter_input" placeholder="example@gmail.com" />
-                    <button class="cs-newsletter_btn">
-                        <span>Send</span>
-                    </button>
-                    </form>
-                    <div class="cs-newsletter_text"> At vero eos et accusamus et iusto odio as part dignissimos ducimus qui blandit. </div>
-                </div>
+
+                <!-- Start NewsLetter -->
+                <x-frontend.newsletter.newsletter />
+                <!-- End NewsLetter -->
+
                 </div>
             </div>
             </div>

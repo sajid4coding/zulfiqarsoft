@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GeneralSettings;
+use App\Models\NewsLetter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -22,6 +23,7 @@ class GeneralSettingsController extends Controller
         GeneralSettings::find(1)->update([
             'agency_video' => $request->agency_video,
             'website_title' => $request->website_title,
+            'newsletter_text' => $request->newsletter_text,
             'copyright_text' => $request->copyright_text,
         ]);
         return back()->with('update_status', 'General Setting Updated');
@@ -74,5 +76,16 @@ class GeneralSettingsController extends Controller
             return back();
         }
         return back()->with('update_status', 'General Setting Updated');
+    }
+
+    public function newsletter(){
+        return view('backend.newsletter.newsletter', [
+            'newsletters' => NewsLetter::all()
+        ]);
+    }
+
+    public function newsletter_post($id){
+        NewsLetter::find($id)->delete();
+        return back()->with('insert_status', 'Email Deleted');
     }
 }

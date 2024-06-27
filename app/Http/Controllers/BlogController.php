@@ -58,7 +58,7 @@ class BlogController extends Controller
             ]);
         }
 
-        return back()->with('insert_status', 'Blog Created');
+        return redirect('dashboard/blog')->with('insert_status', 'Blog Created');
     }
 
     /**
