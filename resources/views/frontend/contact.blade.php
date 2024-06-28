@@ -87,7 +87,7 @@
                         <select class="cs-form_field" name="project_budget" required>
                             <option class="text-black" value="0">Select Your Approx Budget</option>
                             <option class="text-black" value="0-5000">0-$5000</option>
-                            <option class="text-black" value="5000-10000">0-$5000</option>
+                            <option class="text-black" value="5000-10000">$5000-$10000</option>
                             <option class="text-black" value="10000-15000">$10000-$15000</option>
                             <option class="text-black" value="15000-20000">$15000-$20000</option>
                         </select>

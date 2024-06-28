@@ -243,14 +243,11 @@
             <div class="cs-copyright"> {{ copyright_text() }} </div>
             </div>
             <div class="cs-bottom_footer_right">
-            <ul class="cs-footer_links cs-mp0">
-                <li>
-                <a href="#">Terms of Use</a>
-                </li>
-                <li>
-                <a href="#">Privacy Policy</a>
-                </li>
-            </ul>
+
+            <!-- Start FooterNav -->
+            <x-frontend.footernav.footernav />
+            <!-- End FooterNav -->
+
             </div>
         </div>
         </div>

@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FrontendControllers;
 
-use App\Models\{About, Blog, BlogComment, SocialMedia, Testimonial, Contact, GeneralSettings, IncludeService, NewsLetter, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, Whychooseus};
+use App\Http\Controllers\Controller;
+
+use App\Mail\ContactMail;
+use App\Models\{About, Blog, BlogComment, CompanyLogo, SocialMedia, Testimonial, Contact, GeneralSettings, IncludeService, NewsLetter, Pages, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, User, Whychooseus};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
@@ -13,6 +17,7 @@ class FrontendController extends Controller
             'tesimonial_exist' => Testimonial::exists(),
             'portfolio_exist' => Portfolio::exists(),
             'blog_exist' => Blog::exists(),
+            'companylogo_exist' => CompanyLogo::exists(),
         ]);
     }
 
@@ -115,6 +120,8 @@ class FrontendController extends Controller
             'project_details' => $request->project_details
         ]);
 
+        Mail::to(User::find(1)->email)->send(new ContactMail($request->except('_token')));
+
         return back()->with('sent_success', 'Successfully sent. We will back to as soon as possible.');
     }
 
@@ -143,5 +150,11 @@ class FrontendController extends Controller
             'created_at' => now()
         ]);
         return back()->with('subscribed', 'Subscribe Successfully');
+    }
+
+    public function page($slug){
+        return view('frontend.page.page', [
+            'page' => Pages::where('page_title_slug', $slug)->first()
+        ]);
     }
 }

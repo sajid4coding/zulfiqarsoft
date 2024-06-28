@@ -24,8 +24,8 @@
                 @foreach ($blogs as $blog)
                     <div class="cs-slide">
                         <div class="cs-post cs-style1">
-                            <a href="blog-details.html" class="cs-post_thumb">
-                            <img src="{{ asset('storage') }}/blog_thumbnail/{{ $blog->blogThumbnail }}" alt="Post" />
+                            <a href="{{ route('blog.details',$blog->id) }}" class="cs-post_thumb">
+                            <img src="@if ($blog->blogThumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/blog_thumbnail/{{ $blog->blogThumbnail }} @endif" alt="Post" />
                             <div class="cs-post_overlay"></div>
                             </a>
                             <div class="cs-post_info">

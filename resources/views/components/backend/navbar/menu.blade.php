@@ -332,6 +332,49 @@
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>USER INTERFACE</span></div>
             </li>
 
+            <li class="menu {{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'active' : '' }}">
+                <a href="#companylogo" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'true' : '' }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
+                        <span>Company Logos</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'show' : '' }}" id="companylogo" data-bs-parent="#accordionExample">
+                    <li class="{{ $lastthreeWords == 'dashboard/companylogo/create' ? 'active' : '' }}">
+                        <a href="{{ route('companylogo.create') }}"> Create </a>
+                    </li>
+                    <li class="{{ $lastTwoWords == 'dashboard/companylogo' ? 'active' : '' }}">
+                        <a href="{{ route('companylogo.index') }}"> List </a>
+                    </li>
+                    <li class="{{ $lastTwoWords == 'dashboard/companylogo-text' ? 'active' : '' }}">
+                        <a href="{{ route('companylogo.text') }}"> Moving Text </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu {{ $lastthreeWords == 'dashboard/pages/terms-of-use' || $lastthreeWords == 'dashboard/pages/privacy-policy' ? 'active' : '' }}">
+                <a href="#pages" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/pages/terms-of-use' || $lastthreeWords == 'dashboard/pages/privacy-policy' ? 'true' : '' }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <span>Pages</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/pages/terms-of-use' || $lastthreeWords == 'dashboard/pages/privacy-policy' ? 'show' : '' }}" id="pages" data-bs-parent="#accordionExample">
+                    <li class="{{ $lastthreeWords == 'dashboard/pages/terms-of-use' ? 'active' : '' }}">
+                        <a href="{{ route('tou') }}"> Terms of Use </a>
+                    </li>
+                    <li class="{{ $lastthreeWords == 'dashboard/pages/privacy-policy' ? 'active' : '' }}">
+                        <a href="{{ route('pp') }}"> Privacy Policy </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="menu">
                 <a href="#components" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -473,15 +516,6 @@
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
                         <span>Charts</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="menu">
-                <a href="./widgets.html" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
-                        <span>Widgets</span>
                     </div>
                 </a>
             </li>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('agency_video');
             $table->string('website_title');
             $table->string('newsletter_text');
+            $table->string('companylogo_text');
             $table->string('copyright_text');
             $table->string('favicon')->nullable();
             $table->string('logo')->nullable();

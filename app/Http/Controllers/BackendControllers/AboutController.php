@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackendControllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Whychooseus;
 use Carbon\Carbon;

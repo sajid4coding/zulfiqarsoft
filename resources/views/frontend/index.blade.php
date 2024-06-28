@@ -97,35 +97,14 @@
         <x-frontend.blog.blog/>
     @endif
     <!-- End Blog Section -->
+
     <!-- End Moving Text -->
-    <div class="cs-moving_text_wrap cs-bold cs-primary_font">
-        <div class="cs-moving_text_in">
-        <div class="cs-moving_text">Our reputed world wide partners</div>
-        <div class="cs-moving_text">Our reputed world wide partners</div>
-        </div>
-    </div>
-    <div class="cs-height_100 cs-height_lg_70"></div>
-    <!-- Start Partner Logo -->
-    <div class="container">
-        <div class="cs-partner_logo_wrap">
-        <div class="cs-partner_logo">
-            <img src="{{ asset('frontend_assets') }}/img/partner_1.svg" alt="Partner" />
-        </div>
-        <div class="cs-partner_logo">
-            <img src="{{ asset('frontend_assets') }}/img/partner_2.svg" alt="Partner" />
-        </div>
-        <div class="cs-partner_logo">
-            <img src="{{ asset('frontend_assets') }}/img/partner_3.svg" alt="Partner" />
-        </div>
-        <div class="cs-partner_logo">
-            <img src="{{ asset('frontend_assets') }}/img/partner_4.svg" alt="Partner" />
-        </div>
-        <div class="cs-partner_logo">
-            <img src="{{ asset('frontend_assets') }}/img/partner_5.svg" alt="Partner" />
-        </div>
-        </div>
-    </div>
-    <!-- End Partner Logo -->
+    <!-- Start Company Logo -->
+    @if ($companylogo_exist)
+        <x-frontend.companylogo.companylogo/>
+    @endif
+    <!-- End Company Logo -->
+
     <div class="cs-height_130 cs-height_lg_70"></div>
     <!-- Start CTA -->
     <x-frontend.contact.contact />

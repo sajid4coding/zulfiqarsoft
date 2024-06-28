@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\FrontendControllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +34,7 @@ Route::get('member-details/{id}', [FrontendController::class, 'team_detail'])->n
 Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 Route::post('contact-post', [FrontendController::class, 'contact_post'])->name('contact.post');
 Route::get('newsletter-post', [FrontendController::class, 'newsletter_post'])->name('newsletter.post');
+Route::get('{slug}', [FrontendController::class, 'page'])->name('page');
 
 require __DIR__.'/auth.php';
 

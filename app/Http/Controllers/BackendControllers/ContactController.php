@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackendControllers;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;

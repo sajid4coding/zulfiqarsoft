@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, BlogController, FunFactController, GeneralSettingsController, PortfolioController, ServiceCategoryController, ServiceController};
+use App\Http\Controllers\BackendControllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, BlogController, CompanyLogoController, FunFactController, GeneralSettingsController, PagesController, PortfolioController, ServiceCategoryController, ServiceController};
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -75,7 +75,21 @@ Route::middleware('auth')->group(function(){
 
     //NEWSLETTER BEGIN
     Route::get('dashboard/newsletter', [GeneralSettingsController::class, 'newsletter'])->name('newsletter');
-    Route::get('dashboard/newsletter-post/{id}', [GeneralSettingsController::class, 'newsletter_post'])->name('newsletter.post');
+    Route::get('dashboard/newsletter-delete-post/{id}', [GeneralSettingsController::class, 'newsletter_delete_post'])->name('newsletter.delete.post');
     //NEWSLETTER END
+
+    //COMPANY LOGO BEGIN
+    Route::resource('dashboard/companylogo', CompanyLogoController::class);
+    Route::get('dashboard/companylogo-text', [CompanyLogoController::class, 'companylogo_text'])->name('companylogo.text');
+    Route::post('dashboard/companylogo-text-post', [GeneralSettingsController::class, 'companylogo_text_post'])->name('companylogo.text.post');
+    //COMPANY LOGO END
+
+    // PAGES BEGIN
+    Route::get('dashboard/pages/terms-of-use', [PagesController::class, 'tou'])->name('tou');
+    Route::post('dashboard/pages/terms-of-use-update', [PagesController::class, 'tou_update'])->name('tou.update');
+
+    Route::get('dashboard/pages/privacy-policy', [PagesController::class, 'pp'])->name('pp');
+    Route::post('dashboard/pages/privacy-policy-update', [PagesController::class, 'pp_update'])->name('pp.update');
+    // PAGES END
 
 });

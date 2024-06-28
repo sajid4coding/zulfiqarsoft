@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackendControllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\GeneralSettings;
 use App\Models\NewsLetter;
 use Carbon\Carbon;
@@ -15,6 +16,7 @@ class GeneralSettingsController extends Controller
             'general_setting' => GeneralSettings::find(1)
         ]);
     }
+
 
     public function general_setting_post(Request $request){
         $request->validate([
@@ -84,8 +86,16 @@ class GeneralSettingsController extends Controller
         ]);
     }
 
-    public function newsletter_post($id){
+    public function newsletter_delete_post($id){
         NewsLetter::find($id)->delete();
         return back()->with('insert_status', 'Email Deleted');
+    }
+
+    public function companylogo_text_post(Request $request){
+        GeneralSettings::find(1)->update([
+            'companylogo_text' => $request->movingText
+        ]);
+
+        return back()->with('updateSuccess', 'Moving Text Updated');
     }
 }
