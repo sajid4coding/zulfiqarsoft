@@ -8,6 +8,8 @@ use App\Models\ServiceCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 
 class ServiceCategoryController extends Controller
 {
@@ -17,7 +19,8 @@ class ServiceCategoryController extends Controller
     public function index()
     {
         return view('backend.serviceCategory.index', [
-            'categories' => ServiceCategory::all()
+            'categories' => ServiceCategory::where('service_category_status', 'on')->get(),
+            'serviceCategoriesCount' => ServiceCategory::where('service_category_status', 'on')->count(),
         ]);
     }
 
@@ -26,7 +29,9 @@ class ServiceCategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.serviceCategory.create');
+        return view('backend.serviceCategory.create', [
+            'serviceCategoriesCount' => ServiceCategory::where('service_category_status', 'on')->count()
+        ]);
     }
 
     /**
@@ -36,13 +41,14 @@ class ServiceCategoryController extends Controller
     {
         $category_id = ServiceCategory::insertGetId([
             'service_category_title' => $request->service_category_title,
+            'service_category_slug' => Str::of($request->service_category_title)->slug('-'),
             'service_category_status' => $request->service_category_status,
             'created_at' => now()
         ]);
 
         if ($request->hasFile('service_category_thumbnail')) {
             $destination = 'public/service_category_thumbnail';
-            $photo = 'service_category_thumbnail-'.$category_id.".".$request->file('service_category_thumbnail')->getClientOriginalExtension();
+            $photo = 'service_category_thumbnail-'.$category_id."-".rand(1,999).".".$request->file('service_category_thumbnail')->getClientOriginalExtension();
 
             $path = $request->file('service_category_thumbnail')->storeAs($destination, $photo);
 
@@ -81,11 +87,13 @@ class ServiceCategoryController extends Controller
         if ($request->service_category_status) {
             ServiceCategory::find($serviceCategory->id)->update([
                 'service_category_title' => $request->service_category_title,
+                'service_category_slug' => Str::of($request->service_category_title)->slug('-'),
                 'service_category_status' => $request->service_category_status,
             ]);
         } else {
             ServiceCategory::find($serviceCategory->id)->update([
                 'service_category_title' => $request->service_category_title,
+                'service_category_slug' => Str::of($request->service_category_title)->slug('-'),
                 'service_category_status' => NULL,
                 'created_at' => now()
             ]);
@@ -93,7 +101,7 @@ class ServiceCategoryController extends Controller
 
         if ($request->hasFile('service_category_thumbnail')) {
             $destination = 'public/service_category_thumbnail';
-            $photo = 'service_category_thumbnail-'.$serviceCategory->id.".".$request->file('service_category_thumbnail')->getClientOriginalExtension();
+            $photo = 'service_category_thumbnail-'.$serviceCategory->id."-".rand(1,999).".".$request->file('service_category_thumbnail')->getClientOriginalExtension();
 
             $path = $request->file('service_category_thumbnail')->storeAs($destination, $photo);
 

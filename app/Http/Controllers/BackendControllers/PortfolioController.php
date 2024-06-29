@@ -4,11 +4,12 @@ namespace App\Http\Controllers\BackendControllers;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Portfolio;
-use App\Models\ServiceCategory;
+use App\Models\{Portfolio, ServiceCategory};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 
 class PortfolioController extends Controller
 {
@@ -39,6 +40,7 @@ class PortfolioController extends Controller
     {
         $portfolio_id = Portfolio::insertGetId([
             'portfolio_title' => $request->portfolio_title,
+            'portfolio_title_slug' => Str::of($request->portfolio_title)->slug('-'),
             'portfolio_description' => $request->portfolio_description,
             'portfolio_meta_title' => $request->portfolio_meta_title,
             'portfolio_meta_description' => $request->portfolio_meta_description,
@@ -90,6 +92,7 @@ class PortfolioController extends Controller
     {
         Portfolio::find($portfolio->id)->update([
             'portfolio_title' => $request->portfolio_title,
+            'portfolio_title_slug' => Str::of($request->portfolio_title)->slug('-'),
             'portfolio_description' => $request->portfolio_description,
             'portfolio_meta_title' => $request->portfolio_meta_title,
             'portfolio_meta_description' => $request->portfolio_meta_description,

@@ -24,7 +24,7 @@ Route::get('about', [FrontendController::class, 'about'])->name('about');
 Route::get('service', [FrontendController::class, 'service'])->name('service');
 Route::get('service-details/{id}', [FrontendController::class, 'service_details'])->name('service.details');
 Route::get('portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
-Route::get('portfolio-details/{id}', [FrontendController::class, 'portfolio_details'])->name('portfolio.details');
+Route::get('portfolio-details/{id}/{slug}', [FrontendController::class, 'portfolio_details'])->name('portfolio.details');
 Route::get('blog', [FrontendController::class, 'blog'])->name('blog');
 Route::get('blog-details/{id}', [FrontendController::class, 'blog_details'])->name('blog.details');
 Route::get('blog-category/{id}', [FrontendController::class, 'blog_category'])->name('blog.category');
@@ -34,7 +34,7 @@ Route::get('member-details/{id}', [FrontendController::class, 'team_detail'])->n
 Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 Route::post('contact-post', [FrontendController::class, 'contact_post'])->name('contact.post');
 Route::get('newsletter-post', [FrontendController::class, 'newsletter_post'])->name('newsletter.post');
-Route::get('{slug}', [FrontendController::class, 'page'])->name('page');
+Route::get('page/{slug}', [FrontendController::class, 'page'])->name('page');
 
 require __DIR__.'/auth.php';
 

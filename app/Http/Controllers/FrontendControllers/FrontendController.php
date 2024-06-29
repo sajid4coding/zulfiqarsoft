@@ -50,12 +50,16 @@ class FrontendController extends Controller
     }
 
 
-    public function portfolio_details($id){
+    public function portfolio_details($id, $slug){
         $prev_portfolio_id = $id - 1;
         $next_portfolio_id = $id + 1;
 
         return view('frontend.portfolio.details', [
-            'portfolio' => Portfolio::find($id),
+            // 'portfolio' => Portfolio::find($id),
+            'portfolio' => Portfolio::where([
+                'id' => $id,
+                'portfolio_title_slug' => $slug
+            ])->first(),
             'prev_portfolio' => Portfolio::where([
                 'id'=> $prev_portfolio_id,
                 'portfolio_status' => 'on',

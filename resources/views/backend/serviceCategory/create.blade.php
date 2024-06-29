@@ -84,19 +84,23 @@
 
                     <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-4">
                         <div class="widget-content widget-content-area blog-create-section">
-                            <div class="row">
-                                <div class="col-xxl-12 mb-4">
-                                    <div class="switch form-switch-custom switch-inline form-switch-primary">
-                                        <input class="switch-input" type="checkbox" role="switch" id="showPublicly" checked="" name="service_category_status">
-                                        <label class="switch-label" for="showPublicly">Publish</label>
+                            @if ($serviceCategoriesCount < 6)
+                                <div class="row">
+                                    <div class="col-xxl-12 mb-4">
+                                        <div class="switch form-switch-custom switch-inline form-switch-primary">
+                                            <input class="switch-input" type="checkbox" role="switch" id="showPublicly" checked="" name="service_category_status">
+                                            <label class="switch-label" for="showPublicly">Publish</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
-                                    <button type="submit" class="btn btn-success w-100">Create Service Category</button>
-                                </div>
+                                    <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
+                                        <button type="submit" class="btn btn-success w-100">Create Service Category</button>
+                                    </div>
 
-                            </div>
+                                </div>
+                            @else
+                                <small style="color: red;">You can upload only 6 Service Categories. Now You can't upload services</small>
+                            @endif
                         </div>
                     </div>
 

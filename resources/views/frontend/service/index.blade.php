@@ -39,8 +39,15 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="cs-hobble">
                             <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
-                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
-
+                                @php
+                                    $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
+                                    $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                @endphp
+                                @if ($service->service_category_thumbnail && $folderExists)
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @else
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
                                 <span class=" cs-hover_layer3 cs-accent_bg"></span>
@@ -61,8 +68,15 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="cs-hobble">
                             <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
-                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
-
+                                @php
+                                    $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
+                                    $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                @endphp
+                                @if ($service->service_category_thumbnail && $folderExists)
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @else
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
                                 <span class=" cs-hover_layer3 cs-accent_bg"></span>
@@ -83,8 +97,15 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="cs-hobble">
                             <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
-                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
-
+                                @php
+                                    $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
+                                    $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                @endphp
+                                @if ($service->service_category_thumbnail && $folderExists)
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @else
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
                                 <span class=" cs-hover_layer3 cs-accent_bg"></span>
@@ -106,8 +127,15 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="cs-hobble">
                             <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
-                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
-
+                                @php
+                                    $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
+                                    $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                @endphp
+                                @if ($service->service_category_thumbnail && $folderExists)
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @else
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
                                 <span class=" cs-hover_layer3 cs-accent_bg"></span>
@@ -128,8 +156,15 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="cs-hobble">
                             <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
-                                <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
-
+                                @php
+                                    $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
+                                    $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                @endphp
+                                @if ($service->service_category_thumbnail && $folderExists)
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @else
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
                                 <span class=" cs-hover_layer3 cs-accent_bg"></span>

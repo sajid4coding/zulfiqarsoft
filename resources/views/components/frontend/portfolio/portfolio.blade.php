@@ -12,10 +12,10 @@
             <!-- .cs-slide -->
             @foreach ($portfolios as $portfolio)
                 <div class="cs-slide">
-                    <a href="{{ route('portfolio.details',$portfolio->id) }}" class="cs-portfolio cs-style1 cs-bg">
+                    <a href="{{ route('portfolio.details', ['id' => $portfolio->id, 'slug' => $portfolio->portfolio_title_slug]) }}" class="cs-portfolio cs-style1 cs-bg">
                     <div class="cs-portfolio_hover"></div>
                     {{-- <div class="cs-portfolio_bg" data-src="{{ asset('frontend_assets') }}/img/portfolio_1.jpeg"></div> --}}
-                    <img class="cs-portfolio_bg" src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('storage') }}/portfolio_thumbnail/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="">
+                    <img class="cs-portfolio_bg" src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="">
                     <div class="cs-portfolio_info">
                         <div class="cs-portfolio_info_bg cs-accent_bg"></div>
                         <h2 class="cs-portfolio_title">{{ $portfolio->portfolio_title }}</h2>

@@ -50,9 +50,11 @@
 
                 <div class="widget-content widget-content-area br-8">
                     <table id="blog-list" class="table dt-table-hover" style="width:100%">
-                        <div class="d-flex justify-content-center">
-                            <a href="{{ route('serviceCategory.create') }}" class="btn btn-success text-center my-3">Create Category</a>
-                        </div>
+                        @if ($serviceCategoriesCount < 6)
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ route('serviceCategory.create') }}" class="btn btn-success text-center my-3">Create Category</a>
+                            </div>
+                        @endif
                         <thead>
                             <tr>
                                 <th class="checkbox-column text-center"></th>
@@ -71,10 +73,14 @@
                                 <tr>
                                     <td class="checkbox-column text-center">{{ $SL++ }}</td>
                                     <td>
-                                        @if ($category->service_category_thumbnail)
-                                            <span><img width="40%" src="{{ asset('storage/service_category_thumbnail') }}/{{ $category->service_category_thumbnail }}" alt="{{ $category->service_category_title }}"></span>
+                                        @php
+                                            $filePath = 'service_category_thumbnail/' . $category->service_category_thumbnail;
+                                            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                        @endphp
+                                        @if ($category->service_category_thumbnail && $folderExists)
+                                            <span><img width="40%" src="{{ asset('storage/service_category_thumbnail/'.$category->service_category_thumbnail) }}" alt="{{ $category->service_category_title }}"></span>
                                         @else
-                                            <span><img width="40%" src="{{ Avatar::create($category->service_category_title)->toBase64() }}" class="profile-img" alt="avatar" /></span>
+                                            <span><img width="40%" src="{{ asset('preImage/service_category_thumbnail/'.$category->service_category_thumbnail) }}" alt="{{ $category->service_category_title }}"></span>
                                         @endif
                                     </td>
                                     <td>
