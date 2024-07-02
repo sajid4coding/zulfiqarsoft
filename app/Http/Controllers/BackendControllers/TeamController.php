@@ -18,7 +18,7 @@ class TeamController extends Controller
     public function index()
     {
         return view('backend.team.index', [
-            'members' => Team::all()
+            'members' => Team::where('member_status', 'visible')->get()
         ]);
     }
 

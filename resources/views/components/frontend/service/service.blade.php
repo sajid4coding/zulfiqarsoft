@@ -26,7 +26,7 @@
                         @if ($service)
                             <div class="col-lg-3 col-sm-6">
                                 <div class="cs-hobble">
-                                <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <a href="{{ route('service.details', ['id' => $service->id, 'slug' => $service->service_category_slug]) }}" class="cs-card cs-style1 cs-hover_layer1">
                                     @php
                                          $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
                                          $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
@@ -55,7 +55,7 @@
                         @if ($service)
                             <div class="col-lg-3 col-sm-6">
                                 <div class="cs-hobble">
-                                <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <a href="{{ route('service.details', ['id' => $service->id, 'slug' => $service->service_category_slug]) }}" class="cs-card cs-style1 cs-hover_layer1">
                                     @php
                                          $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
                                          $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
@@ -85,7 +85,7 @@
                         @if ($service)
                             <div class="col-lg-3 col-sm-6">
                                 <div class="cs-hobble">
-                                <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <a href="{{ route('service.details', ['id' => $service->id, 'slug' => $service->service_category_slug]) }}" class="cs-card cs-style1 cs-hover_layer1">
                                     @php
                                          $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
                                          $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
@@ -116,7 +116,7 @@
                         @if ($service)
                             <div class="col-lg-3 col-sm-6">
                                 <div class="cs-hobble">
-                                <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <a href="{{ route('service.details', ['id' => $service->id, 'slug' => $service->service_category_slug]) }}" class="cs-card cs-style1 cs-hover_layer1">
                                     <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
 
                                     <div class="cs-card_overlay"></div>
@@ -138,7 +138,7 @@
                         @if ($service)
                             <div class="col-lg-3 col-sm-6">
                                 <div class="cs-hobble">
-                                <a href="{{ route('service.details', $service->id) }}" class="cs-card cs-style1 cs-hover_layer1">
+                                <a href="{{ route('service.details', ['id' => $service->id, 'slug' => $service->service_category_slug]) }}" class="cs-card cs-style1 cs-hover_layer1">
                                     <img src="@if ($service->service_category_thumbnail) {{ asset('storage') }}/service_category_thumbnail/{{ $service->service_category_thumbnail }} @else {{ asset('storage') }}/service_category_thumbnail/nullImage.jpg @endif" alt="Service" width="500px" height="500px">
 
                                     <div class="cs-card_overlay"></div>

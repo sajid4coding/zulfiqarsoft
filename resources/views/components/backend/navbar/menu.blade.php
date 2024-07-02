@@ -15,7 +15,15 @@
                 <div class="nav-item theme-logo">
                     <a href="{{ route('dashboard.analytics') }}">
                         {{-- <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" class="navbar-logo" alt="logo"> --}}
-                        <img src="{{ asset('storage/general_images/favicon') }}/{{ favicon() }}" alt="logo">
+                        @php
+                            $filePath = 'favicon/' . favicon();
+                            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                        @endphp
+                        @if (favicon() && $folderExists)
+                            <img src="{{ asset('storage/general_images/favicon') }}/{{ favicon() }}" alt="logo">
+                        @else
+                            <img src="{{ asset('preImage/favicon/'.favicon()) }}" alt="logo">
+                        @endif
                     </a>
                 </div>
                 <div class="nav-item theme-text">
@@ -101,15 +109,6 @@
                 </a>
             </li>
 
-            <li class="menu">
-                <a href="./app-mailbox.html" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <span>Mailbox</span>
-                    </div>
-                </a>
-            </li>
-
             <li class="menu {{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' || $lastTwoWords == 'dashboard/our-funfact' ? 'active' : '' }}">
                 <a href="#about" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' || $lastTwoWords == 'dashboard/our-funfact' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
@@ -145,65 +144,18 @@
             <li class="menu {{ $current_page == 'contact' ? 'active' : '' }}">
                 <a href="{{ route('contact.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         <span>Contacts</span>
                     </div>
                 </a>
             </li>
-
             <li class="menu">
-                <a href="#invoice" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#!" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                        <span>Invoice</span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <span>Subscription</span>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="invoice" data-bs-parent="#accordionExample">
-                    <li>
-                        <a href="./app-invoice-list.html"> List </a>
-                    </li>
-                    <li>
-                        <a href="./app-invoice-preview.html"> Preview </a>
-                    </li>
-                    <li>
-                        <a href="./app-invoice-add.html"> Add </a>
-                    </li>
-                    <li>
-                        <a href="./app-invoice-edit.html"> Edit </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="menu">
-                <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                        <span>Ecommerce</span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </div>
-                </a>
-                <ul class="collapse submenu list-unstyled" id="ecommerce" data-bs-parent="#accordionExample">
-                    <li>
-                        <a href="./app-ecommerce-product-shop.html"> Shop </a>
-                    </li>
-                    <li>
-                        <a href="./app-ecommerce-product.html"> Product </a>
-                    </li>
-                    <li>
-                        <a href="./app-ecommerce-product-list.html"> List </a>
-                    </li>
-                    <li>
-                        <a href="./app-ecommerce-product-add.html"> Create </a>
-                    </li>
-                    <li>
-                        <a href="./app-ecommerce-product-edit.html"> Edit </a>
-                    </li>
-                </ul>
             </li>
 
             <li class="menu {{ $lastthreeWords == 'dashboard/serviceCategory/create' || $lastTwoWords == 'dashboard/serviceCategory' ? 'active' : '' }}">

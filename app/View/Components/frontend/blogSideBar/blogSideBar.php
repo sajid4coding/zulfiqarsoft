@@ -25,7 +25,7 @@ class blogSideBar extends Component
         return view('components.frontend.blog-side-bar.blog-side-bar', [
             'whychooseus' => Whychooseus::find(1),
             'blogs' => Blog::where('blogStatus', 'on')->latest()->get(),
-            'serviceCategories' => ServiceCategory::all(),
+            'serviceCategories' => ServiceCategory::where('service_category_status', 'on')->get(),
             'recentBlogs' => Blog::where('blogStatus', 'on')->latest()->get()
             // 'selectCategoryName' => ServiceCategory::find(Blog::find(1)->serviceCategory),
         ]);

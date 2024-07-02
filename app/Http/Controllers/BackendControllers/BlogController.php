@@ -8,6 +8,7 @@ use App\Models\{Blog, BlogComment, ServiceCategory};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -38,6 +39,7 @@ class BlogController extends Controller
     {
         $blog_id = Blog::insertGetId([
             'blogTitle' => $request->blogTitle,
+            'blogTitleSlug' => Str::of($request->blogTitle)->slug('-'),
             'blogDescription' => $request->blogDescription,
             'blogMetaTitle' => $request->blogMetaTitle,
             'blogMetaDescription' => $request->blogMetaDescription,
@@ -89,6 +91,7 @@ class BlogController extends Controller
     {
         Blog::find($blog->id)->update([
             'blogTitle' => $request->blogTitle,
+            'blogTitleSlug' => Str::of($request->blogTitle)->slug('-'),
             'blogDescription' => $request->blogDescription,
             'blogMetaTitle' => $request->blogMetaTitle,
             'blogMetaDescription' => $request->blogMetaDescription,

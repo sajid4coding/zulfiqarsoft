@@ -28,7 +28,7 @@
             <div class="cs-post_info">
                 <div class="cs-post_meta cs-style1 cs-ternary_color cs-semi_bold cs-primary_font">
                 <span class="cs-posted_by">{{ \Carbon\Carbon::parse($blog->created_at)->format('d M Y')}}</span>
-                <a href="{{ route('blog.category', $blog->serviceCategory) }}" class="cs-post_avatar">{{ $blog->relationshipwithServiceCategory->service_category_title }}</a>
+                <a href="{{ route('blog.category', ['id' => $blog->serviceCategory, 'slug' => $blog->relationshipwithServiceCategory->service_category_slug]) }}" class="cs-post_avatar">{{ $blog->relationshipwithServiceCategory->service_category_title }}</a>
                 </div>
                 <h2 class="cs-post_title">{{ $blog->blogTitle }}</h2>
                 <p><?=$blog->blogDescription?></p>

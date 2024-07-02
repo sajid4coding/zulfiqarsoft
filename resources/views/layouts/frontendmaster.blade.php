@@ -10,7 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Laralink" />
     <!-- Favicon Icon -->
-    <link rel="icon" href="{{ asset('storage/general_images/favicon') }}/{{ favicon() }}" />
+    @php
+        $filePath = 'favicon/' . favicon();
+        $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+    @endphp
+    @if (favicon() && $folderExists)
+        <link rel="icon" href="{{ asset('storage/general_images/favicon') }}/{{ favicon() }}" />
+    @else
+        <link rel="icon" href="{{ asset('preImage/favicon/'.favicon()) }}" />
+    @endif
     <!-- Site Title -->
     <title> {{ website_title() }} </title>
 
@@ -37,8 +45,16 @@
     <div class="cs-side_header_overlay"></div>
     <div class="cs-side_header_in">
         <div class="cs-side_header_shape"></div>
-        <a class="cs-site_branding" href="index.html">
-            <img src="{{ asset('storage') }}/general_images/{{ App\Models\GeneralSettings::find(1)->logo }}" alt="Logo" />
+        <a class="cs-site_branding" href="{{route('index')}}">
+            @php
+                $filePath = 'logo/' . logo();
+                $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+            @endphp
+            @if (logo() && $folderExists)
+                <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:80px;" />
+            @else
+                <img src="{{ asset('preImage/logo/'.logo()) }}" alt="{{ logo() }}" style="max-height:80px;">
+            @endif
         </a>
         <div class="cs-side_header_box">
         <h2 class="cs-side_header_heading"> Do you have a project in your <br /> mind? Keep connect us. </h2>
@@ -135,7 +151,17 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="cs-footer_item">
                 <div class="cs-text_widget">
-                    <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:100px;" />
+                    <a class="cs-site_branding mb-3" href="{{route('index')}}">
+                        @php
+                            $filePath = 'logo/' . logo();
+                            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                        @endphp
+                        @if (logo() && $folderExists)
+                            <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:80px;" />
+                        @else
+                            <img src="{{ asset('preImage/logo/'.logo()) }}" alt="{{ logo() }}" style="max-height:80px;">
+                        @endif
+                    </a>
                     <p> Welcome to arino sed ut perspiciae omunde omnis iste natus error sitort voluptatem accusantium. </p>
                 </div>
                 @if (App\Models\SocialMedia::find(1)->status == 'visible')
@@ -147,7 +173,7 @@
                         @endif
 
                         @if (App\Models\SocialMedia::find(1)->linkedin)
-                            <a href="https://www.linkedin.com/in/{{ App\Models\SocialMedia::find(1)->linkedin }}" class="cs-center">
+                            <a href="https://www.linkedin.com/company/{{ App\Models\SocialMedia::find(1)->linkedin }}" class="cs-center">
                             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.04799 13.7497H1.45647V5.4043H4.04799V13.7497ZM2.75084 4.2659C1.92215 4.2659 1.25 3.57952 1.25 2.75084C1.25 2.35279 1.40812 1.97105 1.68958 1.68958C1.97105 1.40812 2.35279 1.25 2.75084 1.25C3.14888 1.25 3.53063 1.40812 3.81209 1.68958C4.09355 1.97105 4.25167 2.35279 4.25167 2.75084C4.25167 3.57952 3.57924 4.2659 2.75084 4.2659ZM13.7472 13.7497H11.1613V9.68722C11.1613 8.71903 11.1417 7.4774 9.81389 7.4774C8.46652 7.4774 8.26004 8.5293 8.26004 9.61747V13.7497H5.67132V5.4043H8.15681V6.54269H8.19308C8.53906 5.887 9.38421 5.19503 10.6451 5.19503C13.2679 5.19503 13.75 6.92215 13.75 9.16546V13.7497H13.7472Z" fill="white" />
                             </svg>

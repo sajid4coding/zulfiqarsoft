@@ -39,7 +39,7 @@
       <div class="cs-grid_sizer"></div>
       @foreach ($portfolios as $portfolio)
         <div class="cs-isotop_item {{ $portfolio->relationshipwithServiceCategory->service_category_title=='UI/UX' ? str_replace('/', '_', $portfolio->relationshipwithServiceCategory->service_category_title) : str_replace(' ', '_', $portfolio->relationshipwithServiceCategory->service_category_title)}}">
-            <a href="{{ route('portfolio.details',$portfolio->id) }}" class="cs-portfolio cs-style1 cs-type1">
+            <a href="{{ route('portfolio.details', ['id' => $portfolio->id, 'slug' => $portfolio->portfolio_title_slug]) }}" class="cs-portfolio cs-style1 cs-type1">
               <div class="cs-portfolio_hover"></div>
               <img class="cs-portfolio_bg cs-bg" src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="">
               <div class="cs-portfolio_info">
@@ -50,73 +50,6 @@
             </a>
           </div>
       @endforeach
-      {{-- <!-- .cs-isotop_item -->
-      <div class="cs-isotop_item logo_design">
-        <a href="portfolio-details.html" class="cs-portfolio cs-style1 cs-type1">
-          <div class="cs-portfolio_hover"></div>
-          <div class="cs-portfolio_bg cs-bg" data-src="{{ asset('frontend_assets') }}/img/portfolio_5.jpeg"></div>
-          <div class="cs-portfolio_info">
-            <div class="cs-portfolio_info_bg cs-accent_bg"></div>
-            <h2 class="cs-portfolio_title">Colorful Art Work</h2>
-            <div class="cs-portfolio_subtitle">See Details</div>
-          </div>
-        </a>
-      </div><!-- .cs-isotop_item -->
-      <div class="cs-isotop_item web_design">
-        <a href="portfolio-details.html" class="cs-portfolio cs-style1 cs-type1">
-          <div class="cs-portfolio_hover"></div>
-          <div class="cs-portfolio_bg cs-bg" data-src="{{ asset('frontend_assets') }}/img/portfolio_6.jpeg"></div>
-          <div class="cs-portfolio_info">
-            <div class="cs-portfolio_info_bg cs-accent_bg"></div>
-            <h2 class="cs-portfolio_title">Colorful Art Work</h2>
-            <div class="cs-portfolio_subtitle">See Details</div>
-          </div>
-        </a>
-      </div><!-- .cs-isotop_item -->
-      <div class="cs-isotop_item cs-w66 mobile_apps">
-        <a href="portfolio-details.html" class="cs-portfolio cs-style1 cs-type1">
-          <div class="cs-portfolio_hover"></div>
-          <div class="cs-portfolio_bg cs-bg" data-src="{{ asset('frontend_assets') }}/img/portfolio_7.jpeg"></div>
-          <div class="cs-portfolio_info">
-            <div class="cs-portfolio_info_bg cs-accent_bg"></div>
-            <h2 class="cs-portfolio_title">Colorful Art Work</h2>
-            <div class="cs-portfolio_subtitle">See Details</div>
-          </div>
-        </a>
-      </div><!-- .cs-isotop_item -->
-      <div class="cs-isotop_item ui_ux_design">
-        <a href="portfolio-details.html" class="cs-portfolio cs-style1 cs-type1">
-          <div class="cs-portfolio_hover"></div>
-          <div class="cs-portfolio_bg cs-bg" data-src="{{ asset('frontend_assets') }}/img/portfolio_8.jpeg"></div>
-          <div class="cs-portfolio_info">
-            <div class="cs-portfolio_info_bg cs-accent_bg"></div>
-            <h2 class="cs-portfolio_title">Colorful Art Work</h2>
-            <div class="cs-portfolio_subtitle">See Details</div>
-          </div>
-        </a>
-      </div><!-- .cs-isotop_item -->
-      <div class="cs-isotop_item web_design">
-        <a href="portfolio-details.html" class="cs-portfolio cs-style1 cs-type1">
-          <div class="cs-portfolio_hover"></div>
-          <div class="cs-portfolio_bg cs-bg" data-src="{{ asset('frontend_assets') }}/img/portfolio_9.jpeg"></div>
-          <div class="cs-portfolio_info">
-            <div class="cs-portfolio_info_bg cs-accent_bg"></div>
-            <h2 class="cs-portfolio_title">Colorful Art Work</h2>
-            <div class="cs-portfolio_subtitle">See Details</div>
-          </div>
-        </a>
-      </div><!-- .cs-isotop_item -->
-      <div class="cs-isotop_item cs-w66 logo_design">
-        <a href="portfolio-details.html" class="cs-portfolio cs-style1 cs-type1">
-          <div class="cs-portfolio_hover"></div>
-          <div class="cs-portfolio_bg cs-bg" data-src="{{ asset('frontend_assets') }}/img/portfolio_10.jpeg"></div>
-          <div class="cs-portfolio_info">
-            <div class="cs-portfolio_info_bg cs-accent_bg"></div>
-            <h2 class="cs-portfolio_title">Colorful Art Work</h2>
-            <div class="cs-portfolio_subtitle">See Details</div>
-          </div>
-        </a>
-      </div><!-- .cs-isotop_item --> --}}
     </div>
     <div class="cs-height_90 cs-height_lg_40"></div>
     {{-- <div class="text-center">

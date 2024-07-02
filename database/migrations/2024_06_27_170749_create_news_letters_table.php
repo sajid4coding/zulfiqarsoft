@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('news_letters', function (Blueprint $table) {
             $table->id();
-            $table->string('newsletterEmail');
+            $table->string('newsletterEmail')->unique();
             $table->timestamps();
         });
     }

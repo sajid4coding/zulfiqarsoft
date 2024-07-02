@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('phone_status')->default('visible');
             $table->mediumText('address')->nullable();
             $table->string('address_status')->default('visible');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('subcription_status')->default('visible');
+            // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

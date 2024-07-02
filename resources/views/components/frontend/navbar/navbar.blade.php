@@ -12,7 +12,15 @@
 
             <div class="cs-main_header_left">
             <a class="cs-site_branding" href="{{ route('index') }}">
-                <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:100px;" />
+                @php
+                    $filePath = 'logo/' . logo();
+                    $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                @endphp
+                @if (logo() && $folderExists)
+                    <img src="{{ asset('storage/general_images/logo') }}/{{ logo() }}" alt="Logo" style="max-height:80px;" />
+                @else
+                    <img src="{{ asset('preImage/logo/'.logo()) }}" alt="{{ logo() }}" style="max-height:80px;">
+                @endif
             </a>
             </div>
             <div class="cs-main_header_center">
@@ -33,7 +41,7 @@
                         </li>
                     @else
                         <li>
-                            <a href="{{ route('team') }}" style="{{ $current_page == 'team' ? 'color: #FF4A17' : ''}}"> Team </a>
+                            <a href="{{ route('contact') }}" style="{{ $current_page == 'contact' ? 'color: #FF4A17' : ''}}"> Contact </a>
                         </li>
                     @endif
                     @if ($blog_exists)
@@ -42,7 +50,7 @@
                         </li>
                     @else
                         <li>
-                            <a href="{{ route('contact') }}" style="{{ $current_page == 'contact' ? 'color: #FF4A17' : ''}}"> Contact </a>
+                            <a href="{{ route('team') }}" style="{{ $current_page == 'team' ? 'color: #FF4A17' : ''}}"> Team </a>
                         </li>
                     @endif
                     @if ($portfolio_exists || $blog_exists)

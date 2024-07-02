@@ -142,6 +142,21 @@ class ProfileController extends Controller
         return back();
     }
 
+    public function change_subcription_status(Request $request){
+        if ($request->has('subcription_status')) {
+            User::find(1)->update([
+                'subcription_status' => 'visible',
+                'updated_at' => now(),
+            ]);
+        } else {
+            User::find(1)->update([
+                'subcription_status' => 'invisible',
+                'updated_at' => now(),
+            ]);
+        }
+        return back();
+    }
+
     public function change_social_status(Request $request){
         if ($request->has('social_status')) {
             SocialMedia::find(1)->update([

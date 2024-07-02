@@ -5,7 +5,7 @@ namespace App\Http\Controllers\FrontendControllers;
 use App\Http\Controllers\Controller;
 
 use App\Mail\ContactMail;
-use App\Models\{About, Blog, BlogComment, CompanyLogo, SocialMedia, Testimonial, Contact, GeneralSettings, IncludeService, NewsLetter, Pages, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, User, Whychooseus};
+use App\Models\{About, Blog, BlogComment, CompanyLogo, SocialMedia, Testimonial, Contact, IncludeService, NewsLetter, Pages, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, User, Whychooseus};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,22 +29,30 @@ class FrontendController extends Controller
     }
 
     public function service(){
-        return view('frontend.service.index');
+        return view('frontend.service.index', [
+            'pricingPlanExists' => User::find(1)->subcription_status
+        ]);
     }
 
-    public function service_details($id){
+    public function service_details($id, $slug){
         return view('frontend.service.serviceDetails', [
             'includeservices' => IncludeService::where('serviceID', $id)->get(),
+            'includeservicesExists' => IncludeService::where('serviceID', $id)->exists(),
             'serviceFAQs' => ServiceFAQ::where('serviceID', $id)->get(),
+            'serviceFAQsExists' => ServiceFAQ::where('serviceID', $id)->exists(),
             'service' => Service::where('serviceCategory', $id)->get(),
-            'serviceCategory' => ServiceCategory::find($id),
+            'serviceCategory' => ServiceCategory::where([
+                'id' => $id,
+                'service_category_slug' => $slug,
+            ])->first(),
             'serviceSteps' => ServiceSteps::where('serviceID', $id)->get(),
+            'serviceStepsExists' => ServiceSteps::where('serviceID', $id)->exists(),
         ]);
     }
 
     public function portfolio(){
         return view('frontend.portfolio.index', [
-            'serviceCategories' => ServiceCategory::all(),
+            'serviceCategories' => ServiceCategory::where('service_category_status', 'on')->get(),
             'portfolios' => Portfolio::where('portfolio_status', 'on')->get()
         ]);
     }
@@ -77,9 +85,12 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function blog_details($id){
+    public function blog_details($id, $slug){
         return view('frontend.blog.details', [
-            'blog' => Blog::find($id),
+            'blog' => Blog::where([
+                'id' => $id,
+                'blogTitleSlug' => $slug
+            ])->first(),
             'comments' => BlogComment::where('blogID', $id)->get(),
             'comment_exists' => BlogComment::exists()
         ]);
@@ -87,7 +98,9 @@ class FrontendController extends Controller
 
     public function blog_category($id){
         return view('frontend.blog.categoryBlog', [
-            'blogs' => Blog::where('serviceCategory', $id)->get()
+            'blogs' => Blog::where('serviceCategory', $id)->get(),
+            'blogExists' => Blog::where('serviceCategory', $id)->exists(),
+            'selectCategoryName' => ServiceCategory::find($id)
         ]);
     }
 

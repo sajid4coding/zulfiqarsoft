@@ -24,14 +24,14 @@
                 @foreach ($blogs as $blog)
                     <div class="cs-slide">
                         <div class="cs-post cs-style1">
-                            <a href="{{ route('blog.details',$blog->id) }}" class="cs-post_thumb">
+                            <a href="{{ route('blog.details', ['id' => $blog->id, 'slug' => $blog->blogTitleSlug]) }}" class="cs-post_thumb">
                             <img src="@if ($blog->blogThumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/blog_thumbnail/{{ $blog->blogThumbnail }} @endif" alt="Post" />
                             <div class="cs-post_overlay"></div>
                             </a>
                             <div class="cs-post_info">
                             <div class="cs-posted_by">{{ $blog->created_at->format('d M Y') }}</div>
                             <h2 class="cs-post_title">
-                                <a href="{{ route('blog.details',$blog->id) }}">{{ $blog->blogTitle }}</a>
+                                <a href="{{ route('blog.details',['id' => $blog->id, 'slug' => $blog->blogTitleSlug]) }}">{{ $blog->blogTitle }}</a>
                             </h2>
                             </div>
                         </div>
