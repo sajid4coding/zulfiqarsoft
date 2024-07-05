@@ -110,9 +110,9 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function team_detail($id){
+    public function team_detail($slug){
         return view('frontend.team.details', [
-            'member' => Team::find($id)
+            'member' => Team::where('name_slug', $slug)->first()
         ]);
     }
 

@@ -18,11 +18,11 @@ class UserSeeding extends Seeder
             'name' => "Sajid",
             'email' => 'thezulfiqarsoft@gmail.com',
             'email_status' => 'visible',
-            'phone' => '+880 1918968819',
+            'phone' => '+880 1605031695',
             'phone_status' => 'visible',
             'address' => 'Dhaka, Bangladesh',
             'address_status' => 'visible',
-            'subcription_status' => 'visible',
+            'subcription_status' => 'invisible',
             'password' => hash::make('12345678'),
             'created_at' => now()
         ]);

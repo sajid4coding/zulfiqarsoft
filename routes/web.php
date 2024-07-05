@@ -30,7 +30,7 @@ Route::get('blog-details/{id}/{slug}', [FrontendController::class, 'blog_details
 Route::get('blog-category/{id}/{slug}', [FrontendController::class, 'blog_category'])->name('blog.category');
 Route::post('blog-comment-post/{id}', [FrontendController::class, 'blog_comment'])->name('blog.comment');
 Route::get('team', [FrontendController::class, 'team'])->name('team');
-Route::get('member-details/{id}', [FrontendController::class, 'team_detail'])->name('team.detail');
+Route::get('member-details/{slug}', [FrontendController::class, 'team_detail'])->name('team.detail');
 Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 Route::post('contact-post', [FrontendController::class, 'contact_post'])->name('contact.post');
 Route::get('newsletter-post', [FrontendController::class, 'newsletter_post'])->name('newsletter.post');

@@ -67,10 +67,19 @@
                                 <tr>
                                     <td class="checkbox-column text-center"> {{ $SL++ }} </td>
                                     <td class="text-center">
-                                        @if ($member->member_image)
+                                        {{-- @if ($member->member_image)
                                             <span><img src="{{ asset('storage/member_images/') }}/{{ $member->member_image }}" class="profile-img" alt="avatar"></span>
                                         @else
                                             <span><img src="{{ Avatar::create($member->name)->toBase64() }}" class="profile-img" alt="avatar" /></span>
+                                        @endif --}}
+                                        @php
+                                            $filePath = 'member_images/' . $member->member_image;
+                                            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                        @endphp
+                                        @if ($member->member_image && $folderExists)
+                                            <span><img class="profile-img" src="{{ asset('storage/member_images/'.$member->member_image) }}" alt="{{ $member->member_image }}"></span>
+                                        @else
+                                            <span><img class="profile-img" src="{{ asset('preImage/member_images/'.$member->member_image) }}" alt="{{ $member->member_image }}"></span>
                                         @endif
                                     </td>
                                     <td>

@@ -26,12 +26,20 @@
                 <div class="cs-slide">
                     <div class="cs-team cs-style1">
                         <div class="cs-member_thumb">
-                        <img src="{{ asset('storage/member_images') }}/{{ $team->member_image }}" alt="Member" />
+                        @php
+                            $filePath = 'member_images/' . $team->member_image;
+                            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                        @endphp
+                        @if ($team->member_image && $folderExists)
+                            <img src="{{ asset('storage/member_images/'.$team->member_image) }}" alt="{{ $team->member_image }}">
+                        @else
+                            <img src="{{ asset('preImage/member_images/'.$team->member_image) }}" alt="{{ $team->member_image }}">
+                        @endif
                         <div class="cs-member_overlay"></div>
                         </div>
                         <div class="cs-member_info">
                         <h2 class="cs-member_name">
-                            <a href="{{ route('team.detail', $team->id) }}">{{ $team->name }}</a>
+                            <a href="{{ route('team.detail', $team->name_slug) }}">{{ $team->name }}</a>
                         </h2>
                         <div class="cs-member_designation">{{ $team->position }}</div>
                         </div>

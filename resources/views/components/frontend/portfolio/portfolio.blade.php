@@ -15,7 +15,15 @@
                     <a href="{{ route('portfolio.details', ['id' => $portfolio->id, 'slug' => $portfolio->portfolio_title_slug]) }}" class="cs-portfolio cs-style1 cs-bg">
                     <div class="cs-portfolio_hover"></div>
                     {{-- <div class="cs-portfolio_bg" data-src="{{ asset('frontend_assets') }}/img/portfolio_1.jpeg"></div> --}}
-                    <img class="cs-portfolio_bg" src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="">
+                    @php
+                        $filePath = 'portfolio_thumbnail/' . $portfolio->portfolio_thumbnail;
+                        $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                    @endphp
+                    @if ($portfolio->portfolio_thumbnail && $folderExists)
+                        <img class="cs-portfolio_bg cs-bg" src="{{ asset('storage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+                    @else
+                        <img class="cs-portfolio_bg cs-bg" src="{{ asset('preImage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+                    @endif
                     <div class="cs-portfolio_info">
                         <div class="cs-portfolio_info_bg cs-accent_bg"></div>
                         <h2 class="cs-portfolio_title">{{ $portfolio->portfolio_title }}</h2>

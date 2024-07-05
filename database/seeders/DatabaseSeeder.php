@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             GeneralSettingsSeeder::class,
             ServiceCategoriesSeeding::class,
             PagesSeeder::class,
+            PortfolioSeeder::class,
         ]);
     }
 }

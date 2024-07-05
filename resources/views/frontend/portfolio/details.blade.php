@@ -17,7 +17,15 @@
   <div class="cs-height_150 cs-height_lg_80"></div>
   <div class="container">
     <div class="cs-portfolio_details">
-      <img src="@if ($portfolio->portfolio_thumbnail == NULL) {{ asset('nullImage') }}/nullImage.jpg @else {{ asset('storage') }}/portfolio_thumbnail/{{ $portfolio->portfolio_thumbnail }} @endif" alt="Image" class="cs-radius_15 w-100">
+        @php
+            $filePath = 'portfolio_thumbnail/' . $portfolio->portfolio_thumbnail;
+            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+        @endphp
+        @if ($portfolio->portfolio_thumbnail && $folderExists)
+            <img class="cs-radius_15 w-100" src="{{ asset('storage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+        @else
+            <img class="cs-radius_15 w-100" src="{{ asset('preImage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+        @endif
       <div class="cs-height_90 cs-height_lg_40"></div>
       <div class="row">
         <div class="col-lg-6">
@@ -38,11 +46,11 @@
               <p class="cs-m0">{{ $portfolio->relationshipwithServiceCategory->service_category_title }}</p>
               <div class="cs-height_30 cs-height_lg_30"></div>
             </div>
-            <div class="col-6">
+            {{-- <div class="col-6">
               <h3 class="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Location:</h3>
               <p class="cs-m0">United Kindom</p>
               <div class="cs-height_30 cs-height_lg_30"></div>
-            </div>
+            </div> --}}
             <div class="col-6">
               <h3 class="cs-accent_color cs-font_22 cs-font_18_sm cs-m0">Project Start:</h3>
               <p class="cs-m0">{{ $portfolio->project_start_from }}</p>

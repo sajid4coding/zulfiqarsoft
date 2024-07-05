@@ -42,6 +42,7 @@ class TeamController extends Controller
 
         $testimonial_id = Team::insertGetId([
             'name' => $request->name,
+            'name_slug' => Str::of($request->name)->slug('-'),
             'position' => $request->position,
             'bio' => $request->bio,
             'facebook' => $request->facebook,
@@ -94,6 +95,7 @@ class TeamController extends Controller
 
         Team::find($team->id)->update([
             'name' => $request->name,
+            'name_slug' => Str::of($request->name)->slug('-'),
             'position' => $request->position,
             'bio' => $request->bio,
             'facebook' => $request->facebook,

@@ -20,7 +20,16 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-xl-5 col-lg-6">
-          <img src="{{ asset('storage/member_images') }}/{{ $member->member_image }}" alt="Member" class="cs-radius_15 w-100">
+            @php
+                $filePath = 'member_images/' . $member->member_image;
+                $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+            @endphp
+            @if ($member->member_image && $folderExists)
+                <img src="{{ asset('storage/member_images/'.$member->member_image) }}" alt="{{ $member->member_image }}">
+            @else
+                <img src="{{ asset('preImage/member_images/'.$member->member_image) }}" alt="{{ $member->member_image }}">
+            @endif
+          {{-- <img src="{{ asset('storage/member_images') }}/{{ $member->member_image }}" alt="Member" class="cs-radius_15 w-100"> --}}
         </div>
         <div class="col-lg-6 offset-xl-1">
           <div class="cs-height_0 cs-height_lg_45"></div>

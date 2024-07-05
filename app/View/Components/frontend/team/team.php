@@ -23,7 +23,7 @@ class team extends Component
     public function render(): View|Closure|string
     {
         return view('components.frontend.team.team', [
-            'teams' => ModelsTeam::all()
+            'teams' => ModelsTeam::where('member_status', 'visible')->get()
         ]);
     }
 }
