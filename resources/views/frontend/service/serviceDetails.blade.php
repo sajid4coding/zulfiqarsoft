@@ -94,43 +94,31 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="cs-list cs-style1 cs-mp0">
-                                {{-- @foreach ($includeservices as $includeservice) --}}
-                                    @for ($i = 1; $i <= 6; $i++)
-                                        @php
-                                            $includeservice = App\models\IncludeService::find($i)
-                                        @endphp
-                                        @if ($includeservice)
-                                            <li>
-                                                <a href="#!" class="cs-text_btn cs-type2">
-                                                    <svg width="26" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="#FF4A17"/>
-                                                    </svg>
-                                                    <span>{{ $includeservice->includeserviceName }}</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endfor
-                                {{-- @endforeach --}}
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                        <div class="cs-height_0 cs-height_lg_10"></div>
-                        <ul class="cs-list cs-style1 cs-mp0">
-                            @for ($i = 7; $i <= 12; $i++)
-                                @php
-                                    $includeservice = App\models\IncludeService::find($i)
-                                @endphp
-                                @if ($includeservice)
+                                @foreach ($includeservices->slice(0, 6) as $includeservice)
                                     <li>
                                         <a href="#!" class="cs-text_btn cs-type2">
                                             <svg width="26" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="#FF4A17"/>
                                             </svg>
-                                            <span>{{$includeservice->includeserviceName}}</span>
+                                            <span>{{ $includeservice->includeserviceName }}</span>
                                         </a>
                                     </li>
-                                @endif
-                            @endfor
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                        <div class="cs-height_0 cs-height_lg_10"></div>
+                        <ul class="cs-list cs-style1 cs-mp0">
+                            @foreach ($includeservices->slice(6, 12) as $includeservice)
+                                <li>
+                                    <a href="#!" class="cs-text_btn cs-type2">
+                                        <svg width="26" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="#FF4A17"/>
+                                        </svg>
+                                        <span>{{ $includeservice->includeserviceName }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                         </div>
                     </div>

@@ -73,7 +73,7 @@
                                     <td>
                                         <div class="d-flex justify-content-left align-items-center">
                                             <div class="d-flex flex-column">
-                                                <a href="{{ route('service.edit', $service->id) }}" class="text-truncate fw-bold">{{$SL++}}</a>
+                                                <a href="{{ route('service.edit', $service->id) }}" class="text-truncate fw-bold">{{$service->id}}</a>
                                             </div>
                                         </div>
                                     </td>
