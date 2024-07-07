@@ -186,9 +186,7 @@
   <div class="cs-height_150 cs-height_lg_50"></div>
 
   <!-- Start Pricing Plan -->
-  @if ($pricingPlanExists == 'visible')
-    <x-frontend.pricingplan.pricingplan />
-  @endif
+  <x-frontend.pricingplan.pricingplan />
   <!-- End Pricing Plan -->
 
   <div class="cs-height_125 cs-height_lg_55"></div>

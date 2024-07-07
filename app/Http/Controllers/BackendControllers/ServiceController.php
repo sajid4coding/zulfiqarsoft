@@ -163,20 +163,25 @@ class ServiceController extends Controller
         }
         if ($request->has('includeserviceName')) {
             $includeservices = $request->input('includeserviceName');
+            $existingServices = IncludeService::where('serviceID', $service->id)->get();
 
-            // Clear existing include services for the service
-            IncludeService::where('serviceID', $service->id)->delete();
-
-            // Insert new include services
-            foreach ($includeservices as $includeservice) {
-                IncludeService::insert([
-                    'serviceID' => $service->id,
-                    'includeserviceName' => $includeservice,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]);
+            foreach ($includeservices as $index => $includeservice) {
+                if (isset($existingServices[$index])) {
+                    $existingServices[$index]->update([
+                        'includeserviceName' => $includeservice,
+                        'updated_at' => now()
+                    ]);
+                } else {
+                    // Insert new include service if it doesn't exist
+                    IncludeService::create([
+                        'serviceID' => $service->id,
+                        'includeserviceName' => $includeservice,
+                        'created_at' => now()
+                    ]);
+                }
             }
         }
+
         if($request->faqQuestion && $request->faqAnswer){
             $faqQuestions = $request->faqQuestion;
             $faqAnswers = $request->faqAnswer;

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\BackendControllers;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\{User, SocialMedia, Team};
+use App\Models\{GlobalSettingStatus, User, SocialMedia, Team, Testimonial};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,6 +82,7 @@ class ProfileController extends Controller
             'social_medias' => SocialMedia::find(1),
             'team' => Team::where('member_status','visible')->first(),
             'user' => $request->user(),
+            'testimonialStatus' => GlobalSettingStatus::where('testimonial_section', 'on')->first()
         ]);
     }
 
@@ -142,21 +143,6 @@ class ProfileController extends Controller
         return back();
     }
 
-    public function change_subcription_status(Request $request){
-        if ($request->has('subcription_status')) {
-            User::find(1)->update([
-                'subcription_status' => 'visible',
-                'updated_at' => now(),
-            ]);
-        } else {
-            User::find(1)->update([
-                'subcription_status' => 'invisible',
-                'updated_at' => now(),
-            ]);
-        }
-        return back();
-    }
-
     public function change_social_status(Request $request){
         if ($request->has('social_status')) {
             SocialMedia::find(1)->update([
@@ -186,5 +172,7 @@ class ProfileController extends Controller
         }
         return back();
     }
+
+
 
 }

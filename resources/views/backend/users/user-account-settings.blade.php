@@ -584,27 +584,6 @@
                                 <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
                                     <div class="section general-info">
                                         <div class="info">
-                                            <h6 class="">Show Pricing Plan</h6>
-                                            <p>Sidebar will be <span class="text-success">Show</span> by default</p>
-                                            <div class="form-group mt-4">
-                                                <div class="switch form-switch-custom switch-inline form-switch-secondary mt-1">
-                                                    <form id="subcription_status" action="{{ route('change.subcription.status') }}" method="POST">
-                                                        @csrf
-                                                        @if ($user->subcription_status == 'visible')
-                                                            <input onclick="submitSubcription()" name="subcription_status" class="switch-input" type="checkbox" role="switch" checked>
-                                                        @else
-                                                            <input onclick="submitSubcription()" name="subcription_status" class="switch-input" type="checkbox" role="switch">
-                                                        @endif
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-12 col-md-12 layout-spacing">
-                                    <div class="section general-info">
-                                        <div class="info">
                                             <h6 class="">Social Profile</h6>
                                             <p>Enable your <span class="text-success">social</span> profiles on this network </p>
                                             <div class="form-group mt-4">

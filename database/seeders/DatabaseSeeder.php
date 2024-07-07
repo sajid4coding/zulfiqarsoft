@@ -31,6 +31,12 @@ class DatabaseSeeder extends Seeder
             ServiceCategoriesSeeding::class,
             PagesSeeder::class,
             PortfolioSeeder::class,
+            GlobalSettingStatusSeeder::class,
+            CompanyLogoSeeder::class,
+            ServiceSeeder::class,
+            ServiceStepSeeder::class,
+            IncludeServiceSeeder::class,
+            ServiceFAQSeeder::class,
         ]);
     }
 }

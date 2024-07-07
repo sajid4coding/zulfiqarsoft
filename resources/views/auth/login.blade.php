@@ -5,7 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title> {{ website_title() }} </title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('dashboard_assets') }}/src/assets/img/favicon.ico"/>
+    @php
+        $filePath = 'favicon/' . favicon();
+        $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+    @endphp
+    @if (favicon() && $folderExists)
+        <link rel="icon" href="{{ asset('storage/general_images/favicon') }}/{{ favicon() }}" />
+    @else
+        <link rel="icon" href="{{ asset('preImage/favicon/'.favicon()) }}" />
+    @endif
     <link href="{{ asset('dashboard_assets') }}/layouts/vertical-dark-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('dashboard_assets') }}/layouts/vertical-dark-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />
     <script src="{{ asset('dashboard_assets') }}/layouts/vertical-dark-menu/loader.js"></script>

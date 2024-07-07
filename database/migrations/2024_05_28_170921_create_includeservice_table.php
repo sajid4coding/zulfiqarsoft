@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('include_services', function (Blueprint $table) {
             $table->id();
-            $table->string('serviceID');
+            $table->integer('serviceID');
             $table->longText('includeserviceName');
             $table->timestamps();
         });

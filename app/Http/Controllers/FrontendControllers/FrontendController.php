@@ -5,7 +5,7 @@ namespace App\Http\Controllers\FrontendControllers;
 use App\Http\Controllers\Controller;
 
 use App\Mail\ContactMail;
-use App\Models\{About, Blog, BlogComment, CompanyLogo, SocialMedia, Testimonial, Contact, IncludeService, NewsLetter, Pages, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, User, Whychooseus};
+use App\Models\{About, Blog, BlogComment, CompanyLogo, SocialMedia, Testimonial, Contact, IncludeService, NewsLetter, Pages, Portfolio, Service, ServiceCategory, ServiceFAQ, ServiceSteps, Team, User, Whychooseus, GlobalSettingStatus};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,9 +29,7 @@ class FrontendController extends Controller
     }
 
     public function service(){
-        return view('frontend.service.index', [
-            'pricingPlanExists' => User::find(1)->subcription_status
-        ]);
+        return view('frontend.service.index');
     }
 
     public function service_details($id, $slug){
@@ -40,7 +38,10 @@ class FrontendController extends Controller
             'includeservicesExists' => IncludeService::where('serviceID', $id)->exists(),
             'serviceFAQs' => ServiceFAQ::where('serviceID', $id)->get(),
             'serviceFAQsExists' => ServiceFAQ::where('serviceID', $id)->exists(),
-            'service' => Service::where('serviceCategory', $id)->get(),
+            'service' => Service::where([
+                'serviceCategory' => $id,
+                'serviceStatus' => 'on'
+            ])->first(),
             'serviceCategory' => ServiceCategory::where([
                 'id' => $id,
                 'service_category_slug' => $slug,
@@ -117,7 +118,9 @@ class FrontendController extends Controller
     }
 
     public function contact(){
-        return view('frontend.contact');
+        return view('frontend.contact', [
+            'user' => User::find(1)
+        ]);
     }
 
     public function contact_post(Request $request){

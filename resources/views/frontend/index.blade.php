@@ -27,14 +27,14 @@
             <div class="cs-hero_social_wrap cs-primary_font cs-primary_color">
             <div class="cs-hero_social_title">Follow Us</div>
             <ul class="cs-hero_social_links">
-                @if ($follow_us->twitter)
+                @if ($follow_us->facebook)
                     <li>
-                        <a href="https://twitter.com/{{ $follow_us->twitter }}">Twitter</a>
+                        <a href="https://facebook.com/{{ $follow_us->facebook }}">Facebook</a>
                     </li>
                 @endif
-                @if ($follow_us->instagram)
+                @if ($follow_us->linkedin)
                     <li>
-                        <a href="https://www.instagram.com/{{ $follow_us->instagram }}">Instagram</a>
+                        <a href="https://www.linkedin.com/company/{{ $follow_us->linkedin }}">Linkedin</a>
                     </li>
                 @endif
             </ul>

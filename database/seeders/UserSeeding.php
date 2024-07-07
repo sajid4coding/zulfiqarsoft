@@ -22,7 +22,6 @@ class UserSeeding extends Seeder
             'phone_status' => 'visible',
             'address' => 'Dhaka, Bangladesh',
             'address_status' => 'visible',
-            'subcription_status' => 'invisible',
             'password' => hash::make('12345678'),
             'created_at' => now()
         ]);

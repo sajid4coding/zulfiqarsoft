@@ -15,9 +15,9 @@ class AboutPageSeeder extends Seeder
     {
         DB::table('abouts')->insert([
             'heading_line' => 'Your trusted partner for business',
-            'about' => 'This is the main factor that sets us apart from our competition and allows us to deliver a specialist business consultancy service. Our team applies its wide-ranging experience to determining. Through our years of experience, we’ve also learned that while each channel.',
+            'about' => "Welcome to ZulfiqarSoft, your trusted partner for business. We specialize in delivering cutting-edge solutions in Frontend Development, Backend Development, SEO, and Video Editing. With a commitment to excellence and innovation, we empower businesses to thrive in the digital landscape. Whether you're looking to enhance your online presence, optimize for search engines, or create compelling visual content, ZulfiqarSoft is here to transform your vision into reality. Partner with us and experience the difference of working with a team dedicated to your success.",
             'heading_meta_line' => 'Your trusted partner for business',
-            'about_meta_description' => 'This is the main factor that sets us apart from our competition and allows us to deliver a specialist business consultancy service. Our team applies its wide-ranging experience to determining. Through our years of experience, we’ve also learned that while each channel.',
+            'about_meta_description' => "Welcome to ZulfiqarSoft, your trusted partner for business. We specialize in delivering cutting-edge solutions in Frontend Development, Backend Development, SEO, and Video Editing. With a commitment to excellence and innovation, we empower businesses to thrive in the digital landscape. Whether you're looking to enhance your online presence, optimize for search engines, or create compelling visual content, ZulfiqarSoft is here to transform your vision into reality. Partner with us and experience the difference of working with a team dedicated to your success.",
             'about_image_1' => 'about_img_1.jpeg',
             'about_image_2' => 'about_img_2.jpeg',
             'about_image_3' => 'about_img_3.jpeg',

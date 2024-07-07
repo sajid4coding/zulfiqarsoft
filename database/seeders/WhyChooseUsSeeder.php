@@ -14,12 +14,12 @@ class WhyChooseUsSeeder extends Seeder
     public function run(): void
     {
         DB::table('whychooseuses')->insert([
-            'team_heading_line' => 'Highly experienced pepole with us',
+            'team_heading_line' => 'Highly experienced people with us',
             'about_team' => 'This is the main factor that sets us apart from our competition and allows us to deliver a specialist business consultancy service. Our team applies its wide-ranging experience to determining. Through our years of experience, we’ve also learned that while each channel.
 
             This is the main factor that sets us apart from our competition and allows us to deliver a specialist business consultancy service. Our team applies its wide-ranging experience to determining.',
 
-            'meta_team_heading_line' => 'Highly experienced pepole with us',
+            'meta_team_heading_line' => 'Highly experienced people with us',
             'meta_about_team' => 'This is the main factor that sets us apart from our competition and allows us to deliver a specialist business consultancy service. Our team applies its wide-ranging experience to determining. Through our years of experience, we’ve also learned that while each channel.
 
             This is the main factor that sets us apart from our competition and allows us to deliver a specialist business consultancy service. Our team applies its wide-ranging experience to determining.',

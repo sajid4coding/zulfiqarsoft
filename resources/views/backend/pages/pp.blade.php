@@ -9,24 +9,6 @@
 
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
-<style>
-    p {
-    font-size: 12pt;
-    color: black;
-    }
-    canvas {
-    height: 175px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(255, 255, 255);
-    }
-
-    input {
-    font-family: verdana;
-    font-size: 12pt;
-    }
-</style>
-
 @endsection
 @section('dashboard_content')
 

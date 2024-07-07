@@ -58,14 +58,14 @@
                         <thead>
                             <tr>
                                 <th class="checkbox-column text-center"></th>
-                                <th>Service Title</th>
+                                <th>Service ID</th>
                                 <th>Status</th>
                                 <th class="no-content text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
-                                $SL = 1;
+                                $SL = 0;
                             @endphp
                             @foreach ($services as $service)
                                 <tr>
@@ -73,7 +73,7 @@
                                     <td>
                                         <div class="d-flex justify-content-left align-items-center">
                                             <div class="d-flex flex-column">
-                                                <a href="{{ route('service.edit', $service->id) }}" class="text-truncate fw-bold">{!!$service->serviceDescription!!}</a>
+                                                <a href="{{ route('service.edit', $service->id) }}" class="text-truncate fw-bold">{{$SL++}}</a>
                                             </div>
                                         </div>
                                     </td>

@@ -2,6 +2,7 @@
 
 namespace App\View\Components\frontend\team;
 
+use App\Models\GlobalSettingStatus;
 use App\Models\Team as ModelsTeam;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,7 +24,8 @@ class team extends Component
     public function render(): View|Closure|string
     {
         return view('components.frontend.team.team', [
-            'teams' => ModelsTeam::where('member_status', 'visible')->get()
+            'teams' => ModelsTeam::where('member_status', 'visible')->get(),
+            'globalSettingStatus' => GlobalSettingStatus::find(1),
         ]);
     }
 }

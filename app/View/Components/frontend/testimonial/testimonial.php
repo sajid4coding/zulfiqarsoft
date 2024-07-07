@@ -2,6 +2,7 @@
 
 namespace App\View\Components\frontend\testimonial;
 
+use App\Models\GlobalSettingStatus;
 use App\Models\Testimonial as ModelsTestimonial;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,7 +24,8 @@ class testimonial extends Component
     public function render(): View|Closure|string
     {
         return view('components.frontend.testimonial.testimonial', [
-            'testimonials' => ModelsTestimonial::all()
+            'testimonials' => ModelsTestimonial::where('testimonial_status', 'active')->get(),
+            'globalSettingStatus' => GlobalSettingStatus::find(1),
         ]);
     }
 }

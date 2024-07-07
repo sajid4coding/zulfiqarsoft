@@ -26,6 +26,7 @@ class GeneralSettingsController extends Controller
             'agency_video' => $request->agency_video,
             'website_title' => $request->website_title,
             'newsletter_text' => $request->newsletter_text,
+            'under_logo_text' => $request->under_logo_text,
             'copyright_text' => $request->copyright_text,
         ]);
         return back()->with('update_status', 'General Setting Updated');

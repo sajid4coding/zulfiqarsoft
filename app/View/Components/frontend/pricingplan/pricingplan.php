@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Frontend\pricingplan;
 
+use App\Models\GlobalSettingStatus;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,8 @@ class pricingplan extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.frontend.pricingplan.pricingplan');
+        return view('components.frontend.pricingplan.pricingplan', [
+            'globalSettingStatus' => GlobalSettingStatus::find(1),
+        ]);
     }
 }

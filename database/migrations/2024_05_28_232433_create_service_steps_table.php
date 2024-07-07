@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('service_steps', function (Blueprint $table) {
             $table->id();
-            $table->string('serviceID');
+            $table->integer('serviceID');
             $table->string('stepTitle')->nullable();
             $table->longText('stepDescription')->nullable();
             $table->timestamps();

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('service_f_a_q_s', function (Blueprint $table) {
             $table->id();
-            $table->string('serviceID');
+            $table->integer('serviceID');
             $table->string('faqQuestion')->nullable();
             $table->mediumText('faqAnswer')->nullable();
             $table->timestamps();

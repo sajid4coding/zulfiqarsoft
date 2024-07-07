@@ -10,7 +10,15 @@
     <div class="cs-partner_logo_wrap">
     @foreach ($companyLogos as $companyLogo)
         <div class="cs-partner_logo">
-            <img width="100px" src="{{ asset('storage') }}/companyLogo/{{$companyLogo->companyLogo}}" alt="Company Logo" />
+            @php
+                $filePath = 'companyLogo/' . $companyLogo->companyLogo;
+                $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+            @endphp
+            @if ($companyLogo->companyLogo && $folderExists)
+                <img width="100px" src="{{ asset('storage/companyLogo/'.$companyLogo->companyLogo) }}" alt="{{ $companyLogo->companyLogo }}">
+            @else
+                <img width="100px" src="{{ asset('preImage/companyLogo/'.$companyLogo->companyLogo) }}" alt="{{ $companyLogo->companyLogo }}">
+            @endif
         </div>
     @endforeach
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\View\Components\frontend\portfolio;
 
+use App\Models\GlobalSettingStatus;
 use App\Models\Portfolio as ModelsPortfolio;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,7 +24,8 @@ class portfolio extends Component
     public function render(): View|Closure|string
     {
         return view('components.frontend.portfolio.portfolio', [
-            'portfolios' => ModelsPortfolio::where('portfolio_status', 'on')->get()
+            'portfolios' => ModelsPortfolio::where('portfolio_status', 'on')->get(),
+            'globalSettingStatus' => GlobalSettingStatus::find(1),
         ]);
     }
 }

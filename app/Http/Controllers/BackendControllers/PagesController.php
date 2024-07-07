@@ -9,13 +9,13 @@ use Illuminate\Support\Str;
 
 class PagesController extends Controller
 {
-    public function tou(){
-        return view('backend.pages.tou', [
+    public function tac(){
+        return view('backend.pages.tac', [
             'tou' => Pages::find(1)
         ]);
     }
 
-    public function tou_update(Request $request){
+    public function tac_update(Request $request){
         $request->validate([
             'page_title' => 'required',
             'page_content' => 'required',

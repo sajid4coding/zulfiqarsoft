@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BackendControllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, BlogController, CompanyLogoController, FunFactController, GeneralSettingsController, PagesController, PortfolioController, ServiceCategoryController, ServiceController};
+use App\Http\Controllers\BackendControllers\{ProfileController, TestimonialController, ContactController, TeamController, AboutController, BlogController, CompanyLogoController, FunFactController, GeneralSettingsController, GlobalSettingStatusController, PagesController, PortfolioController, ServiceCategoryController, ServiceController};
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -20,14 +20,22 @@ Route::middleware('auth')->group(function(){
     Route::get('dashboard/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('dashboard/account-setting', [ProfileController::class, 'account_setting'])->name('account.setting');
     Route::post('dashboard/account-social-setting-post', [ProfileController::class, 'account_social_setting_post'])->name('account.social.setting.post');
-
     Route::post('dashboard/change-email-status-post', [ProfileController::class, 'change_email_status'])->name('change.email.status');
     Route::post('dashboard/change-phone-status-post', [ProfileController::class, 'change_phone_status'])->name('change.phone.status');
     Route::post('dashboard/change-address-status-post', [ProfileController::class, 'change_address_status'])->name('change.address.status');
-    Route::post('dashboard/change-subcription-status-post', [ProfileController::class, 'change_subcription_status'])->name('change.subcription.status');
     Route::post('dashboard/change-social-status-post', [ProfileController::class, 'change_social_status'])->name('change.social.status');
     Route::post('dashboard/change-members-social-status-post', [ProfileController::class, 'change_members_social_status'])->name('change.members.social.status');
     //PROFILE END
+
+    // GLOBAL SETTINGS BEGIN
+    Route::get('dashboard/global-setting', [GlobalSettingStatusController::class, 'global_setting'])->name('global.setting');
+    Route::post('dashboard/change-subcription-status-post', [GlobalSettingStatusController::class, 'change_subcription_status'])->name('change.subcription.status');
+    Route::post('dashboard/change-testimonial-status-post', [GlobalSettingStatusController::class, 'change_testimonial_status'])->name('change.testimonial.status');
+    Route::post('dashboard/change-portfolio-status-post', [GlobalSettingStatusController::class, 'change_portfolio_status'])->name('change.portfolio.status');
+    Route::post('dashboard/change-team-status-post', [GlobalSettingStatusController::class, 'change_team_status'])->name('change.team.status');
+    Route::post('dashboard/change-blog-status-post', [GlobalSettingStatusController::class, 'change_blog_status'])->name('change.blog.status');
+    Route::post('dashboard/change-newsletter-status-post', [GlobalSettingStatusController::class, 'change_newsletter_status'])->name('change.newsletter.status');
+    // GLOBAL SETTINGS END
 
     //FUNFACT BEGIN
     Route::get('dashboard/our-funfact', [FunFactController::class, 'funfact'])->name('funfact');
@@ -86,8 +94,8 @@ Route::middleware('auth')->group(function(){
     //COMPANY LOGO END
 
     // PAGES BEGIN
-    Route::get('dashboard/pages/terms-of-use', [PagesController::class, 'tou'])->name('tou');
-    Route::post('dashboard/pages/terms-of-use-update', [PagesController::class, 'tou_update'])->name('tou.update');
+    Route::get('dashboard/pages/terms-of-conditions', [PagesController::class, 'tac'])->name('tac');
+    Route::post('dashboard/pages/terms-of-conditions-update', [PagesController::class, 'tac_update'])->name('tac.update');
 
     Route::get('dashboard/pages/privacy-policy', [PagesController::class, 'pp'])->name('pp');
     Route::post('dashboard/pages/privacy-policy-update', [PagesController::class, 'pp_update'])->name('pp.update');

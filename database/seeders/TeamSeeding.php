@@ -44,35 +44,31 @@ class TeamSeeding extends Seeder
         ]);
 
         DB::table('teams')->insert([
-            'name' => 'David Elone',
-            'name_slug' => 'david-elone',
-            'position' => 'React Developer',
-            'bio' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium voltire doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-
-            Ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit.',
+            'name' => 'Simon',
+            'name_slug' => 'simon',
+            'position' => 'Video Editor',
+            'bio' => "Simon is a talented and dedicated Video Editor at ZulfiqarSoft, where he brings stories to life through his exceptional editing skills. With a keen eye for detail and a passion for visual storytelling, Simon plays a crucial role in crafting compelling video content that resonates with audiences.",
             'member_image' => 'member_3.jpeg',
-            'facebook' => 'david_elone',
-            'twitter' => 'david_elone',
-            'linkedin' => 'david_elone',
-            'instagram' => 'david_elone',
-            'github' => 'david_elone',
+            'facebook' => NULL,
+            'twitter' => NULL,
+            'linkedin' => NULL,
+            'instagram' => NULL,
+            'github' => NULL,
             'social_account_status' => 'invisible',
             'created_at' => now()
         ]);
 
         DB::table('teams')->insert([
-            'name' => 'Melina Opole',
-            'name_slug' => 'melina-opole',
-            'position' => 'React Developer',
-            'bio' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium voltire doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-
-            Ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit.',
+            'name' => 'Muhammad Shrabon',
+            'name_slug' => 'muhammad-shrabon',
+            'position' => 'Web Application Developer',
+            'bio' => "Muhammad Shrabon is a highly skilled Front and Back Developer at ZulfiqarSoft, where he plays a pivotal role in crafting seamless and efficient digital experiences. With a robust background in both frontend and backend technologies, Shrabon brings a wealth of knowledge and expertise to the team.",
             'member_image' => 'member_4.jpeg',
-            'facebook' => 'melina_opole',
-            'twitter' => 'melina_opole',
-            'linkedin' => 'melina_opole',
-            'instagram' => 'melina_opole',
-            'github' => 'melina_opole',
+            'facebook' => NULL,
+            'twitter' => NULL,
+            'linkedin' => NULL,
+            'instagram' => NULL,
+            'github' => NULL,
             'social_account_status' => 'invisible',
             'created_at' => now()
         ]);

@@ -31,16 +31,43 @@
         </div>
     </div>
     <div class="col-lg-5 offset-xl-2">
-        <img src="{{ asset('storage/about_page_images') }}/{{ $about->about_image_1 }}" alt="" class="w-100 cs-radius_15">
-        <div class="cs-height_25 cs-height_lg_25"></div>
+        @php
+            $filePath = 'about_page_images/' . $about->about_image_1;
+            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+        @endphp
+        @if ($about->about_image_1 && $folderExists)
+            <img class="w-100 cs-radius_15" src="{{ asset('storage/about_page_images/'.$about->about_image_1) }}" alt="{{ $about->about_image_1 }}">
+            <div class="cs-height_25 cs-height_lg_25"></div>
+        @else
+            <img class="w-100 cs-radius_15" src="{{ asset('preImage/about_page_images/'.$about->about_image_1) }}" alt="{{ $about->about_image_1 }}">
+            <div class="cs-height_25 cs-height_lg_25"></div>
+        @endif
     </div>
     <div class="col-lg-7">
-        <img src="{{ asset('storage/about_page_images') }}/{{ $about->about_image_2 }}" alt="" class="w-100 cs-radius_15">
-        <div class="cs-height_25 cs-height_lg_25"></div>
+        @php
+            $filePath = 'about_page_images/' . $about->about_image_2;
+            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+        @endphp
+        @if ($about->about_image_2 && $folderExists)
+            <img class="w-100 cs-radius_15" src="{{ asset('storage/about_page_images/'.$about->about_image_2) }}" alt="{{ $about->about_image_2 }}">
+            <div class="cs-height_25 cs-height_lg_25"></div>
+        @else
+            <img class="w-100 cs-radius_15" src="{{ asset('preImage/about_page_images/'.$about->about_image_2) }}" alt="{{ $about->about_image_2 }}">
+            <div class="cs-height_25 cs-height_lg_25"></div>
+        @endif
     </div>
     <div class="col-lg-5">
-        <img src="{{ asset('storage/about_page_images') }}/{{ $about->about_image_3 }}" alt="" class="w-100 cs-radius_15">
-        <div class="cs-height_25 cs-height_lg_25"></div>
+        @php
+            $filePath = 'about_page_images/' . $about->about_image_1;
+            $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+        @endphp
+        @if ($about->about_image_3 && $folderExists)
+            <img class="w-100 cs-radius_15" src="{{ asset('storage/about_page_images/'.$about->about_image_3) }}" alt="{{ $about->about_image_3 }}">
+            <div class="cs-height_25 cs-height_lg_25"></div>
+        @else
+            <img class="w-100 cs-radius_15" src="{{ asset('preImage/about_page_images/'.$about->about_image_3) }}" alt="{{ $about->about_image_3 }}">
+            <div class="cs-height_25 cs-height_lg_25"></div>
+        @endif
     </div>
     </div>
 </div>
@@ -59,7 +86,17 @@
     <div class="col-xl-5 col-lg-6">
         <div class="cs-image_layer cs-style1">
         <div class="cs-image_layer_in">
-            <img src="{{ asset('storage/about_page_images') }}/{{ $whychooseus->about_main_image }}" alt="Image" class="w-100 cs-radius_15">
+            @php
+                $filePath = 'about_page_images/' . $whychooseus->about_main_image;
+                $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+            @endphp
+            @if ($whychooseus->about_main_image && $folderExists)
+                <img class="w-100 cs-radius_15" src="{{ asset('storage/about_page_images/'.$whychooseus->about_main_image) }}" alt="{{ $whychooseus->about_main_image }}">
+                <div class="cs-height_25 cs-height_lg_25"></div>
+            @else
+                <img class="w-100 cs-radius_15" src="{{ asset('preImage/about_page_images/'.$whychooseus->about_main_image) }}" alt="{{ $whychooseus->about_main_image }}">
+                <div class="cs-height_25 cs-height_lg_25"></div>
+            @endif
         </div>
         </div>
         <div class="cs-height_0 cs-height_lg_40"></div>
@@ -70,7 +107,7 @@
         <h2 class="cs-section_title">{{ $whychooseus->team_heading_line }}</h2>
         <div class="cs-height_30 cs-height_lg_20"></div>
         <p class="cs-m0"><?=$whychooseus->about_team?></p>
-        {{-- <p class="cs-m0">{!! $whychooseus->about_team !!}</p> --}}
+        {{-- <p class="cs-m0">{{ $whychooseus->about_team }}</p> --}}
         <div class="cs-height_15 cs-height_lg_15"></div>
         <div class="cs-separator cs-accent_bg"></div>
         <div class="cs-height_25 cs-height_lg_0"></div>
