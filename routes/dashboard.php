@@ -49,9 +49,9 @@ Route::middleware('auth')->group(function(){
     Route::post('dashboard/about/why-choose-store', [AboutController::class, 'why_choose_store'])->name('dashboard.why.choose.store');
     //ABOUT END
 
-    //PORTFOLIO BEGIN
+    //SERVICE CATEGORY BEGIN
     Route::resource('dashboard/serviceCategory', ServiceCategoryController::class);
-    //PORTFOLIO END
+    //SERVICE CATEGORY END
 
     //SERVICE BEGIN
     Route::resource('dashboard/service', ServiceController::class);

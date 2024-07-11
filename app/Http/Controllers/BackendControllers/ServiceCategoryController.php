@@ -19,7 +19,7 @@ class ServiceCategoryController extends Controller
     public function index()
     {
         return view('backend.serviceCategory.index', [
-            'categories' => ServiceCategory::where('service_category_status', 'on')->get(),
+            'categories' => ServiceCategory::all(),
             'serviceCategoriesCount' => ServiceCategory::where('service_category_status', 'on')->count(),
         ]);
     }

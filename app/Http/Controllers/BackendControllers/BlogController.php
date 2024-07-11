@@ -18,7 +18,7 @@ class BlogController extends Controller
     public function index()
     {
         return view('backend.blog.index', [
-            'blogs' => Blog::where('blogStatus', 'on')->get()
+            'blogs' => Blog::all(),
         ]);
     }
 

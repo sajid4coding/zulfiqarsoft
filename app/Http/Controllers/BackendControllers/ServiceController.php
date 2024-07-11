@@ -19,7 +19,7 @@ class ServiceController extends Controller
     public function index()
     {
         return view('backend.service.index',[
-            'services' => Service::where('serviceStatus', 'on')->get(),
+            'services' => Service::all(),
             'serviceCount' => Service::where('serviceStatus', 'on')->count(),
             'serviceCategoriesCount' => ServiceCategory::where('service_category_status', 'on')->count(),
         ]);

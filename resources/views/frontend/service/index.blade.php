@@ -42,11 +42,15 @@
                                 @php
                                     $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
                                     $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                    $preImagePath = 'preImage/service_category_thumbnail/'.$service->service_category_thumbnail;
+                                    $preImageExists = file_exists(public_path($preImagePath));
                                 @endphp
                                 @if ($service->service_category_thumbnail && $folderExists)
-                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
+                                @elseif ($service->service_category_thumbnail && $preImageExists)
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
                                 @else
-                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
                                 @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
@@ -71,11 +75,15 @@
                                 @php
                                     $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
                                     $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                    $preImagePath = 'preImage/service_category_thumbnail/'.$service->service_category_thumbnail;
+                                    $preImageExists = file_exists(public_path($preImagePath));
                                 @endphp
                                 @if ($service->service_category_thumbnail && $folderExists)
-                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
+                                @elseif ($service->service_category_thumbnail && $preImageExists)
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
                                 @else
-                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
                                 @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
@@ -100,11 +108,15 @@
                                 @php
                                     $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
                                     $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                    $preImagePath = 'preImage/service_category_thumbnail/'.$service->service_category_thumbnail;
+                                    $preImageExists = file_exists(public_path($preImagePath));
                                 @endphp
                                 @if ($service->service_category_thumbnail && $folderExists)
-                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
+                                @elseif ($service->service_category_thumbnail && $preImageExists)
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
                                 @else
-                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
                                 @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
@@ -130,11 +142,15 @@
                                 @php
                                     $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
                                     $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                    $preImagePath = 'preImage/service_category_thumbnail/'.$service->service_category_thumbnail;
+                                    $preImageExists = file_exists(public_path($preImagePath));
                                 @endphp
                                 @if ($service->service_category_thumbnail && $folderExists)
-                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
+                                @elseif ($service->service_category_thumbnail && $preImageExists)
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
                                 @else
-                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
                                 @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">
@@ -159,11 +175,15 @@
                                 @php
                                     $filePath = 'service_category_thumbnail/' . $service->service_category_thumbnail;
                                     $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                    $preImagePath = 'preImage/service_category_thumbnail/'.$service->service_category_thumbnail;
+                                    $preImageExists = file_exists(public_path($preImagePath));
                                 @endphp
                                 @if ($service->service_category_thumbnail && $folderExists)
-                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('storage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
+                                @elseif ($service->service_category_thumbnail && $preImageExists)
+                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}">
                                 @else
-                                    <img src="{{ asset('preImage/service_category_thumbnail/'.$service->service_category_thumbnail) }}" alt="{{ $service->service_category_title }}" width="500px" height="500px">
+                                    <img src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
                                 @endif
                                 <div class="cs-card_overlay"></div>
                                 <div class="cs-card_info">

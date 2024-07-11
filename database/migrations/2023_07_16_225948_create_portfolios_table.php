@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('project_start_from')->nullable();
             $table->string('project_end_to')->nullable();
             $table->integer('portfolio_category_id')->nullable();
+            $table->string('video_url')->nullable();
             $table->string('portfolio_thumbnail')->nullable();
             $table->string('portfolio_status')->nullable();
             $table->timestamps();

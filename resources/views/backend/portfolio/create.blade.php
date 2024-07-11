@@ -98,8 +98,8 @@
                             <h5 class="mb-4">Addition Information</h5>
 
                             <div class="row mb-4">
-                                <div class="col-xxl-12 mb-4">
-                                    <input type="url" class="form-control" id="post-meta-title" placeholder="Portfolio URL" name="portfolio_url">
+                                <div class="col-xxl-12 mb-4" id="portfolio-url" style="display: block;">
+                                    <input type="url" class="form-control" placeholder="Portfolio URL" name="portfolio_url">
                                 </div>
 
                                 <div class="col-6 my-2">
@@ -144,11 +144,15 @@
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->service_category_title }}</option>
                                         @endforeach
-
                                     </select>
                                     @error('category')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div>
+
+                                <div class="col-xxl-12 col-md-12 mb-4" id="video-url-field" style="display: none;">
+                                    <label for="video-url">Video URL (YouTube or Vimeo)</label>
+                                    <input type="url" class="form-control" name="video_url" id="video-url" placeholder="Enter video URL">
                                 </div>
 
                                 <div class="col-xxl-12 col-md-12 mb-4">
@@ -176,6 +180,24 @@
 
 @endsection
 @section('dashboard_footer_script')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const categorySelect = document.getElementById('category');
+            const videoUrlField = document.getElementById('video-url-field');
+            const portfolioUrlField = document.getElementById('portfolio-url');
+
+            categorySelect.addEventListener('change', function() {
+                if (this.options[this.selectedIndex].text === 'Video Editing') {
+                    videoUrlField.style.display = 'block';
+                    portfolioUrlField.style.display = 'none';
+                } else {
+                    videoUrlField.style.display = 'none';
+                    portfolioUrlField.style.display = 'block';
+                }
+            });
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>

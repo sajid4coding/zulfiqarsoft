@@ -4,7 +4,7 @@ namespace App\Http\Controllers\BackendControllers;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\{Portfolio, ServiceCategory};
+use App\Models\{Portfolio, PortfolioVideo, ServiceCategory};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -38,23 +38,40 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        $portfolio_id = Portfolio::insertGetId([
-            'portfolio_title' => $request->portfolio_title,
-            'portfolio_title_slug' => Str::of($request->portfolio_title)->slug('-'),
-            'portfolio_description' => $request->portfolio_description,
-            'portfolio_meta_title' => $request->portfolio_meta_title,
-            'portfolio_meta_description' => $request->portfolio_meta_description,
-            'portfolio_url' => $request->portfolio_url,
-            'project_start_from' => $request->project_start_from,
-            'project_end_to' => $request->project_end_to,
-            'portfolio_status' => $request->portfolio_status,
-            'portfolio_category_id' => $request->category,
-            'created_at' => now()
-        ]);
+        if ($request->video_url) {
+            $portfolio_id = Portfolio::insertGetId([
+                'portfolio_title' => $request->portfolio_title,
+                'portfolio_title_slug' => Str::of($request->portfolio_title)->slug('-'),
+                'portfolio_description' => $request->portfolio_description,
+                'portfolio_meta_title' => $request->portfolio_meta_title,
+                'portfolio_meta_description' => $request->portfolio_meta_description,
+                'project_start_from' => $request->project_start_from,
+                'project_end_to' => $request->project_end_to,
+                'portfolio_status' => $request->portfolio_status,
+                'portfolio_category_id' => $request->category,
+                'video_url' => $request->video_url,
+                'created_at' => now()
+            ]);
+        } else {
+            $portfolio_id = Portfolio::insertGetId([
+                'portfolio_title' => $request->portfolio_title,
+                'portfolio_title_slug' => Str::of($request->portfolio_title)->slug('-'),
+                'portfolio_description' => $request->portfolio_description,
+                'portfolio_meta_title' => $request->portfolio_meta_title,
+                'portfolio_meta_description' => $request->portfolio_meta_description,
+                'portfolio_url' => $request->portfolio_url,
+                'project_start_from' => $request->project_start_from,
+                'project_end_to' => $request->project_end_to,
+                'portfolio_status' => $request->portfolio_status,
+                'portfolio_category_id' => $request->category,
+                'created_at' => now()
+            ]);
+        }
+
 
         if ($request->hasFile('portfolio_thumbnail')) {
             $destination = 'public/portfolio_thumbnail';
-            $photo = 'portfolio_thumbnail-'.$request->portfolio_title.'-'.Carbon::now()->format('Y').rand(1,999).".".$request->file('portfolio_thumbnail')->getClientOriginalExtension();
+            $photo = 'portfolio_thumbnail_'.$portfolio_id.".".$request->file('portfolio_thumbnail')->getClientOriginalExtension();
 
             $path = $request->file('portfolio_thumbnail')->storeAs($destination, $photo);
 
@@ -90,23 +107,41 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, Portfolio $portfolio)
     {
-        Portfolio::find($portfolio->id)->update([
-            'portfolio_title' => $request->portfolio_title,
-            'portfolio_title_slug' => Str::of($request->portfolio_title)->slug('-'),
-            'portfolio_description' => $request->portfolio_description,
-            'portfolio_meta_title' => $request->portfolio_meta_title,
-            'portfolio_meta_description' => $request->portfolio_meta_description,
-            'portfolio_url' => $request->portfolio_url,
-            'project_start_from' => $request->project_start_from,
-            'project_end_to' => $request->project_end_to,
-            'portfolio_category_id' => $request->category,
-            'portfolio_status' => $request->portfolio_status,
-            'updated_at' => now()
-        ]);
+        if ($request->video_url) {
+            Portfolio::find($portfolio->id)->update([
+                'portfolio_title' => $request->portfolio_title,
+                'portfolio_title_slug' => Str::of($request->portfolio_title)->slug('-'),
+                'portfolio_description' => $request->portfolio_description,
+                'portfolio_meta_title' => $request->portfolio_meta_title,
+                'portfolio_meta_description' => $request->portfolio_meta_description,
+                'portfolio_url' => NULL,
+                'project_start_from' => $request->project_start_from,
+                'project_end_to' => $request->project_end_to,
+                'portfolio_status' => $request->portfolio_status,
+                'portfolio_category_id' => $request->category,
+                'video_url' => $request->video_url,
+                'updated_at' => now()
+            ]);
+        } else {
+            Portfolio::find($portfolio->id)->update([
+                'portfolio_title' => $request->portfolio_title,
+                'portfolio_title_slug' => Str::of($request->portfolio_title)->slug('-'),
+                'portfolio_description' => $request->portfolio_description,
+                'portfolio_meta_title' => $request->portfolio_meta_title,
+                'portfolio_meta_description' => $request->portfolio_meta_description,
+                'portfolio_url' => $request->portfolio_url,
+                'project_start_from' => $request->project_start_from,
+                'project_end_to' => $request->project_end_to,
+                'portfolio_category_id' => $request->category,
+                'portfolio_status' => $request->portfolio_status,
+                'updated_at' => now()
+            ]);
+        }
+
 
         if ($request->hasFile('portfolio_thumbnail')) {
             $destination = 'public/portfolio_thumbnail';
-            $photo = 'portfolio_thumbnail-'.$request->portfolio_title.'-'.Carbon::now()->format('Y').rand(1,999).".".$request->file('portfolio_thumbnail')->getClientOriginalExtension();
+            $photo = 'portfolio_thumbnail_'.$portfolio->id.".".$request->file('portfolio_thumbnail')->getClientOriginalExtension();
 
             $path = $request->file('portfolio_thumbnail')->storeAs($destination, $photo);
 

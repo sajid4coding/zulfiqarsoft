@@ -17,7 +17,7 @@ class GeneralSettingsSeeder extends Seeder
         $year = Carbon::now()->year;
 
         DB::table('general_settings')->insert([
-            'agency_video' => 'https://youtu.be/9JMJr-ou7Og',
+            'agency_video' => 'https://www.youtube.com/watch?v=2wEnYgqM2SM',
             'website_title' => 'ZulfiqarSoft - Build Your Dream To Reality',
             'newsletter_text' => 'Join our mailing list to receive the latest news, updates, and exclusive insights from ZulfiqarSoft.',
             'companylogo_text' => 'We are working and our clients found us through this platform',

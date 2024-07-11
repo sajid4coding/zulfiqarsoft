@@ -106,7 +106,7 @@
                             <h5 class="mb-4">Addition Information</h5>
 
                             <div class="row mb-4">
-                                <div class="col-xxl-12 mb-4">
+                                <div class="col-xxl-12 mb-4" id="portfolio-url" style="{{$portfolio->relationshipwithServiceCategory->service_category_title == 'Video Editing' ? 'display: none' : 'display: block'}}">
                                     <input type="url" class="form-control" id="post-meta-title" placeholder="Portfolio URL" name="portfolio_url" value="{{ $portfolio->portfolio_url ? $portfolio->portfolio_url : '' }}">
                                 </div>
 
@@ -149,15 +149,22 @@
                                 <div class="col-xxl-12 col-md-12 mb-4">
                                     <label for="category">Category</label>
                                     <select class="form-select" name="category" id="category" placeholder="Choose...">
-                                        <option value="{{ $portfolio->portfolio_category_id }}">Selected: {{ $portfolio->relationshipwithServiceCategory->service_category_title }}</option>
+                                        <option value="{{ $portfolio->portfolio_category_id }}">Selected - {{$portfolio->relationshipwithServiceCategory->service_category_title}}</option>
                                         @foreach ($categories as $category)
+                                            @if ($portfolio && $portfolio->relationshipwithServiceCategory && $category->id === $portfolio->relationshipwithServiceCategory->id)
+                                                @continue
+                                            @endif
                                             <option value="{{ $category->id }}">{{ $category->service_category_title }}</option>
                                         @endforeach
-
                                     </select>
                                     @error('category')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div>
+
+                                <div class="col-xxl-12 col-md-12 mb-4" id="video-url-field" style="{{$portfolio->relationshipwithServiceCategory->service_category_title == 'Video Editing' ? 'display: block' : 'display: none'}}">
+                                    <label for="video-url">Video URL (YouTube or Vimeo)</label>
+                                    <input type="url" class="form-control" name="video_url" id="video-url" placeholder="Enter video URL" value="{{$portfolio->video_url}}">
                                 </div>
 
                                 <div class="col-xxl-12 col-md-12 mb-4">
@@ -191,6 +198,24 @@
 
 @endsection
 @section('dashboard_footer_script')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const categorySelect = document.getElementById('category');
+            const videoUrlField = document.getElementById('video-url-field');
+            const portfolioUrlField = document.getElementById('portfolio-url');
+
+            categorySelect.addEventListener('change', function() {
+                if (this.options[this.selectedIndex].text === 'Selected - Video Editing' || this.options[this.selectedIndex].text === 'Video Editing') {
+                    videoUrlField.style.display = 'block';
+                    portfolioUrlField.style.display = 'none';
+                } else {
+                    videoUrlField.style.display = 'none';
+                    portfolioUrlField.style.display = 'block';
+                }
+            });
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>

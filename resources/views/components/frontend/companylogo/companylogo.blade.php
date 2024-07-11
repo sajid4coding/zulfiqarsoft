@@ -13,11 +13,15 @@
             @php
                 $filePath = 'companyLogo/' . $companyLogo->companyLogo;
                 $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                $preImagePath = 'preImage/companyLogo/'.$companyLogo->companyLogo;
+                $preImageExists = file_exists(public_path($preImagePath));
             @endphp
             @if ($companyLogo->companyLogo && $folderExists)
                 <img width="100px" src="{{ asset('storage/companyLogo/'.$companyLogo->companyLogo) }}" alt="{{ $companyLogo->companyLogo }}">
-            @else
+            @elseif ($companyLogo->companyLogo && $preImageExists)
                 <img width="100px" src="{{ asset('preImage/companyLogo/'.$companyLogo->companyLogo) }}" alt="{{ $companyLogo->companyLogo }}">
+            @else
+                <img width="100px" src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
             @endif
         </div>
     @endforeach

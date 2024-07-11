@@ -20,11 +20,37 @@
         @php
             $filePath = 'portfolio_thumbnail/' . $portfolio->portfolio_thumbnail;
             $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+            $preImagePath = 'preImage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail;
+            $preImageExists = file_exists(public_path($preImagePath));
         @endphp
-        @if ($portfolio->portfolio_thumbnail && $folderExists)
-            <img class="cs-radius_15 w-100" src="{{ asset('storage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+        @if ($portfolio->video_url)
+            @if ($portfolio->portfolio_thumbnail && $folderExists)
+                <a href="{{ $portfolio->video_url }}" class="cs-video_block cs-style1 cs-video_open cs-bg" data-src="{{ asset('storage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}">
+                    <span class="cs-player_btn cs-accent_color">
+                        <span></span>
+                    </span>
+                </a>
+            @elseif ($portfolio->portfolio_thumbnail && $preImageExists)
+                <a href="{{ $portfolio->video_url }}" class="cs-video_block cs-style1 cs-video_open cs-bg" data-src="{{ asset('preImage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}">
+                    <span class="cs-player_btn cs-accent_color">
+                        <span></span>
+                    </span>
+                </a>
+            @else
+                <a href="{{ $portfolio->video_url }}" class="cs-video_block cs-style1 cs-video_open cs-bg" data-src="{{ asset('preImage/nullImage/nullImage.jpg') }}">
+                    <span class="cs-player_btn cs-accent_color">
+                        <span></span>
+                    </span>
+                </a>
+            @endif
         @else
-            <img class="cs-radius_15 w-100" src="{{ asset('preImage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+            @if ($portfolio->portfolio_thumbnail && $folderExists)
+                <img class="cs-radius_15 w-100" src="{{ asset('storage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+            @elseif ($portfolio->portfolio_thumbnail && $preImageExists)
+                <img class="cs-radius_15 w-100" src="{{ asset('preImage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+            @else
+                <img class="cs-radius_15 w-100" src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
+            @endif
         @endif
       <div class="cs-height_90 cs-height_lg_40"></div>
       <div class="row">

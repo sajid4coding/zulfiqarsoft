@@ -28,13 +28,17 @@
                         <div class="cs-team cs-style1">
                             <div class="cs-member_thumb">
                             @php
-                                $filePath = 'member_images/' . $team->member_image;
+                                $filePath = 'member_images/'.$team->member_image;
                                 $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                $preImagePath = 'preImage/member_images/'.$team->member_image;
+                                $preImageExists = file_exists(public_path($preImagePath));
                             @endphp
                             @if ($team->member_image && $folderExists)
-                                <img src="{{ asset('storage/member_images/'.$team->member_image) }}" alt="{{ $team->member_image }}">
+                                <img src="{{ asset('storage/member_images/'.$team->member_image) }}" alt="{{ $team->name }}">
+                            @elseif ($team->member_image && $preImageExists)
+                                <img src="{{ asset('preImage/member_images/'.$team->member_image) }}" alt="{{ $team->name }}">
                             @else
-                                <img src="{{ asset('preImage/member_images/'.$team->member_image) }}" alt="{{ $team->member_image }}">
+                                <img src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
                             @endif
                             <div class="cs-member_overlay"></div>
                             </div>

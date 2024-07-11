@@ -76,11 +76,15 @@
                                         @php
                                             $filePath = 'service_category_thumbnail/' . $category->service_category_thumbnail;
                                             $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                            $preImagePath = 'preImage/service_category_thumbnail/'.$category->service_category_thumbnail;
+                                            $preImageExists = file_exists(public_path($preImagePath));
                                         @endphp
                                         @if ($category->service_category_thumbnail && $folderExists)
-                                            <span><img width="40%" src="{{ asset('storage/service_category_thumbnail/'.$category->service_category_thumbnail) }}" alt="{{ $category->service_category_title }}"></span>
+                                            <img width="40%" src="{{ asset('storage/service_category_thumbnail/'.$category->service_category_thumbnail) }}" alt="{{ $category->service_category_thumbnail }}">
+                                        @elseif ($category->service_category_thumbnail && $preImageExists)
+                                            <img width="40%" src="{{ asset('preImage/service_category_thumbnail/'.$category->service_category_thumbnail) }}" alt="{{ $category->service_category_thumbnail }}">
                                         @else
-                                            <span><img width="40%" src="{{ asset('preImage/service_category_thumbnail/'.$category->service_category_thumbnail) }}" alt="{{ $category->service_category_title }}"></span>
+                                            <img width="40%" src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
                                         @endif
                                     </td>
                                     <td>

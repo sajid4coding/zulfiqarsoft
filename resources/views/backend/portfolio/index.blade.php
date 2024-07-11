@@ -71,19 +71,18 @@
                                 <tr>
                                     <td class="checkbox-column text-center">{{ $SL++ }}</td>
                                     <td>
-                                        {{-- @if ($portfolio->portfolio_thumbnail)
-                                            <span><img width="40%" src="{{ asset('storage/portfolio_thumbnail') }}/{{ $portfolio->portfolio_thumbnail }}" alt="{{ $portfolio->portfolio_title }}"></span>
-                                        @else
-                                            <span><img width="40%" src="{{ Avatar::create($portfolio->portfolio_title)->toBase64() }}" class="profile-img" alt="avatar" /></span>
-                                        @endif --}}
                                         @php
-                                            $filePath = 'portfolio_thumbnail/' . $portfolio->portfolio_thumbnail;
+                                            $filePath = 'portfolio_thumbnail/'.$portfolio->portfolio_thumbnail;
+                                            $preImagePath = 'preImage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail;
                                             $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                            $preImageExists = file_exists(public_path($preImagePath));
                                         @endphp
                                         @if ($portfolio->portfolio_thumbnail && $folderExists)
                                             <img width="40%" src="{{ asset('storage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
-                                        @else
+                                        @elseif ($portfolio->portfolio_thumbnail && $preImageExists)
                                             <img width="40%" src="{{ asset('preImage/portfolio_thumbnail/'.$portfolio->portfolio_thumbnail) }}" alt="{{ $portfolio->portfolio_title }}">
+                                        @else
+                                            <img width="40%" src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
                                         @endif
                                     </td>
                                     <td>
