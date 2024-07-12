@@ -33,9 +33,9 @@
     <link rel="stylesheet" href="{{ asset('frontend_assets') }}/css/style.css" />
 </head>
 <body>
-    {{-- <div class="cs-preloader cs-center">
-    <div class="cs-preloader_in"></div>
-    </div> --}}
+    <div class="cs-preloader cs-center">
+        <div class="cs-preloader_in"></div>
+    </div>
     <!-- Start Header Section -->
     <header class="cs-site_header cs-style1 text-uppercase cs-sticky_header">
         <x-frontend.navbar.navbar />
