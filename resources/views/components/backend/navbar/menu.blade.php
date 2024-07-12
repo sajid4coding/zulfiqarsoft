@@ -100,24 +100,6 @@
                 </a>
             </li>
 
-            <li class="menu">
-                <a href="./app-calendar.html" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        <span>Calendar</span>
-                    </div>
-                </a>
-            </li>
-
-            <li class="menu">
-                <a href="./app-chat.html" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                        <span>Chat</span>
-                    </div>
-                </a>
-            </li>
-
             <li class="menu {{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' || $lastTwoWords == 'dashboard/our-funfact' ? 'active' : '' }}">
                 <a href="#about" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/about/about-agency' || $lastthreeWords == 'dashboard/about/why-choose' || $lastTwoWords == 'dashboard/our-funfact' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
@@ -141,23 +123,29 @@
                 </ul>
             </li>
 
-            <li class="menu">
-                <a href="./app-notes.html" aria-expanded="false" class="dropdown-toggle">
+            <li class="menu {{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'active' : '' }}">
+                <a href="#companylogo" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                        <span>Notes</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
+                        <span>Company Logos</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
+                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'show' : '' }}" id="companylogo" data-bs-parent="#accordionExample">
+                    <li class="{{ $lastthreeWords == 'dashboard/companylogo/create' ? 'active' : '' }}">
+                        <a href="{{ route('companylogo.create') }}"> Create </a>
+                    </li>
+                    <li class="{{ $lastTwoWords == 'dashboard/companylogo' ? 'active' : '' }}">
+                        <a href="{{ route('companylogo.index') }}"> List </a>
+                    </li>
+                    <li class="{{ $lastTwoWords == 'dashboard/companylogo-text' ? 'active' : '' }}">
+                        <a href="{{ route('companylogo.text') }}"> Moving Text </a>
+                    </li>
+                </ul>
             </li>
 
-            <li class="menu {{ $current_page == 'contact' ? 'active' : '' }}">
-                <a href="{{ route('contact.index') }}" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <span>Contacts</span>
-                    </div>
-                </a>
-            </li>
             <li class="menu">
                 <a href="#!" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -165,6 +153,10 @@
                         <span>Subscription</span>
                     </div>
                 </a>
+            </li>
+
+            <li class="menu menu-heading">
+                <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>SERVICE SECTION</span></div>
             </li>
 
             <li class="menu {{ $lastthreeWords == 'dashboard/serviceCategory/create' || $lastTwoWords == 'dashboard/serviceCategory' ? 'active' : '' }}">
@@ -205,6 +197,10 @@
                         <a href="{{ route('service.index') }}"> List </a>
                     </li>
                 </ul>
+            </li>
+
+            <li class="menu menu-heading">
+                <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>PORTFOLIO AND BLOG</span></div>
             </li>
 
             <li class="menu {{ $lastthreeWords == 'dashboard/portfolio/create' || $lastTwoWords == 'dashboard/portfolio'  ? 'active' : '' }}">
@@ -250,6 +246,10 @@
                 </ul>
             </li>
 
+            <li class="menu menu-heading">
+                <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>TEAM AND TESTIMONIAL</span></div>
+            </li>
+
             <li class="menu {{ $lastthreeWords == 'dashboard/team/create' || $lastTwoWords == 'dashboard/team' ? 'active' : '' }}">
                 <a href="#team" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/team/create' || $lastTwoWords == 'dashboard/team' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
@@ -269,6 +269,7 @@
                     </li>
                 </ul>
             </li>
+
             <li class="menu {{ $lastthreeWords == 'dashboard/testimonial/create' || $lastTwoWords == 'dashboard/testimonial' ? 'active' : '' }}">
                 <a href="#testimonial" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/testimonial/create' || $lastTwoWords == 'dashboard/testimonial' ? 'true' : '' }}" class="dropdown-toggle">
                     <div class="">
@@ -290,28 +291,47 @@
             </li>
 
             <li class="menu menu-heading">
-                <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>USER INTERFACE</span></div>
+                <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>CONTACT AND NEWSLETTER</span></div>
             </li>
 
-            <li class="menu {{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'active' : '' }}">
-                <a href="#companylogo" data-bs-toggle="collapse" aria-expanded="{{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'true' : '' }}" class="dropdown-toggle">
+            <li class="menu {{ $current_page == 'contact' ? 'active' : '' }}">
+                <a href="{{ route('contact.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
-                        <span>Company Logos</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>Contacts</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="menu {{ $current_page == 'newsletter' ? 'active' : '' }}">
+                <a href="{{route('newsletter')}}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        <span>Newsletter</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="menu menu-heading">
+                <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>USER AND PAGES</span></div>
+            </li>
+
+            <li class="menu {{ $lastTwoWords == 'dashboard/profile' || $lastTwoWords == 'dashboard/account-setting' ? 'active' : '' }}">
+                <a href="#users" data-bs-toggle="collapse" aria-expanded="{{ $lastTwoWords == 'dashboard/profile' || $lastTwoWords == 'dashboard/account-setting' ? 'true' : 'false' }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <span>Users</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ $lastthreeWords == 'dashboard/companylogo/create' || $lastTwoWords == 'dashboard/companylogo' || $lastTwoWords == 'dashboard/companylogo-text' ? 'show' : '' }}" id="companylogo" data-bs-parent="#accordionExample">
-                    <li class="{{ $lastthreeWords == 'dashboard/companylogo/create' ? 'active' : '' }}">
-                        <a href="{{ route('companylogo.create') }}"> Create </a>
+                <ul class="collapse submenu list-unstyled {{ $lastTwoWords == 'dashboard/profile' || $lastTwoWords == 'dashboard/account-setting' ? 'show' : '' }}" id="users" data-bs-parent="#accordionExample">
+                    <li class="{{ $lastTwoWords == 'dashboard/profile' ? 'active' : '' }}">
+                        <a href="{{ route('profile') }}"> Profile </a>
                     </li>
-                    <li class="{{ $lastTwoWords == 'dashboard/companylogo' ? 'active' : '' }}">
-                        <a href="{{ route('companylogo.index') }}"> List </a>
-                    </li>
-                    <li class="{{ $lastTwoWords == 'dashboard/companylogo-text' ? 'active' : '' }}">
-                        <a href="{{ route('companylogo.text') }}"> Moving Text </a>
+                    <li class="{{ $lastTwoWords == 'dashboard/account-setting' ? 'active' : '' }}">
+                        <a href="{{ route('account.setting') }}"> Account Settings </a>
                     </li>
                 </ul>
             </li>
@@ -336,7 +356,9 @@
                 </ul>
             </li>
 
-            <li class="menu">
+            {{-- SOME UN USED MENUS --}}
+
+            {{-- <li class="menu">
                 <a href="#components" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
@@ -507,42 +529,32 @@
                 </ul>
             </li>
 
-            <li class="menu menu-heading">
-                <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>TABLES AND FORMS</span></div>
-            </li>
-
-            <li class="menu {{ $current_page == 'newsletter' ? 'active' : '' }}">
-                <a href="{{route('newsletter')}}" aria-expanded="false" class="dropdown-toggle">
+            <li class="menu">
+                <a href="./app-calendar.html" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                        <span>Newsletter</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span>Calendar</span>
                     </div>
                 </a>
             </li>
 
-            <li class="menu menu-heading">
-                <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>USER AND PAGES</span></div>
-            </li>
-
-            <li class="menu {{ $lastTwoWords == 'dashboard/profile' || $lastTwoWords == 'dashboard/account-setting' ? 'active' : '' }}">
-                <a href="#users" data-bs-toggle="collapse" aria-expanded="{{ $lastTwoWords == 'dashboard/profile' || $lastTwoWords == 'dashboard/account-setting' ? 'true' : 'false' }}" class="dropdown-toggle">
+            <li class="menu">
+                <a href="./app-chat.html" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        <span>Users</span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <span>Chat</span>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ $lastTwoWords == 'dashboard/profile' || $lastTwoWords == 'dashboard/account-setting' ? 'show' : '' }}" id="users" data-bs-parent="#accordionExample">
-                    <li class="{{ $lastTwoWords == 'dashboard/profile' ? 'active' : '' }}">
-                        <a href="{{ route('profile') }}"> Profile </a>
-                    </li>
-                    <li class="{{ $lastTwoWords == 'dashboard/account-setting' ? 'active' : '' }}">
-                        <a href="{{ route('account.setting') }}"> Account Settings </a>
-                    </li>
-                </ul>
             </li>
+
+            <li class="menu">
+                <a href="./app-notes.html" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <span>Notes</span>
+                    </div>
+                </a>
+            </li> --}}
 
         </ul>
 

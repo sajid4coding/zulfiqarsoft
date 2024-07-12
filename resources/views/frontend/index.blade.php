@@ -67,9 +67,7 @@
     <div class="cs-height_130 cs-height_lg_70"></div>
 
     <!-- Start General Text -->
-    <div class="container">
-        <h2 class="cs-font_50 cs-m0 text-center cs-line_height_4 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s"> Our agile process is ability to adapt and respond to change. Agile organizations view change as an opportunity, not a threat. </h2>
-    </div>
+    <x-frontend.genaral-text.genaral-text/>
     <!-- End General Text -->
 
     <div class="cs-height_70 cs-height_lg_70"></div>

@@ -24,7 +24,7 @@ class portfolio extends Component
     public function render(): View|Closure|string
     {
         return view('components.frontend.portfolio.portfolio', [
-            'portfolios' => ModelsPortfolio::where('portfolio_status', 'on')->get(),
+            'portfolios' => ModelsPortfolio::where('portfolio_status', 'on')->get()->shuffle(),
             'globalSettingStatus' => GlobalSettingStatus::find(1),
         ]);
     }

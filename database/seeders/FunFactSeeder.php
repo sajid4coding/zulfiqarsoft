@@ -15,9 +15,9 @@ class FunFactSeeder extends Seeder
     {
         DB::table('fun_facts')->insert([
             'heading_title' => 'Our fun fact',
-            'heading_description' => 'Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.',
+            'heading_description' => 'At ZulfiqarSoft, we take pride in our achievements and the impact we’ve made in the digital landscape.',
             'happy_client' => 40,
-            'completed_project' => 102,
+            'completed_project' => 105,
             'team_member' => 5,
             'our_services' => 5,
             'created_at' => now()

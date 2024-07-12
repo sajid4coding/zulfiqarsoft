@@ -14,7 +14,7 @@ class GlobalSettingStatusSeeder extends Seeder
     public function run(): void
     {
         DB::table('global_setting_statuses')->insert([
-            'subscription_section' => 'on',
+            'subscription_section' => NUll,
             'testimonial_section' => 'on',
             'portfolio_section' => 'on',
             'team_section' => 'on',

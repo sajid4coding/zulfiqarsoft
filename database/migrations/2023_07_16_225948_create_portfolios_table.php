@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('portfolio_title');
             $table->string('portfolio_title_slug');
-            $table->longText('portfolio_description');
+            $table->longText('portfolio_description')->nullable();
             $table->string('portfolio_meta_title')->nullable();
             $table->longText('portfolio_meta_description')->nullable();
             $table->string('portfolio_url')->nullable();

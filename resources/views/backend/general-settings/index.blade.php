@@ -74,6 +74,28 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                    <h4>Genaral Text</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content widget-content-area">
+                            <div class="row mb-12">
+                                <div class="col">
+                                    <textarea name="genaral_text" type="text" class="form-control" placeholder="Genaral Text" cols="30" rows="5">{{ $general_setting->genaral_text ? $general_setting->genaral_text : '' }}</textarea>
+                                    @error('genaral_text')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-12 layout-spacing">
+                    <div class="statbox widget box box-shadow">
+                        <div class="widget-header">
+                            <div class="row">
+                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                     <h4>Under Logo Text</h4>
                                 </div>
                             </div>

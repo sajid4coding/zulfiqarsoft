@@ -44,7 +44,20 @@
                         <div class="slider-nav_item">
                             <div class="cs-rotate_img">
                             <div class="cs-rotate_img_in">
-                                <img src="{{ asset('storage/client_images') }}/{{ $testimonial->client_image }}" alt="Nav Image" />
+                                {{-- <img src="{{ asset('storage/client_images') }}/{{ $testimonial->client_image }}" alt="Nav Image" /> --}}
+                                @php
+                                    $filePath = 'client_images/' . $testimonial->client_image;
+                                    $folderExists = Illuminate\Support\Facades\Storage::disk('public')->exists($filePath);
+                                    $preImagePath = 'preImage/client_images/'.$testimonial->client_image;
+                                    $preImageExists = file_exists(public_path($preImagePath));
+                                @endphp
+                                @if ($testimonial->client_image && $folderExists)
+                                    <img src="{{ asset('storage/client_images/'.$testimonial->client_image) }}" alt="{{ $testimonial->client_image }}">
+                                @elseif ($testimonial->client_image && $preImageExists)
+                                    <img src="{{ asset('preImage/client_images/'.$testimonial->client_image) }}" alt="{{ $testimonial->client_image }}">
+                                @else
+                                    <img src="{{ asset('preImage/nullImage/nullImage.jpg') }}" alt="nullImage.jpg">
+                                @endif
                             </div>
                             </div>
                         </div>

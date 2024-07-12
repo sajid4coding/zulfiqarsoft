@@ -23,7 +23,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://aspire2.mdanderson.org',
             'project_start_from' => '2024-01-01 00:00:00',
             'project_end_to' => '2024-03-01 18:11:00',
-            'portfolio_category_id' => '2',
+            'portfolio_category_id' => 2,
             'portfolio_thumbnail' => 'portfolio_thumbnail_1.png',
             'portfolio_status' => 'on',
             'created_at' => now()
@@ -38,7 +38,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://www.mutualofomaha.com',
             'project_start_from' => '2023-05-01 00:00:00',
             'project_end_to' => '2023-07-20 14:14:00',
-            'portfolio_category_id' => '2',
+            'portfolio_category_id' => 2,
             'portfolio_thumbnail' => 'portfolio_thumbnail_2.png',
             'created_at' => now()
         ]);
@@ -52,7 +52,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://reviews.mcall.com',
             'project_start_from' => '2024-02-01 00:00:00',
             'project_end_to' => '2024-03-15 14:18:00',
-            'portfolio_category_id' => '2',
+            'portfolio_category_id' => 2,
             'portfolio_thumbnail' => 'portfolio_thumbnail_3.png',
             'created_at' => now()
         ]);
@@ -66,7 +66,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://vgotel.com',
             'project_start_from' => '2021-05-05 00:00:00',
             'project_end_to' => '2021-06-01 00:00:00',
-            'portfolio_category_id' => '1',
+            'portfolio_category_id' => 1,
             'portfolio_thumbnail' => 'portfolio_thumbnail_4.png',
             'created_at' => now()
         ]);
@@ -80,7 +80,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://mobotel.ir',
             'project_start_from' => '2022-01-07 00:00:00',
             'project_end_to' => '2022-06-29 04:09:00',
-            'portfolio_category_id' => '1',
+            'portfolio_category_id' => 1,
             'portfolio_thumbnail' => 'portfolio_thumbnail_5.png',
             'created_at' => now()
         ]);
@@ -94,7 +94,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://tintedfilm.com.my',
             'project_start_from' => '2023-05-03 00:00:00',
             'project_end_to' => '2023-05-31 05:08:00',
-            'portfolio_category_id' => '1',
+            'portfolio_category_id' => 1,
             'portfolio_thumbnail' => 'portfolio_thumbnail_6.png',
             'created_at' => now()
         ]);
@@ -108,7 +108,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://digitalambassador.mtb.com',
             'project_start_from' => '2023-01-02 00:00:00',
             'project_end_to' => '2023-07-14 11:19:00',
-            'portfolio_category_id' => '2',
+            'portfolio_category_id' => 2,
             'portfolio_thumbnail' => 'portfolio_thumbnail_7.png',
             'created_at' => now()
         ]);
@@ -122,7 +122,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://elfavoritodelaaficion.marca.com',
             'project_start_from' => '2023-05-09 00:00:00',
             'project_end_to' => '2023-11-28 23:22:00',
-            'portfolio_category_id' => '2',
+            'portfolio_category_id' => 2,
             'portfolio_thumbnail' => 'portfolio_thumbnail_8.png',
             'created_at' => now()
         ]);
@@ -136,7 +136,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://airportparkingreservations.com',
             'project_start_from' => '2024-01-27 00:00:00',
             'project_end_to' => '2024-05-17 17:00:00',
-            'portfolio_category_id' => '2',
+            'portfolio_category_id' => 2,
             'portfolio_thumbnail' => 'portfolio_thumbnail_9.png',
             'created_at' => now()
         ]);
@@ -150,7 +150,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://postshop.com.gh',
             'project_start_from' => '2024-01-28 00:00:00',
             'project_end_to' => '2024-05-28 00:56:00',
-            'portfolio_category_id' => '1',
+            'portfolio_category_id' => 1,
             'portfolio_thumbnail' => 'portfolio_thumbnail_10.png',
             'created_at' => now()
         ]);
@@ -164,7 +164,7 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://shop.belmontebd.com',
             'project_start_from' => '2024-03-28 00:00:00',
             'project_end_to' => '2024-05-28 00:55:00',
-            'portfolio_category_id' => '1',
+            'portfolio_category_id' => 1,
             'portfolio_thumbnail' => 'portfolio_thumbnail_11.png',
             'created_at' => now()
         ]);
@@ -178,8 +178,84 @@ class PortfolioSeeder extends Seeder
             'portfolio_url' => 'https://cutthelinemcsllc.com',
             'project_start_from' => '2023-05-28 00:00:00',
             'project_end_to' => '2023-12-27 00:57:00',
-            'portfolio_category_id' => '1',
+            'portfolio_category_id' => 1,
             'portfolio_thumbnail' => 'portfolio_thumbnail_12.png',
+            'created_at' => now()
+        ]);
+
+        DB::table('portfolios')->insert([
+            'portfolio_title' => 'ENBON GROUP Promotional Video',
+            'portfolio_title_slug' => 'enbon-group-promotional-video',
+            'portfolio_description' => NULL,
+            'portfolio_meta_title' => 'ENBON GROUP Promotional Video',
+            'portfolio_meta_description' => "ENBON GROUP Promotional Video",
+            'portfolio_status' => 'on',
+            'portfolio_url' => NULL,
+            'project_start_from' => '2024-01-16',
+            'project_end_to' => '2024-05-21',
+            'portfolio_category_id' => 4,
+            'video_url' => 'https://www.youtube.com/watch?v=VGJfLdoTBh4',
+            'portfolio_thumbnail' => 'portfolio_thumbnail_13.png',
+            'created_at' => now()
+        ]);
+        DB::table('portfolios')->insert([
+            'portfolio_title' => 'Furnicom Sofa Promotional Video',
+            'portfolio_title_slug' => 'furnicom-sofa-promotional-video',
+            'portfolio_description' => NULL,
+            'portfolio_meta_title' => 'Furnicom Sofa Promotional Video',
+            'portfolio_meta_description' => "Furnicom Sofa Promotional Video",
+            'portfolio_status' => 'on',
+            'portfolio_url' => NULL,
+            'project_start_from' => '2023-11-19',
+            'project_end_to' => '2024-01-09',
+            'portfolio_category_id' => 4,
+            'video_url' => 'https://www.youtube.com/watch?v=9Udl72bBAfM',
+            'portfolio_thumbnail' => 'portfolio_thumbnail_14.png',
+            'created_at' => now()
+        ]);
+        DB::table('portfolios')->insert([
+            'portfolio_title' => 'Cinematic Promo',
+            'portfolio_title_slug' => 'cinematic-promo',
+            'portfolio_description' => NULL,
+            'portfolio_meta_title' => 'Cinematic Promo',
+            'portfolio_meta_description' => "Cinematic Promo",
+            'portfolio_status' => 'on',
+            'portfolio_url' => NULL,
+            'project_start_from' => '2024-02-06',
+            'project_end_to' => '2024-06-22',
+            'portfolio_category_id' => 4,
+            'video_url' => 'https://www.youtube.com/watch?v=guat30ieAMw',
+            'portfolio_thumbnail' => 'portfolio_thumbnail_15.png',
+            'created_at' => now()
+        ]);
+        DB::table('portfolios')->insert([
+            'portfolio_title' => 'SAFE US PAY Promotional Video',
+            'portfolio_title_slug' => 'safe-us-pay-promotional-video',
+            'portfolio_description' => NULL,
+            'portfolio_meta_title' => 'SAFE US PAY Promotional Video',
+            'portfolio_meta_description' => "SAFE US PAY Promotional Video",
+            'portfolio_status' => 'on',
+            'portfolio_url' => NULL,
+            'project_start_from' => '2024-01-14',
+            'project_end_to' => '2024-07-02',
+            'portfolio_category_id' => 4,
+            'video_url' => 'https://www.youtube.com/watch?v=MacAmGePpEU',
+            'portfolio_thumbnail' => 'portfolio_thumbnail_16.png',
+            'created_at' => now()
+        ]);
+        DB::table('portfolios')->insert([
+            'portfolio_title' => 'Furnicom Chair Promotional Video',
+            'portfolio_title_slug' => 'furnicom-chair-promotional-video',
+            'portfolio_description' => NULL,
+            'portfolio_meta_title' => 'Furnicom Chair Promotional Video',
+            'portfolio_meta_description' => "Furnicom Chair Promotional Video",
+            'portfolio_status' => 'on',
+            'portfolio_url' => NULL,
+            'project_start_from' => '2023-12-12',
+            'project_end_to' => '2024-05-05',
+            'portfolio_category_id' => 4,
+            'video_url' => 'https://www.youtube.com/watch?v=MQR3KdvIrCQ',
+            'portfolio_thumbnail' => 'portfolio_thumbnail_17.png',
             'created_at' => now()
         ]);
     }

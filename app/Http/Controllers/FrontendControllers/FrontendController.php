@@ -54,7 +54,7 @@ class FrontendController extends Controller
     public function portfolio(){
         return view('frontend.portfolio.index', [
             'serviceCategories' => ServiceCategory::where('service_category_status', 'on')->get(),
-            'portfolios' => Portfolio::where('portfolio_status', 'on')->get()
+            'portfolios' => Portfolio::where('portfolio_status', 'on')->get()->shuffle()
         ]);
     }
 
